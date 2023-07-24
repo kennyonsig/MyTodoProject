@@ -1,0 +1,41 @@
+.task {
+  display: flex;
+  border-radius: 5px;
+  align-items: baseline;
+
+
+  &.completed {
+    text-decoration: line-through;
+  }
+
+
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+
+
+  .id, .description, .time {
+    font-size: 20px;
+  }
+
+  .description {
+    width: 260px;
+    overflow: hidden;
+    word-wrap: break-word;
+  }
+
+  .id {
+    font-weight: bold;
+  }
+
+  .time {
+    color: #999;
+  }
+
+  .delete-btn {
+    margin-right: 10px;
+  }
+
+
+}
+

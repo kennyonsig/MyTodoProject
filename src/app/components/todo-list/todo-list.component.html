@@ -1,1 +1,17 @@
-<p>todo-list works!</p>
+<div *ngFor="let list of lists$ | async" class="todo-list">
+  <div class="list-wrapper">
+    <p class="todo-number">{{list.listNumber}}</p>
+    <input [(ngModel)]="listName" class="todo-name" name="todoName">
+    <p>Date</p>
+    <fa-icon [icon]="dragIcon"></fa-icon>
+  </div>
+
+  <ul (cdkDropListDropped)="moveTask($event)" cdkDropList class="list-block">
+    <li *ngFor="let task of list.tasks; let i = index" cdkDrag class="task-box-li">
+
+      <div *cdkDragPlaceholder class="task-placeholder"></div>
+      <app-task (taskRemove)="removeTask($event, list.listNumber)" [taskIndex]="i + 1" [task]="task"></app-task>
+
+    </li>
+  </ul>
+</div>

@@ -1,1 +1,16 @@
-<p>input works!</p>
+<div>
+  <input #taskInput (input)="onInputChange(taskInput.value)" placeholder="Enter a task" type="text">
+
+  <label for="time-input">Select a time:</label>
+  <input #timeInput [(ngModel)]="taskTime"
+         id="time-input" name="time" type="time">
+
+  <label for="input-select">Select a list number</label>
+  <input [(ngModel)]="selectedListNumber" id="input-select" type="number">
+
+  <button (click)="enterTask(taskInput, timeInput)"
+          [disabled]="!taskTime || isDisabled"
+          class="add-task">Add task
+  </button>
+
+</div>

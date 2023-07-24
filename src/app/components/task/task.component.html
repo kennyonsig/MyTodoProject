@@ -1,1 +1,10 @@
-<p>task works!</p>
+<div [ngClass]="{'completed': task.completed}" class="task">
+
+  <input (click)="completeTask(task)" type="checkbox">
+  <p class="id">{{taskIndex}}</p>
+  <p class="description">{{task.description}}</p>
+  <p class="time">{{task.time}} </p>
+  <button (click)="removeTask(task)" class="delete-btn">Delete</button>
+  <fa-icon [icon]="dragArrowsV"></fa-icon>
+
+</div>
