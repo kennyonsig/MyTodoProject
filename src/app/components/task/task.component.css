@@ -1,0 +1,31 @@
+.task {
+  display: flex;
+  border-radius: 5px;
+  align-items: baseline;
+}
+.task.completed {
+  text-decoration: line-through;
+}
+.task input[type=checkbox], .task .id, .task .description, .task .time {
+  margin-right: 10px;
+  padding: 5px;
+}
+.task .id, .task .description, .task .time {
+  font-size: 20px;
+}
+.task .description {
+  width: 260px;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.task .id {
+  font-weight: bold;
+}
+.task .time {
+  color: #999;
+}
+.task .delete-btn {
+  margin-right: 10px;
+}
+
+/*# sourceMappingURL=task.component.css.map */

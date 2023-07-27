@@ -1,14 +1,9 @@
-div {
-  margin: 0 20px 20px;
+.buttons {
+  margin: 0 20px 10px;
+  display: flex;
 
-  input[type="number"] {
+  .duplicate-input, .duplicate, .delete, .delete-input, .add-new, .delete-all {
     margin-right: 10px;
-
   }
 
-  button {
-
-    margin-right: 10px;
-
-  }
 }

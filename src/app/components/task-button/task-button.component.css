@@ -1,0 +1,9 @@
+.buttons {
+  margin: 0 20px 10px;
+  display: flex;
+}
+.buttons .duplicate-input, .buttons .duplicate, .buttons .delete, .buttons .delete-input, .buttons .add-new, .buttons .delete-all {
+  margin-right: 10px;
+}
+
+/*# sourceMappingURL=task-button.component.css.map */

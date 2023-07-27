@@ -1,9 +1,13 @@
-<div>
-  <button (click)="addNewToDoList()">Add new ToDo list</button>
-  <button (click)="duplicateListNumber()"> Duplicate list number:</button>
-  <input type="number">
-  <button (click)="deleteListNumber()"> Delete list number:</button>
-  <input type="number">
-  <button (click)="deleteAllList()"> Delete all list's</button>
-  Find a list by name <input type="text">
+<div class="buttons">
+  <button (click)="addNewToDoList()" class="add-new">Add new ToDo list</button>
+
+  <button (click)="duplicateListNumber()" class="duplicate">Duplicate list number:</button>
+  <input class="duplicate-input" type="number">
+
+  <button (click)="deleteListNumber()" class="delete">Delete list number:</button>
+  <input class="delete-input" type="number">
+
+  <button (click)="deleteAllList()" class="delete-all">Delete all list's</button>
+
+  <input class="find-input" placeholder="Find a list by name" type="text">
 </div>
