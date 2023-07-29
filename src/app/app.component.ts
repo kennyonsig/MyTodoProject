@@ -7,7 +7,7 @@ import { TaskService } from './service/task.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // title = 'PetProject';
+  title = 'PetProject';
 
   constructor(private taskService: TaskService) {
   }

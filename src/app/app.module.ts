@@ -13,7 +13,8 @@ import { TextTransformPipe } from './pipes/text-transform.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    TextTransformPipe
+    TextTransformPipe,
+
   ],
   imports: [
     BrowserModule,
@@ -24,6 +25,7 @@ import { TextTransformPipe } from './pipes/text-transform.pipe';
     BrowserAnimationsModule
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

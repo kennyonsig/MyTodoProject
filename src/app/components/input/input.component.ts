@@ -24,6 +24,10 @@ export class InputComponent {
   selectedListNumber: number;
 
 
+  onInputChange(value: string) {
+    this.isDisabled = value.trim().length === 0;
+  }
+
   enterTask(taskInput: HTMLInputElement, timeInput: HTMLInputElement) {
     this.outEnterTask.emit({
       taskName: taskInput.value,
@@ -36,10 +40,5 @@ export class InputComponent {
     this.isDisabled = true;
     this.taskTime = '';
   }
-
-  onInputChange(value: string) {
-    this.isDisabled = value.trim().length === 0;
-  }
-
 
 }

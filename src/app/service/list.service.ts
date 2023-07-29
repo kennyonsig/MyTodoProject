@@ -39,4 +39,28 @@ export class ListService {
   updateList(lists: IList[]) {
     this.lists$.next(lists);
   }
+
+  duplicateList(selectedDupListNumber: number) {
+    this.lists$.pipe(take(1)).subscribe((currentList: IList[]) => {
+      const currentListLength = currentList.length;
+
+      const fillTasks = [...currentList[selectedDupListNumber - 1].tasks];
+
+      const duplicateList: IList = {
+        listNumber: currentListLength + 1,
+        tasks: fillTasks,
+      };
+
+      const updateList: IList[] = [...currentList, duplicateList];
+      this.lists$.next(updateList);
+    });
+  }
+
+  deleteList(selectedDelListNumber: number) {
+    this.lists$.pipe(take(1)).subscribe((currentList: IList[]) => {
+      const updateList: IList[] = currentList.filter((list: IList) => list.listNumber !== selectedDelListNumber);
+      updateList.forEach((list: IList, index: number) => list.listNumber = index + 1);
+      this.lists$.next(updateList);
+    });
+  }
 }

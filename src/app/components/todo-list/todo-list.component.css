@@ -9,20 +9,17 @@
 .todo-list .ng-fa-icon {
   padding: 10px;
 }
-
-.list-wrapper {
+.todo-list .list-wrapper {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
   border: solid #ccc 1px;
   border-radius: 4px;
 }
-
-.todo-name, .todo-number {
+.todo-list .todo-name, .todo-list .todo-number {
   padding: 10px;
 }
-
-.todo-name {
+.todo-list .todo-name {
   border: none;
   font-weight: bold;
   border-bottom: 2px solid transparent;
@@ -30,11 +27,10 @@
   outline: none;
   cursor: pointer;
 }
-.todo-name:focus {
+.todo-list .todo-name:focus {
   border-bottom-color: #ff0000;
 }
-
-.list-block {
+.todo-list .list-block {
   width: 500px;
   max-width: 100%;
   border: solid 1px #ccc;
@@ -53,7 +49,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
   cursor: move;
   background: white;
   font-size: 14px;

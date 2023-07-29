@@ -1,3 +1,4 @@
+
 .todo-list {
   padding: 20px;
 
@@ -10,42 +11,42 @@
   .ng-fa-icon {
     padding: 10px;
   }
-}
 
-.list-wrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  border: solid #ccc 1px;
-  border-radius: 4px;
-}
-
-.todo-name, .todo-number {
-  padding: 10px;
-}
-
-.todo-name {
-  border: none;
-  font-weight: bold;
-  border-bottom: 2px solid transparent;
-  transition: border-bottom-color 0.3s;
-  outline: none;
-  cursor: pointer;
-
-  &:focus {
-    border-bottom-color: #ff0000;
+  .list-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border: solid #ccc 1px;
+    border-radius: 4px;
   }
-}
 
-.list-block {
-  width: 500px;
-  max-width: 100%;
-  border: solid 1px #ccc;
-  min-height: 60px;
-  display: block;
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
+  .todo-name, .todo-number {
+    padding: 10px;
+  }
+
+  .todo-name {
+    border: none;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.3s;
+    outline: none;
+    cursor: pointer;
+
+    &:focus {
+      border-bottom-color: #ff0000;
+    }
+  }
+
+  .list-block {
+    width: 500px;
+    max-width: 100%;
+    border: solid 1px #ccc;
+    min-height: 60px;
+    display: block;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+  }
 }
 
 .task-box-li {
@@ -56,7 +57,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
   cursor: move;
   background: white;
   font-size: 14px;
