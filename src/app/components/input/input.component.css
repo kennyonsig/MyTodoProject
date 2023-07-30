@@ -4,22 +4,12 @@ div {
   justify-content: space-between;
   margin: 0 20px 10px;
 }
-div label, div input {
+div label,
+div input {
   margin-right: 10px;
   padding: 10px;
 }
-div input[type=text] {
-  padding: 10px;
-  border-radius: 5px;
-  border: 2px solid #ddd;
-  font-size: 16px;
-  flex-grow: 1;
-  margin-right: 10px;
-}
-div input[type=text]::placeholder {
-  color: #999;
-}
-div button.add-task {
+div .add-task {
   padding: 10px 15px;
   background-color: #4CAF50;
   border: none;
@@ -27,21 +17,12 @@ div button.add-task {
   color: #fff;
   font-size: 16px;
 }
-div button.add-task:hover {
+div .add-task:hover {
   background-color: #327635;
 }
-div button.add-task:disabled {
+div .add-task:disabled {
   background-color: #ddd;
   cursor: not-allowed;
-}
-div input[type=time] {
-  border: 1px white solid;
-  color: #2a2c2d;
-  font-size: 14px;
-  width: 180px;
-}
-div input[type=time]:hover {
-  border: 1px rgba(100, 99, 99, 0.35) solid;
 }
 
 /*# sourceMappingURL=input.component.css.map */

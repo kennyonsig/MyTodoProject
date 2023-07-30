@@ -1,5 +1,4 @@
-<div *ngFor="let list of lists$ | async"
-     class="todo-list">
+<div *ngFor="let list of lists$ | async" class="todo-list">
   <div class="list-wrapper">
     <p class="todo-number">{{list.listNumber}}</p>
     <input [(ngModel)]="listName" class="todo-name" name="todoName">

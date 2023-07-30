@@ -2,8 +2,43 @@
   margin: 0 20px 10px;
   display: flex;
 }
+.buttons .find-input {
+  padding: 10px;
+}
 .buttons .duplicate-input, .buttons .duplicate, .buttons .delete, .buttons .delete-input, .buttons .add-new, .buttons .delete-all {
   margin-right: 10px;
+}
+.buttons .add-new, .buttons .delete-all, .buttons .delete, .buttons .duplicate {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+.buttons .btn-without-input {
+  background-color: #ff8c00;
+}
+.buttons .btn-without-input:hover {
+  background-color: #dc7d10;
+}
+.buttons .btn-without-input:active {
+  background-color: #f8843c;
+}
+.buttons .btn-with-input {
+  background-color: #4CAF50;
+}
+.buttons .btn-with-input:hover {
+  background-color: #138e18;
+}
+.buttons .btn-with-input:active {
+  background-color: #20e230;
+}
+.buttons .btn-with-input:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
 }
 
 /*# sourceMappingURL=task-button.component.css.map */

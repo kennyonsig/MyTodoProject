@@ -9,7 +9,7 @@
   <input [(ngModel)]="selectedListNumber" id="input-select" type="number">
 
   <button (click)="enterTask(taskInput, timeInput)"
-          [disabled]="!taskTime || isDisabled"
+          [disabled]="!taskTime || isDisabled || !selectedListNumber"
           class="add-task">Add task
   </button>
 

@@ -2,8 +2,52 @@
   margin: 0 20px 10px;
   display: flex;
 
+  .find-input {
+    padding: 10px;
+  }
   .duplicate-input, .duplicate, .delete, .delete-input, .add-new, .delete-all {
     margin-right: 10px;
+  }
+
+  .add-new, .delete-all, .delete, .duplicate {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-without-input {
+    background-color: #ff8c00;
+
+    &:hover {
+      background-color: #dc7d10;
+    }
+
+    &:active {
+      background-color: #f8843c;
+    }
+  }
+
+  .btn-with-input {
+    background-color: #4CAF50;
+
+    &:hover {
+      background-color: #138e18;
+    }
+
+    &:active {
+      background-color: #20e230;
+    }
+
+    &:disabled {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
+
   }
 
 }
