@@ -1,9 +1,24 @@
 <div *ngFor="let list of lists$ | async" class="todo-list">
+
+
   <div class="list-wrapper">
-    <p class="todo-number">{{list.listNumber}}</p>
-    <input [(ngModel)]="listName" class="todo-name" name="todoName">
-    <p class="date">Date</p>
-    <fa-icon [icon]="dragIcon"></fa-icon>
+
+    <ng-container *ngIf="editList">
+      <p class="todo-number">{{list.listNumber}}</p>
+      <fa-icon (click)="editListInfo()" [icon]="editIcon" class="edit-icon"></fa-icon>
+      <p class="todo-name"> {{list.listName}}
+      <p class="todo-date">Date</p>
+      <fa-icon [icon]="dragIcon"></fa-icon>
+    </ng-container>
+
+    <ng-container *ngIf="!editList">
+      <p class="todo-number">{{list.listNumber}}</p>
+      <fa-icon (click)="saveChange()" [icon]="saveIcon" class="save-icon"></fa-icon>
+      <input [(ngModel)]="listName" name="todoName">
+      <input type="date">
+      <fa-icon [icon]="dragIcon"></fa-icon>
+    </ng-container>
+
   </div>
 
   <ul (cdkDropListDropped)="moveTask($event)" cdkDropList class="list-block">

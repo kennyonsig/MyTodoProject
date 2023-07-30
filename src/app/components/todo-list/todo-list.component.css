@@ -16,19 +16,8 @@
   border: solid #ccc 1px;
   border-radius: 4px;
 }
-.todo-list .todo-name, .todo-list .todo-number {
+.todo-list .todo-name, .todo-list .todo-number, .todo-list .todo-date {
   padding: 10px;
-}
-.todo-list .todo-name {
-  border: none;
-  font-weight: bold;
-  border-bottom: 2px solid transparent;
-  transition: border-bottom-color 0.3s;
-  outline: none;
-  cursor: pointer;
-}
-.todo-list .todo-name:focus {
-  border-bottom-color: #ff0000;
 }
 .todo-list .list-block {
   width: 500px;
@@ -39,6 +28,9 @@
   background: white;
   border-radius: 4px;
   overflow: hidden;
+}
+.todo-list .save-icon, .todo-list .edit-icon {
+  cursor: pointer;
 }
 
 .task-box-li {

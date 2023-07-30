@@ -3,24 +3,42 @@
   border-radius: 5px;
   align-items: baseline;
 
-
   &.completed {
     text-decoration: line-through;
   }
 
-
-  input[type="checkbox"], .id, .description, .time {
-    margin-right: 10px;
-    padding: 5px;
+  input[type="checkbox"],
+  .id,
+  .description,
+  .time {
+    padding: 10px;
   }
 
-  .id, .description, .time {
-    font-size: 20px;
+  input,
+  .edit-icon,
+  .delete-btn,
+  .id {
+    margin-right: 9px;
+  }
 
+  input[type="text"] {
+    width: 200px;
+    padding: 10px;
+  }
+
+  input[type="time"] {
+    padding: 7px 5px;
+    margin-right: 5px;
+  }
+
+  .id,
+  .description,
+  .time {
+    font-size: 20px;
   }
 
   .description {
-    width: 260px;
+    width: 236px;
     overflow: hidden;
     word-wrap: break-word;
   }
@@ -33,10 +51,10 @@
     color: #999;
   }
 
-  .delete-btn {
-    margin-right: 10px;
+  .save-icon, .edit-icon {
+    cursor: pointer;
   }
 
 
-}
 
+}

@@ -1,10 +1,24 @@
-<div [ngClass]="{'completed': task.completed}" class="task">
+<ng-container *ngIf="editTask">
+  <div [ngClass]="{'completed': task.completed}" class="task">
+    <input (click)="completeTask(task)" type="checkbox">
+    <p class="id">{{taskIndex}}</p>
+    <fa-icon (click)="editTaskInfo()" [icon]="editIcon" class="edit-icon"></fa-icon>
+    <p class="description">{{task.description}}</p>
+    <p class="time">{{task.time}} </p>
+    <button (click)="removeTask(task)" class="delete-btn">Delete</button>
+    <fa-icon [icon]="dragArrowsV"></fa-icon>
 
-  <input (click)="completeTask(task)" type="checkbox">
-  <p class="id">{{taskIndex}}</p>
-  <p class="description">{{task.description}}</p>
-  <p class="time">{{task.time}} </p>
-  <button (click)="removeTask(task)" class="delete-btn">Delete</button>
-  <fa-icon [icon]="dragArrowsV"></fa-icon>
+  </div>
+</ng-container>
 
-</div>
+<ng-container *ngIf="!editTask">
+  <div [ngClass]="{'completed': task.completed}" class="task">
+    <input (click)="completeTask(task)" type="checkbox">
+    <p class="id">{{taskIndex}}</p>
+    <fa-icon (click)="saveTaskInfo()" [icon]="saveIcon" class="edit-icon"></fa-icon>
+    <input type="text">
+    <input type="time">
+    <button (click)="removeTask(task)" class="delete-btn">Delete</button>
+    <fa-icon [icon]="dragArrowsV"></fa-icon>
+  </div>
+</ng-container>

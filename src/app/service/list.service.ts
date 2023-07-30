@@ -8,6 +8,7 @@ import { IList } from '../model/IList';
 })
 export class ListService {
 
+  listName: string = 'Enter a list name';
   private lists$ = new BehaviorSubject<IList[]>([]);
 
   constructor() {
@@ -23,6 +24,7 @@ export class ListService {
       const currentListLength = currentList.length;
 
       const newList: IList = {
+        listName: this.listName,
         listNumber: currentListLength + 1,
         tasks: [],
       };
@@ -47,8 +49,10 @@ export class ListService {
       const fillTasks = [...currentList[selectedDupListNumber - 1].tasks];
 
       const duplicateList: IList = {
+        listName: this.listName,
         listNumber: currentListLength + 1,
         tasks: fillTasks,
+
       };
 
       const updateList: IList[] = [...currentList, duplicateList];
@@ -58,7 +62,8 @@ export class ListService {
 
   deleteList(selectedDelListNumber: number) {
     this.lists$.pipe(take(1)).subscribe((currentList: IList[]) => {
-      const updateList: IList[] = currentList.filter((list: IList) => list.listNumber !== selectedDelListNumber);
+      const updateList: IList[] = currentList
+        .filter((list: IList) => list.listNumber !== selectedDelListNumber);
       updateList.forEach((list: IList, index: number) => list.listNumber = index + 1);
       this.lists$.next(updateList);
     });

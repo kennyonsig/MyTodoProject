@@ -6,15 +6,33 @@
 .task.completed {
   text-decoration: line-through;
 }
-.task input[type=checkbox], .task .id, .task .description, .task .time {
-  margin-right: 10px;
-  padding: 5px;
+.task input[type=checkbox],
+.task .id,
+.task .description,
+.task .time {
+  padding: 10px;
 }
-.task .id, .task .description, .task .time {
+.task input,
+.task .edit-icon,
+.task .delete-btn,
+.task .id {
+  margin-right: 9px;
+}
+.task input[type=text] {
+  width: 200px;
+  padding: 10px;
+}
+.task input[type=time] {
+  padding: 7px 5px;
+  margin-right: 5px;
+}
+.task .id,
+.task .description,
+.task .time {
   font-size: 20px;
 }
 .task .description {
-  width: 260px;
+  width: 236px;
   overflow: hidden;
   word-wrap: break-word;
 }
@@ -24,8 +42,8 @@
 .task .time {
   color: #999;
 }
-.task .delete-btn {
-  margin-right: 10px;
+.task .save-icon, .task .edit-icon {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=task.component.css.map */

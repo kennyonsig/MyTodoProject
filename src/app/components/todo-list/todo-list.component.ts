@@ -10,6 +10,8 @@ import { TaskComponent } from '../task/task.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrows } from '@fortawesome/free-solid-svg-icons/faArrows';
+import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 
 @Component({
   selector: 'app-todo-list',
@@ -22,15 +24,21 @@ import { faArrows } from '@fortawesome/free-solid-svg-icons/faArrows';
 export class TodoListComponent implements OnInit {
 
   dragIcon = faArrows;
+  editIcon = faEdit;
+  saveIcon = faCheck;
 
   listName = 'Enter a name';
   lists$: Observable<IList[]>;
+
+  editList = true;
+
 
   constructor(
     private taskService: TaskService,
     private listService: ListService
   ) {
   }
+
 
   ngOnInit() {
     this.lists$ = this.listService.getLists();
@@ -42,6 +50,14 @@ export class TodoListComponent implements OnInit {
 
   moveTask(event: CdkDragDrop<ITask[]>) {
     this.taskService.moveTask(event);
+  }
+
+  editListInfo() {
+    this.editList = false;
+  }
+
+  saveChange() {
+    this.editList = true;
   }
 
 

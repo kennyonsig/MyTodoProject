@@ -19,21 +19,8 @@
     border-radius: 4px;
   }
 
-  .todo-name, .todo-number {
+  .todo-name, .todo-number, .todo-date {
     padding: 10px;
-  }
-
-  .todo-name {
-    border: none;
-    font-weight: bold;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom-color 0.3s;
-    outline: none;
-    cursor: pointer;
-
-    &:focus {
-      border-bottom-color: #ff0000;
-    }
   }
 
   .list-block {
@@ -45,6 +32,10 @@
     background: white;
     border-radius: 4px;
     overflow: hidden;
+  }
+
+  .save-icon, .edit-icon {
+    cursor: pointer;
   }
 }
 

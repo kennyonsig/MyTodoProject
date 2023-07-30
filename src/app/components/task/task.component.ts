@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { ITask } from '../../model/ITask';
 import { faArrowsV } from '@fortawesome/free-solid-svg-icons/faArrowsV';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, FormsModule],
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -15,6 +18,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 export class TaskComponent {
 
   dragArrowsV = faArrowsV;
+  editTask = true;
+  editIcon = faEdit;
+  saveIcon = faCheck;
 
 
   @Input() task: ITask;
@@ -29,4 +35,13 @@ export class TaskComponent {
   removeTask(task: ITask) {
     this.taskRemove.emit(task);
   }
+
+  editTaskInfo() {
+    this.editTask = false;
+  }
+
+  saveTaskInfo() {
+    this.editTask = true;
+  }
+
 }
