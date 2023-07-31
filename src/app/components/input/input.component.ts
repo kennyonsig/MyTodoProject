@@ -15,7 +15,7 @@ export class InputComponent {
 
   @Output() outEnterTask = new EventEmitter<{
     taskName: string;
-    time: string;
+    taskTime: string;
     listNumber: number;
   }>();
 
@@ -31,7 +31,7 @@ export class InputComponent {
   enterTask(taskInput: HTMLInputElement, timeInput: HTMLInputElement) {
     this.outEnterTask.emit({
       taskName: taskInput.value,
-      time: this.taskTime,
+      taskTime: this.taskTime,
       listNumber: this.selectedListNumber,
     });
 

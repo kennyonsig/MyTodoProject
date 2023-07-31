@@ -4,7 +4,9 @@
   </h1>
 </header>
 
-<app-input (outEnterTask)="addTask($event.taskName, $event.time, $event.listNumber)"></app-input>
+
+<app-input (outEnterTask)="addTask($event.taskName, $event.taskTime, $event.listNumber)"></app-input>
+
 
 <app-task-button></app-task-button>
 

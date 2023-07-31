@@ -1,32 +1,35 @@
-<div *ngFor="let list of lists$ | async" class="todo-list">
+<ng-container *ngIf="emptyListArr">
+  <button (click)="createList()">Create a todo list</button>
+</ng-container>
 
+<ng-container *ngIf="!emptyListArr">
+  <div *ngFor="let list of lists$ | async" class="todo-list">
+    <div class="list-wrapper">
+      <ng-container *ngIf="isListEditing">
+        <p class="todo-number">{{list.listNumber}}</p>
+        <fa-icon (click)="editListInfo()" [icon]="editIcon" class="edit-icon"></fa-icon>
+        <p class="todo-name"> {{list.listName}}</p>
+        <p class="todo-date">{{list.listDate}}</p>
+        <fa-icon [icon]="dragIcon"></fa-icon>
+      </ng-container>
 
-  <div class="list-wrapper">
+      <ng-container *ngIf="!isListEditing">
+        <p class="todo-number">{{list.listNumber}}</p>
+        <fa-icon (click)="saveChange()" [icon]="saveIcon" class="save-icon"></fa-icon>
+        <input [(ngModel)]="list.listName" name="todoName">
+        <input [(ngModel)]=list.listDate type="date">
+        <fa-icon [icon]="dragIcon"></fa-icon>
+      </ng-container>
+    </div>
 
-    <ng-container *ngIf="editList">
-      <p class="todo-number">{{list.listNumber}}</p>
-      <fa-icon (click)="editListInfo()" [icon]="editIcon" class="edit-icon"></fa-icon>
-      <p class="todo-name"> {{list.listName}}
-      <p class="todo-date">Date</p>
-      <fa-icon [icon]="dragIcon"></fa-icon>
-    </ng-container>
-
-    <ng-container *ngIf="!editList">
-      <p class="todo-number">{{list.listNumber}}</p>
-      <fa-icon (click)="saveChange()" [icon]="saveIcon" class="save-icon"></fa-icon>
-      <input [(ngModel)]="listName" name="todoName">
-      <input type="date">
-      <fa-icon [icon]="dragIcon"></fa-icon>
-    </ng-container>
-
+    <ul (cdkDropListDropped)="moveTask($event)" cdkDropList class="list-block">
+      <li
+        *ngFor="let task of list.tasks; let i = index"
+        cdkDrag
+        class="task-box-li">
+        <div *cdkDragPlaceholder class="task-placeholder"></div>
+        <app-task (taskRemove)="removeTask($event, list.listNumber)" [taskIndex]="i + 1" [task]="task"></app-task>
+      </li>
+    </ul>
   </div>
-
-  <ul (cdkDropListDropped)="moveTask($event)" cdkDropList class="list-block">
-    <li *ngFor="let task of list.tasks; let i = index" cdkDrag class="task-box-li">
-
-      <div *cdkDragPlaceholder class="task-placeholder"></div>
-      <app-task (taskRemove)="removeTask($event, list.listNumber)" [taskIndex]="i + 1" [task]="task"></app-task>
-
-    </li>
-  </ul>
-</div>
+</ng-container>

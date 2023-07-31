@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskService } from './service/task.service';
+import { ListService } from './service/list.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,13 @@ import { TaskService } from './service/task.service';
 export class AppComponent {
   title = 'PetProject';
 
-  constructor(private taskService: TaskService) {
+
+  constructor(private taskService: TaskService, private listService: ListService) {
   }
 
-  addTask(taskName: string, time: string, listNumber: number) {
-    this.taskService.addNewTask(taskName, time, listNumber);
+  addTask(taskName: string, taskTime: string, listNumber: number) {
+    this.taskService.addNewTask(taskName, taskTime, listNumber);
   }
+
 
 }

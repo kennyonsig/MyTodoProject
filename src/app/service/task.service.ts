@@ -30,21 +30,20 @@ export class TaskService implements OnDestroy {
 
         if (selectedList) {
           // Добавление задачи в выбранный список
-
           selectedList.tasks.push({...task});
-
           // обновление состояния списка задач
           this.listService.updateList(lists);
         }
       });
   }
 
-  addNewTask(taskName: string, taskTime: string, listNumber: number) {
+
+  addNewTask(taskDescription: string, taskTime: string, listNumber: number) {
     const currentTasks = this.tasks$.getValue();
     const newTask: ITask = {
       id: currentTasks.length + 1,
-      time: taskTime,
-      description: taskName,
+      taskTime: taskTime,
+      taskDescription: taskDescription,
       completed: false,
     };
 
@@ -70,10 +69,12 @@ export class TaskService implements OnDestroy {
       });
   }
 
+
   moveTask(event: CdkDragDrop<ITask[]>) {
     const tasks = this.tasks$.getValue();
     moveItemInArray(tasks, event.previousIndex, event.currentIndex);
   }
+
 
   ngOnDestroy() {
     if (this.subscription) {

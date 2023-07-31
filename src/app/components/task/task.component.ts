@@ -18,10 +18,11 @@ import { FormsModule } from '@angular/forms';
 export class TaskComponent {
 
   dragArrowsV = faArrowsV;
-  editTask = true;
+
   editIcon = faEdit;
   saveIcon = faCheck;
 
+  isTaskEditing = false;
 
   @Input() task: ITask;
   @Input() taskIndex: number;
@@ -37,11 +38,11 @@ export class TaskComponent {
   }
 
   editTaskInfo() {
-    this.editTask = false;
+    this.isTaskEditing = true;
   }
 
   saveTaskInfo() {
-    this.editTask = true;
+    this.isTaskEditing = false;
   }
 
 }
