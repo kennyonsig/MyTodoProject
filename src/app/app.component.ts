@@ -9,6 +9,7 @@ import { ListService } from './service/list.service';
 })
 export class AppComponent {
   title = 'PetProject';
+  userLogin = false;
 
 
   constructor(private taskService: TaskService, private listService: ListService) {

@@ -4,12 +4,15 @@
   </h1>
 </header>
 
+<ng-container *ngIf="!userLogin">
+  <app-login-page></app-login-page>
+</ng-container>
 
-<app-input (outEnterTask)="addTask($event.taskName, $event.taskTime, $event.listNumber)"></app-input>
+<ng-container *ngIf="userLogin">
+  <app-input (outEnterTask)="addTask($event.taskName, $event.taskTime, $event.listNumber)"></app-input>
+  <app-task-button></app-task-button>
+  <app-todo-list></app-todo-list>
+</ng-container>
 
-
-<app-task-button></app-task-button>
-
-<app-todo-list></app-todo-list>
 
 <router-outlet></router-outlet>
