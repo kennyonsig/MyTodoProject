@@ -15,7 +15,7 @@
 
       <ng-container *ngIf="!isListEditing">
         <p class="todo-number">{{list.listNumber}}</p>
-        <fa-icon (click)="saveChange()" [icon]="saveIcon" class="save-icon"></fa-icon>
+        <fa-icon (click)="editListInfo()" [icon]="saveIcon" class="save-icon"></fa-icon>
         <input [(ngModel)]="list.listName" name="todoName">
         <input [(ngModel)]=list.listDate type="date">
         <fa-icon [icon]="dragIcon"></fa-icon>

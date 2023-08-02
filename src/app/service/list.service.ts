@@ -9,8 +9,8 @@ export class ListService {
 
   listName: string = 'Enter a list name';
   listDate: string = '01.12.23';
-  private lists$ = new BehaviorSubject<IList[]>([]);
 
+  private lists$ = new BehaviorSubject<IList[]>([]);
 
   getLists(): Observable<IList[]> {
     return this.lists$;
@@ -75,6 +75,5 @@ export class ListService {
           .next(updateList);
       });
   }
-
-
+  
 }

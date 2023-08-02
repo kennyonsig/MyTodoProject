@@ -2,7 +2,6 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subscription, take } from 'rxjs';
 import { ITask } from '../model/ITask';
 import { ListService } from './list.service';
-import { taskList } from '../data/taskList';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Injectable({
@@ -15,7 +14,6 @@ export class TaskService implements OnDestroy {
   private tasks$ = new BehaviorSubject<ITask[]>([]);
 
   constructor(private listService: ListService) {
-    this.tasks$.next(taskList);
   }
 
   addTaskToList(task: ITask, listNumber: number) {

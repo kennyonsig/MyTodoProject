@@ -38,11 +38,7 @@ export class TaskComponent {
   }
 
   editTaskInfo() {
-    this.isTaskEditing = true;
-  }
-
-  saveTaskInfo() {
-    this.isTaskEditing = false;
+    this.isTaskEditing = !this.isTaskEditing;
   }
 
 }

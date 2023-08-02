@@ -27,10 +27,9 @@ export class TodoListComponent implements OnInit {
   editIcon = faEdit;
   saveIcon = faCheck;
 
-  listName = 'Enter a name';
   lists$: Observable<IList[]>;
-
   emptyListArr = true;
+
   isListEditing = true;
 
   constructor(
@@ -41,6 +40,13 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.lists$ = this.listService.getLists();
+    this.lists$.subscribe(lists => {
+      this.emptyListArr = lists.length === 0;
+    });
+  }
+
+  createList() {
+    this.listService.addNewList();
   }
 
   removeTask(task: ITask, listNumber: number) {
@@ -52,17 +58,7 @@ export class TodoListComponent implements OnInit {
   }
 
   editListInfo() {
-    this.isListEditing = false;
-  }
-
-  saveChange() {
-    this.isListEditing = true;
-
-  }
-
-  createList() {
-    this.emptyListArr = false;
-    this.listService.addNewList();
+    this.isListEditing = !this.isListEditing;
   }
 
 }

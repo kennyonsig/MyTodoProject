@@ -15,7 +15,7 @@
   <div [ngClass]="{'completed': task.completed}" class="task">
     <input (click)="completeTask(task)" type="checkbox">
     <p class="id">{{taskIndex}}</p>
-    <fa-icon (click)="saveTaskInfo()" [icon]="saveIcon" class="edit-icon"></fa-icon>
+    <fa-icon (click)="editTaskInfo()" [icon]="saveIcon" class="edit-icon"></fa-icon>
     <input [(ngModel)]="task.taskDescription" type="text">
     <input [(ngModel)]="task.taskTime" type="time">
     <button (click)="removeTask(task)" class="delete-btn">Delete</button>

@@ -2,11 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 80vh;
+  transform: scale(1.5);
 }
 .login-block .login-element {
   margin-bottom: 5px;
   padding: 10px;
   max-width: 500px;
+}
+.login-block .sign-in {
+  font-size: 17pt;
 }
 
 /*# sourceMappingURL=login.component.css.map */

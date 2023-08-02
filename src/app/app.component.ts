@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { TaskService } from './service/task.service';
-import { ListService } from './service/list.service';
+import { AuthService } from './service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +8,13 @@ import { ListService } from './service/list.service';
 })
 export class AppComponent {
   title = 'PetProject';
-  userLogin = false;
 
+  constructor(private authService: AuthService) {
 
-  constructor(private taskService: TaskService, private listService: ListService) {
   }
 
-  addTask(taskName: string, taskTime: string, listNumber: number) {
-    this.taskService.addNewTask(taskName, taskTime, listNumber);
+  get isUserLoggedIn() {
+    return this.authService.isUserLoggedIn;
   }
-
 
 }

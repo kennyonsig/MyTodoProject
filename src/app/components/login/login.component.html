@@ -1,7 +1,7 @@
 <div class="login-block">
-  <p class="sign-in login-element">Sign In</p>
-  <input class="email login-element" placeholder="Enter email" type="email">
-  <input class="password login-element" placeholder="Enter password" type="password">
-  <p class="sign-up login-element">Sign Up</p>
-  <button class="login-button login-element">Login</button>
+  <p class="sign-in login-element">Sign In MyTodo</p>
+  <input [(ngModel)]="email" class="email login-element" placeholder="Enter email" type="email"> 1
+  <input [(ngModel)]="password" class="password login-element" placeholder="Enter password" type="password"> 1
+  <a class="sign-up login-element">Sign Up (not work)</a>
+  <button (click)="onLoginClick(email, password)" class="login-button login-element">Login</button>
 </div>

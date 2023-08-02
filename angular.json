@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "@fortawesome/free-solid-svg-icons"
+            ],
             "outputPath": "dist/pet-project",
             "index": "src/index.html",
             "main": "src/main.ts",

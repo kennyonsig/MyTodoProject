@@ -1,18 +1,8 @@
-<header>
-  <h1>
-    {{'ToDo' | textTransform: 'My'}}
-  </h1>
-</header>
-
-<ng-container *ngIf="!userLogin">
-  <app-login-page></app-login-page>
+<ng-container *ngIf="isUserLoggedIn; else loginPage">
+  <app-profile-page></app-profile-page>
 </ng-container>
 
-<ng-container *ngIf="userLogin">
-  <app-input (outEnterTask)="addTask($event.taskName, $event.taskTime, $event.listNumber)"></app-input>
-  <app-task-button></app-task-button>
-  <app-todo-list></app-todo-list>
-</ng-container>
-
-
+<ng-template #loginPage>
+  <app-login></app-login>
+</ng-template>
 <router-outlet></router-outlet>
