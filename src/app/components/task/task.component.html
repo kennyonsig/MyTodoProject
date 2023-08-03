@@ -5,7 +5,7 @@
     <fa-icon (click)="editTaskInfo()" [icon]="editIcon" class="edit-icon"></fa-icon>
     <p class="description">{{task.taskDescription}}</p>
     <p class="time">{{task.taskTime}} </p>
-    <button (click)="removeTask(task)" class="delete-btn">Delete</button>
+    <button (click)="removeTask(task)" class="delete-btn all-button">Delete</button>
     <fa-icon [icon]="dragArrowsV"></fa-icon>
 
   </div>
@@ -18,7 +18,7 @@
     <fa-icon (click)="editTaskInfo()" [icon]="saveIcon" class="edit-icon"></fa-icon>
     <input [(ngModel)]="task.taskDescription" type="text">
     <input [(ngModel)]="task.taskTime" type="time">
-    <button (click)="removeTask(task)" class="delete-btn">Delete</button>
+    <button (click)="removeTask(task)" class="delete-btn all-button">Delete</button>
     <fa-icon [icon]="dragArrowsV"></fa-icon>
   </div>
 </ng-container>

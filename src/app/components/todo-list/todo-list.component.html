@@ -1,15 +1,16 @@
 <ng-container *ngIf="emptyListArr">
-  <button (click)="createList()">Create a todo list</button>
+  <button (click)="createList()" class="all-button">Create a todo list</button>
 </ng-container>
 
 <ng-container *ngIf="!emptyListArr">
   <div *ngFor="let list of lists$ | async" class="todo-list">
     <div class="list-wrapper">
+
       <ng-container *ngIf="isListEditing">
         <p class="todo-number">{{list.listNumber}}</p>
         <fa-icon (click)="editListInfo()" [icon]="editIcon" class="edit-icon"></fa-icon>
         <p class="todo-name"> {{list.listName}}</p>
-        <p class="todo-date">{{list.listDate}}</p>
+        <p class="todo-date">{{list.listDate | date:'dd.MM.yyyy'}}</p>
         <fa-icon [icon]="dragIcon"></fa-icon>
       </ng-container>
 
@@ -20,6 +21,7 @@
         <input [(ngModel)]=list.listDate type="date">
         <fa-icon [icon]="dragIcon"></fa-icon>
       </ng-container>
+
     </div>
 
     <ul (cdkDropListDropped)="moveTask($event)" cdkDropList class="list-block">

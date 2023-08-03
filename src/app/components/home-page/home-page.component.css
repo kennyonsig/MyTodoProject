@@ -1,3 +1,26 @@
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 24px;
+}
 
+.left-section {
+  flex: 1;
+  background-color: lightblue;
+  padding: 20px;
+}
+
+.right-section {
+  flex: 1;
+  background-color: lightgray;
+  padding: 20px;
+}
+
+.auth {
+  display: block;
+  margin-bottom: 10px;
+}
 
 /*# sourceMappingURL=home-page.component.css.map */

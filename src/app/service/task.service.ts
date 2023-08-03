@@ -1,5 +1,5 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subscription, take } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, take } from 'rxjs';
 import { ITask } from '../model/ITask';
 import { ListService } from './list.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -7,9 +7,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 @Injectable({
   providedIn: 'root'
 })
-export class TaskService implements OnDestroy {
-
-  private subscription: Subscription;
+export class TaskService {
 
   private tasks$ = new BehaviorSubject<ITask[]>([]);
 
@@ -17,24 +15,19 @@ export class TaskService implements OnDestroy {
   }
 
   addTaskToList(task: ITask, listNumber: number) {
-    // Получение списка по выбранному номеру
+
     this.listService
       .getLists()
       .pipe(take(1))
       .subscribe((lists) => {
-        const selectedList = lists.find(
-          (list) => list.listNumber === listNumber
-        );
-
+        const selectedList = lists.find((list) => list.listNumber === listNumber);
         if (selectedList) {
-          // Добавление задачи в выбранный список
           selectedList.tasks.push({...task});
-          // обновление состояния списка задач
           this.listService.updateList(lists);
         }
       });
-  }
 
+  }
 
   addNewTask(taskDescription: string, taskTime: string, listNumber: number) {
     const currentTasks = this.tasks$.getValue();
@@ -49,34 +42,28 @@ export class TaskService implements OnDestroy {
   }
 
   onTaskRemove(id: number, listNumber: number) {
+
     this.listService
       .getLists()
       .pipe(take(1))
       .subscribe((lists) => {
-        const selectedList = lists.find(
-          (list) => list.listNumber === listNumber
-        );
-
+        const selectedList = lists.find((list) => list.listNumber === listNumber);
         if (selectedList) {
-          const taskToRemove = selectedList.tasks.find(task => task.id === id);
-          if (taskToRemove) {
-            selectedList.tasks.splice(selectedList.tasks.indexOf(taskToRemove), 1);
+          const index = selectedList.tasks.findIndex(task => task.id === id);
+          if (index !== -1) {
+            selectedList.tasks.splice(index, 1);
           }
           this.listService.updateList(lists);
         }
       });
-  }
 
+  }
 
   moveTask(event: CdkDragDrop<ITask[]>) {
     const tasks = this.tasks$.getValue();
     moveItemInArray(tasks, event.previousIndex, event.currentIndex);
+
   }
 
 
-  ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
 }

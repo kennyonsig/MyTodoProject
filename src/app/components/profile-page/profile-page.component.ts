@@ -4,6 +4,7 @@ import { TaskButtonComponent } from '../task-button/task-button.component';
 import { TodoListComponent } from '../todo-list/todo-list.component';
 import { TaskService } from '../../service/task.service';
 import { TextTransformPipe } from '../../pipes/text-transform.pipe';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { TextTransformPipe } from '../../pipes/text-transform.pipe';
     TaskButtonComponent,
     TodoListComponent,
     TextTransformPipe,
+    RouterLink,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

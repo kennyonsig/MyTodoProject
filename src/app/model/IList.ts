@@ -1,7 +1,7 @@
 import { ITask } from './ITask';
 
 export interface IList {
-  listDate: string;
+  listDate: Date;
   listName: string;
   listNumber: number;
   tasks: ITask[];

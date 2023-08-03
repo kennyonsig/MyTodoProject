@@ -9,7 +9,7 @@ html, body {
   height: 100vh;
 }
 
-button {
+.all-button {
   color: #232222;
   border: 1px solid rgba(35, 34, 34, 0.43);
   border-radius: 3px;
@@ -17,11 +17,11 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-button:hover {
+.all-button:hover {
   background-color: #949191;
   color: #ffffff;
 }
-button:active {
+.all-button:active {
   background-color: #343333;
 }
 

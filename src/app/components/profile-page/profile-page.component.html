@@ -2,7 +2,7 @@
   <h1>
     {{'ToDo' | textTransform: 'My'}}
   </h1>
-  <a href="/login">Log out</a>
+  <a routerLink="/homePage">Log Out</a>
 </header>
 <app-input (outEnterTask)="addTask($event.taskName, $event.taskTime, $event.listNumber)"></app-input>
 <app-task-button></app-task-button>

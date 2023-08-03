@@ -8,7 +8,7 @@ import { IList } from '../model/IList';
 export class ListService {
 
   listName: string = 'Enter a list name';
-  listDate: string = '01.12.23';
+  listDate = new Date('2023-12-31');
 
   private lists$ = new BehaviorSubject<IList[]>([]);
 
@@ -75,5 +75,5 @@ export class ListService {
           .next(updateList);
       });
   }
-  
+
 }

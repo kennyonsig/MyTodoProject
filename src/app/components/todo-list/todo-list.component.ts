@@ -28,7 +28,7 @@ export class TodoListComponent implements OnInit {
   saveIcon = faCheck;
 
   lists$: Observable<IList[]>;
-  emptyListArr = true;
+  emptyListArr = false;
 
   isListEditing = true;
 
