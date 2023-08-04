@@ -18,7 +18,9 @@ export class ListService {
 
   addNewList() {
     this.lists$
-      .pipe(take(1))
+      .pipe(
+        take(1)
+      )
       .subscribe((currentList: IList[]) => {
         const currentListLength = currentList.length;
 
@@ -31,6 +33,7 @@ export class ListService {
 
         const updateList: IList[] = [...currentList, newList];
         this.lists$.next(updateList);
+
       });
   }
 
@@ -55,7 +58,6 @@ export class ListService {
           listName: this.listName,
           listNumber: currentListLength + 1,
           tasks: fillTasks,
-
         };
 
         const updateList: IList[] = [...currentList, duplicateList];
@@ -75,5 +77,6 @@ export class ListService {
           .next(updateList);
       });
   }
+
 
 }

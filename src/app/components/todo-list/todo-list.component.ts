@@ -23,14 +23,15 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 })
 export class TodoListComponent implements OnInit {
 
+
   dragIcon = faArrows;
   editIcon = faEdit;
   saveIcon = faCheck;
 
   lists$: Observable<IList[]>;
-  emptyListArr = false;
 
   isListEditing = true;
+
 
   constructor(
     private taskService: TaskService,
@@ -40,9 +41,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.lists$ = this.listService.getLists();
-    this.lists$.subscribe(lists => {
-      this.emptyListArr = lists.length === 0;
-    });
+
   }
 
   createList() {

@@ -4,7 +4,6 @@ header {
   margin: 20px;
   justify-content: space-between;
   align-items: center;
-
 }
 
 app-todo-list {
@@ -12,5 +11,22 @@ app-todo-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
 
+.log-out {
+  background-color: rgba(157, 157, 157, 0.12);
+  border-radius: 5px;
+  color: rgb(88, 86, 86);
+  font-size: 15px;
+  padding: 10px;
+  transition: background-color 0.3s ease,
+  color 0.3s ease;
+
+  &:hover {
+    background-color: #10f4eb;
+    color: #1B365C;
+  }
+  &:active {
+    background-color: #028982;
+  }
 }

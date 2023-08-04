@@ -34,6 +34,7 @@ export class TaskButtonComponent {
 
   deleteAllList() {
     this.listService.deleteAllList();
+
   }
 
 }

@@ -2,15 +2,12 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss']
 })
-export class LoginComponent {
-
+export class SignInComponent {
   email = '';
   password = '';
 
@@ -21,5 +18,4 @@ export class LoginComponent {
     this.authService.login(email, password);
 
   }
-
 }
