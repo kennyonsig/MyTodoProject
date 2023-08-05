@@ -26,7 +26,7 @@
 
     <ul (cdkDropListDropped)="moveTask($event)" cdkDropList class="list-block">
       <li
-        *ngFor="let task of list.tasks; let i = index"
+        *ngFor="let task of list.tasksArr; let i = index"
         cdkDrag
         class="task-box-li">
         <div *cdkDragPlaceholder class="task-placeholder"></div>

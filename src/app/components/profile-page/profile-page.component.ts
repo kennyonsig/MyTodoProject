@@ -25,8 +25,8 @@ export class ProfilePageComponent {
   constructor(private taskService: TaskService) {
   }
 
-  addTask(taskName: string, taskTime: string, listNumber: number) {
-    this.taskService.addNewTask(taskName, taskTime, listNumber);
+  addTask(taskDescription: string, taskTime: string, listNumber: number) {
+    this.taskService.addTaskToList(taskDescription, taskTime, listNumber);
   }
 
 }

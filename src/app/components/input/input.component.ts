@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class InputComponent {
 
   @Output() outEnterTask = new EventEmitter<{
-    taskName: string;
+    taskDescription: string;
     taskTime: string;
     listNumber: number;
   }>();
@@ -30,7 +30,7 @@ export class InputComponent {
 
   enterTask(taskInput: HTMLInputElement, timeInput: HTMLInputElement) {
     this.outEnterTask.emit({
-      taskName: taskInput.value,
+      taskDescription: taskInput.value,
       taskTime: this.taskTime,
       listNumber: this.selectedListNumber,
     });

@@ -4,5 +4,5 @@ export interface IList {
   listDate: Date;
   listName: string;
   listNumber: number;
-  tasks: ITask[];
+  tasksArr: ITask[];
 }

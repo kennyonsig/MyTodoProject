@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, take } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { ITask } from '../model/ITask';
 import { ListService } from './list.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { IList } from '../model/IList';
 
 @Injectable({
   providedIn: 'root'
@@ -10,60 +11,57 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export class TaskService {
 
   private tasks$ = new BehaviorSubject<ITask[]>([]);
+  private lists$ = new BehaviorSubject<IList[]>([]);
 
   constructor(private listService: ListService) {
   }
 
-  addTaskToList(task: ITask, listNumber: number) {
+  addTaskToList(taskDescription: string, taskTime: string, listNumber: number) {
 
-    this.listService
-      .getLists()
-      .pipe(take(1))
-      .subscribe((lists) => {
-        const selectedList = lists.find((list) => list.listNumber === listNumber);
-        if (selectedList) {
-          selectedList.tasks.push({...task});
-          this.listService.updateList(lists);
-        }
-      });
+    this.lists$ = this.listService.getLists();
 
-  }
+    // Получение текущего количества задач в списке
+    const currentTaskInList = this.tasks$.getValue().length;
 
-  addNewTask(taskDescription: string, taskTime: string, listNumber: number) {
-    const currentTasks = this.tasks$.getValue();
     const newTask: ITask = {
-      id: currentTasks.length + 1,
-      taskTime: taskTime,
       taskDescription: taskDescription,
-      completed: false,
+      taskTime: taskTime,
+      taskNumber: currentTaskInList + 1,
+      completed: false
     };
 
-    this.addTaskToList(newTask, listNumber);
+    // Создание поверхностной копии текущего массива задач
+    const currentTaskArr = this.tasks$.getValue();
+    const updatedTaskArr = [...currentTaskArr, newTask];
+
+    //поиск списка по номеру
+    const list = this.lists$.getValue().find((list) => list.listNumber === listNumber);
+
+    // Если список существует, добавляем новую задачу и обновляем значение списка
+    if (list) {
+      list.tasksArr.push(newTask);
+      this.lists$.next(this.lists$.getValue());
+    }
+
+    this.tasks$.next(updatedTaskArr);
+
   }
 
-  onTaskRemove(id: number, listNumber: number) {
+  onTaskRemove(taskNumber: number, listNumber: number) {
+    const list = this.lists$.getValue().find((list) => list.listNumber === listNumber);
 
-    this.listService
-      .getLists()
-      .pipe(take(1))
-      .subscribe((lists) => {
-        const selectedList = lists.find((list) => list.listNumber === listNumber);
-        if (selectedList) {
-          const index = selectedList.tasks.findIndex(task => task.id === id);
-          if (index !== -1) {
-            selectedList.tasks.splice(index, 1);
-          }
-          this.listService.updateList(lists);
-        }
-      });
+    if (list) {
+      const taskIndex = list.tasksArr.findIndex(task => task.taskNumber === taskNumber);
 
+      if (taskIndex !== -1) {
+        list.tasksArr.splice(taskIndex, 1);
+        this.lists$.next(this.lists$.getValue());
+      }
+    }
   }
 
   moveTask(event: CdkDragDrop<ITask[]>) {
     const tasks = this.tasks$.getValue();
     moveItemInArray(tasks, event.previousIndex, event.currentIndex);
-
   }
-
-
 }

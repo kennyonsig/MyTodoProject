@@ -32,7 +32,6 @@ export class TodoListComponent implements OnInit {
 
   isListEditing = true;
 
-
   constructor(
     private taskService: TaskService,
     private listService: ListService
@@ -41,15 +40,11 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.lists$ = this.listService.getLists();
-
   }
 
-  createList() {
-    this.listService.addNewList();
-  }
 
   removeTask(task: ITask, listNumber: number) {
-    this.taskService.onTaskRemove(task.id, listNumber);
+    this.taskService.onTaskRemove(task.taskNumber, listNumber);
   }
 
   moveTask(event: CdkDragDrop<ITask[]>) {
