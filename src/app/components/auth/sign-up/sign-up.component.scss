@@ -5,8 +5,13 @@
   justify-content: center;
   height: 100vh;
 
-  .sign-up-element:not(.auth) {
+  .sign-up-element:not(.auth, .repeat-password) {
     margin-bottom: 10px;
+    padding: 20px;
+    max-width: 500px;
+  }
+
+  .repeat-password {
     padding: 20px;
     max-width: 500px;
   }
@@ -23,6 +28,16 @@
     background-color: rgba(221, 221, 221, 0.41);
     color: rgba(221, 221, 221, 0.41);
     cursor: not-allowed;
+  }
+
+  .error-border {
+    box-shadow: 0 0 5px rgb(254, 0, 0);
+    transition: box-shadow 0.3s ease;
+    border-radius: 3px;
+  }
+
+  .auth {
+    margin-top: 10px;
   }
 
 }

@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 
 import { HomePageComponent } from './components/home-page/home-page.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignInComponent } from './components/auth/sign-in/sign-in.component';
+import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 
 
 const routes: Routes = [

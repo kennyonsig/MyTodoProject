@@ -1,0 +1,30 @@
+<form (ngSubmit)="signUp()" [formGroup]="loginForm" class="sign-up-block">
+  <p class="sign-up sign-up-element">Sign Up on MyToDo</p>
+  <input
+    class="email sign-up-element"
+    formControlName="email"
+    placeholder="Enter email"
+    type="email">
+  <input
+    class="password sign-up-element"
+    formControlName="password"
+    placeholder="Enter a password"
+    type="password">
+  <div [class.error-border]="loginForm.errors?.['passwordMatchError']">
+    <input
+      class="repeat-password sign-up-element"
+      formControlName="repeatPassword"
+      placeholder="Repeat the password"
+      type="password">
+  </div>
+  <div class="link-button-block">
+    <a class="auth "
+       routerLink="/sign-in">
+      Sign In
+    </a>
+    <button [disabled]="loginForm.invalid"
+            class="auth  all-btn confirm-btn">Confirm
+    </button>
+  </div>
+</form>
+
