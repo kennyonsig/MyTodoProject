@@ -1,25 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  isUserLoggedIn = false;
+  private apiUrl = 'https://fakestoreapi.com/auth/login';
 
-  constructor(private router: Router) {
-
-    
+  constructor(private router: Router,
+              private http: HttpClient) {
   }
 
-  login(email: string, password: string) {
-    if (email === '1' && password === '1') {
-      this.isUserLoggedIn = true;
-      this.router.navigate(['/profilePage']);
-    } else {
-      alert('false auth');
-    }
+  checkLogin(username: string, password: string) {
+    return this.http.post<string>(`${this.apiUrl}`, {username, password});
   };
 
 }

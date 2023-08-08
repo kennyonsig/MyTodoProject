@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../service/auth.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -15,13 +15,20 @@ export class SignInComponent {
   password = '';
 
 
-  constructor(private authService: AuthService) {
-
-
+  constructor(private authService: AuthService, private router: Router) {
   }
 
-  onLoginClick(email: string, password: string) {
-    this.authService.login(email, password);
+
+  login(username: string, password: string) {
+    this.authService.checkLogin(username, password).subscribe({
+      next: response => {
+        this.router.navigate(['/profilePage']).then();
+      },
+      error: error => {
+        alert('false auth');
+        console.error(error);
+      }
+    });
   }
 
 
