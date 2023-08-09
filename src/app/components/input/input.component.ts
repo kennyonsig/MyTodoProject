@@ -1,19 +1,13 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 
 @Component({
   selector: 'app-input',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputComponent {
-
-  @Output() outEnterTask = new EventEmitter<{
+  @Output() readonly outEnterTask = new EventEmitter<{
     taskDescription: string;
     taskTime: string;
     listNumber: number;
@@ -22,7 +16,6 @@ export class InputComponent {
   isDisabled = true;
   taskTime: string;
   selectedListNumber: number;
-
 
   onInputChange(value: string) {
     this.isDisabled = value.trim().length === 0;
@@ -40,5 +33,4 @@ export class InputComponent {
     this.isDisabled = true;
     this.taskTime = '';
   }
-
 }

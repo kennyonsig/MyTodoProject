@@ -1,21 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { ListService } from '../../service/list.service';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task-button',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './task-button.component.html',
   styleUrls: ['./task-button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 
 export class TaskButtonComponent {
   selectedDupListNumber: number;
   selectedDelListNumber: number;
-
 
   constructor(private listService: ListService) {
   }
@@ -36,5 +31,4 @@ export class TaskButtonComponent {
     this.listService.deleteAllList();
 
   }
-
 }

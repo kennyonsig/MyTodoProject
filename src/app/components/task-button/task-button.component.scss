@@ -1,10 +1,11 @@
 .buttons {
-  margin: 0 20px 10px;
+  margin-bottom: 20px;
   display: flex;
 
   .find-input {
     padding: 10px;
   }
+
   .duplicate-input, .duplicate, .delete, .delete-input, .add-new, .delete-all {
     margin-right: 10px;
   }

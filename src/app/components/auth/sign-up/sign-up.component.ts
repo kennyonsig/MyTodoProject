@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { matchPassword } from '../matchpassword.validator';
-import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
-  standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, NgIf]
 })
 export class SignUpComponent implements OnInit {
 
@@ -25,7 +21,7 @@ export class SignUpComponent implements OnInit {
     this.loginForm = new FormGroup({
         email: new FormControl(null, [Validators.required]),
         password: new FormControl(null, [Validators.required]),
-        repeatPassword: new FormControl(null)
+        repeatPassword: new FormControl(null, [Validators.required])
       },
       {validators: matchPassword});
   }

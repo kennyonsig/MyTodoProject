@@ -2,57 +2,28 @@
   display: flex;
   border-radius: 5px;
   align-items: baseline;
+  font-size: 20px;
 
-  &.completed {
-    text-decoration: line-through;
-  }
-
-  input[type="checkbox"],
-  .id,
-  .description,
-  .time {
-    padding: 10px;
-  }
-
-  input,
-  .edit-icon,
-  .delete-btn,
-  .id {
-    margin-right: 9px;
-  }
-
-  input[type="text"] {
-    width: 200px;
-    padding: 10px;
-  }
-
-  input[type="time"] {
-    padding: 7px 5px;
-    margin-right: 5px;
-  }
-
-  .id,
-  .description,
-  .time {
-    font-size: 20px;
-  }
-
-  .description {
+  &-description {
     width: 236px;
     overflow: hidden;
     word-wrap: break-word;
   }
 
-  .id {
+  &-number {
     font-weight: bold;
   }
 
-  .time {
+  &-time {
     color: #999;
   }
+
+  &.completed {
+    text-decoration: line-through;
+  }
+}
 
   .save-icon, .edit-icon {
     cursor: pointer;
   }
 
-}

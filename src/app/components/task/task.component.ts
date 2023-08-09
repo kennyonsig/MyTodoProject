@@ -1,24 +1,16 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ITask } from '../../model/ITask';
 import { faArrowsV } from '@fortawesome/free-solid-svg-icons/faArrowsV';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task',
-  standalone: true,
-  imports: [CommonModule, FontAwesomeModule, FormsModule],
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskComponent {
-
   dragArrowsV = faArrowsV;
-
   editIcon = faEdit;
   saveIcon = faCheck;
 

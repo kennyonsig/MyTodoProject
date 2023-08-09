@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ITask } from '../model/ITask';
-import { ListService } from './list.service';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { IList } from '../model/IList';
+import { ListService } from './list.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-
   private tasks$ = new BehaviorSubject<ITask[]>([]);
   private lists$ = new BehaviorSubject<IList[]>([]);
 
@@ -22,29 +20,23 @@ export class TaskService {
 
     // Получение текущего количества задач в списке
     const currentTaskInList = this.tasks$.getValue().length;
-
     const newTask: ITask = {
       taskDescription: taskDescription,
       taskTime: taskTime,
       taskNumber: currentTaskInList + 1,
       completed: false
     };
-
     // Создание поверхностной копии текущего массива задач
     const currentTaskArr = this.tasks$.getValue();
     const updatedTaskArr = [...currentTaskArr, newTask];
-
     //поиск списка по номеру
     const list = this.lists$.getValue().find((list) => list.listNumber === listNumber);
-
     // Если список существует, добавляем новую задачу и обновляем значение списка
     if (list) {
       list.tasksArr.push(newTask);
       this.lists$.next(this.lists$.getValue());
     }
-
     this.tasks$.next(updatedTaskArr);
-
   }
 
   onTaskRemove(taskNumber: number, listNumber: number) {
@@ -52,16 +44,10 @@ export class TaskService {
 
     if (list) {
       const taskIndex = list.tasksArr.findIndex(task => task.taskNumber === taskNumber);
-
       if (taskIndex !== -1) {
         list.tasksArr.splice(taskIndex, 1);
         this.lists$.next(this.lists$.getValue());
       }
     }
-  }
-
-  moveTask(event: CdkDragDrop<ITask[]>) {
-    const tasks = this.tasks$.getValue();
-    moveItemInArray(tasks, event.previousIndex, event.currentIndex);
   }
 }

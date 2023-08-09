@@ -1,29 +1,20 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { IList } from '../../model/IList';
 import { TaskService } from '../../service/task.service';
-import { ListService } from '../../service/list.service';
 import { ITask } from '../../model/ITask';
-import { CdkDrag, CdkDragDrop, CdkDragPlaceholder, CdkDropList } from '@angular/cdk/drag-drop';
-import { TaskComponent } from '../task/task.component';
-import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { faArrows } from '@fortawesome/free-solid-svg-icons/faArrows';
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { Observable } from 'rxjs';
+import { ListService } from '../../service/list.service';
 
 @Component({
   selector: 'app-todo-list',
-  standalone: true,
-  imports: [CommonModule, CdkDropList, TaskComponent, FormsModule, CdkDrag, CdkDragPlaceholder, FontAwesomeModule],
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoListComponent implements OnInit {
-
-
   dragIcon = faArrows;
   editIcon = faEdit;
   saveIcon = faCheck;
@@ -34,7 +25,7 @@ export class TodoListComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
-    private listService: ListService
+    private listService: ListService,
   ) {
   }
 
@@ -42,13 +33,8 @@ export class TodoListComponent implements OnInit {
     this.lists$ = this.listService.getLists();
   }
 
-
   removeTask(task: ITask, listNumber: number) {
     this.taskService.onTaskRemove(task.taskNumber, listNumber);
-  }
-
-  moveTask(event: CdkDragDrop<ITask[]>) {
-    this.taskService.moveTask(event);
   }
 
   editListInfo() {

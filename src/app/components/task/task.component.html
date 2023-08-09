@@ -1,24 +1,24 @@
-<ng-container *ngIf="!isTaskEditing">
-  <div [ngClass]="{'completed': task.completed}" class="task">
-    <input (click)="completeTask(task)" type="checkbox">
-    <p class="id">{{taskIndex}}</p>
-    <fa-icon (click)="editTaskInfo()" [icon]="editIcon" class="edit-icon"></fa-icon>
-    <p class="description">{{task.taskDescription}}</p>
-    <p class="time">{{task.taskTime}} </p>
-    <button (click)="removeTask(task)" class="delete-btn all-btn">Delete</button>
-    <fa-icon [icon]="dragArrowsV"></fa-icon>
+<div *ngIf="!isTaskEditing" [class.completed]="task.completed" class="task">
+  <input (click)="completeTask(task)" type="checkbox">
+  <p class="task-number">{{ taskIndex }}</p>
+  <button (click)="editTaskInfo()">
+    <fa-icon [icon]="editIcon" class="edit-icon"></fa-icon>
+  </button>
+  <p class="task-description">{{ task.taskDescription }}</p>
+  <p class="task-time">{{ task.taskTime }} </p>
+  <button (click)="removeTask(task)" class="delete-btn all-btn">Delete</button>
+  <fa-icon [icon]="dragArrowsV"></fa-icon>
 
-  </div>
-</ng-container>
+</div>
 
-<ng-container *ngIf="isTaskEditing">
-  <div [ngClass]="{'completed': task.completed}" class="task">
-    <input (click)="completeTask(task)" type="checkbox">
-    <p class="id">{{taskIndex}}</p>
+<div *ngIf="isTaskEditing" [ngClass]="{'completed': task.completed}" class="task">
+  <input (click)="completeTask(task)" type="checkbox">
+  <p class="id">{{ taskIndex }}</p>
+  <button>
     <fa-icon (click)="editTaskInfo()" [icon]="saveIcon" class="edit-icon"></fa-icon>
-    <input [(ngModel)]="task.taskDescription" type="text">
-    <input [(ngModel)]="task.taskTime" type="time">
-    <button (click)="removeTask(task)" class="delete-btn all-btn">Delete</button>
-    <fa-icon [icon]="dragArrowsV"></fa-icon>
-  </div>
-</ng-container>
+  </button>
+  <input [(ngModel)]="task.taskDescription" type="text">
+  <input [(ngModel)]="task.taskTime" type="time">
+  <button (click)="removeTask(task)" class="delete-btn all-btn">Delete</button>
+  <fa-icon [icon]="dragArrowsV"></fa-icon>
+</div>
