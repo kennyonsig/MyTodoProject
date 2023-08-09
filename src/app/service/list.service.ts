@@ -6,7 +6,6 @@ import { IList } from '../model/IList';
   providedIn: 'root'
 })
 export class ListService {
-
   listName = 'Enter a list name';
   listDate = new Date();
 

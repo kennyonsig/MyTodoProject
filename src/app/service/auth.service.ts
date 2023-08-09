@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-
   private apiUrl = 'https://fakestoreapi.com/auth/login';
 
   constructor(private router: Router,

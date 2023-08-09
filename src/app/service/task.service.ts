@@ -8,17 +8,14 @@ import { ListService } from './list.service';
   providedIn: 'root'
 })
 export class TaskService {
+  lists$: BehaviorSubject<IList[]>;
   private tasks$ = new BehaviorSubject<ITask[]>([]);
-  private lists$: BehaviorSubject<IList[]>;
-
 
   constructor(private listService: ListService) {
   }
 
   addTaskToList(taskDescription: string, taskTime: string, listNumber: number) {
-
     this.lists$ = this.listService.getLists();
-
     // Получение текущего количества задач в списке
     const currentTaskInList = this.tasks$.getValue().length;
     const newTask: ITask = {
