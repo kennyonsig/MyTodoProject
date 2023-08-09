@@ -9,7 +9,8 @@ import { ListService } from './list.service';
 })
 export class TaskService {
   private tasks$ = new BehaviorSubject<ITask[]>([]);
-  private lists$ = new BehaviorSubject<IList[]>([]);
+  private lists$: BehaviorSubject<IList[]>;
+
 
   constructor(private listService: ListService) {
   }

@@ -7,12 +7,12 @@ import { IList } from '../model/IList';
 })
 export class ListService {
 
-  listName: string = 'Enter a list name';
+  listName = 'Enter a list name';
   listDate = new Date();
 
   private lists$ = new BehaviorSubject<IList[]>([]);
 
-  getLists() {
+  getLists(): BehaviorSubject<IList[]> {
     return this.lists$;
   }
 
