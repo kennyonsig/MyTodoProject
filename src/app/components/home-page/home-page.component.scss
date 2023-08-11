@@ -1,6 +1,5 @@
 .home-page {
   display: flex;
-  height: 100vh;
   justify-content: space-around;
   align-items: center;
   font-size: 24px;
@@ -14,7 +13,6 @@
 .home-page-link {
   display: block;
   margin: 0 250px 10px;
-
   background-color: rgba(157, 157, 157, 0.12);
   border-radius: 5px;
   color: rgb(88, 86, 86);

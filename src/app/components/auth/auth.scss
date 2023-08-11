@@ -17,3 +17,15 @@
     background-color: #028982;
   }
 }
+
+.link-button-block {
+  display: inline-block;
+}
+
+.login-btn:disabled, .confirm-btn:disabled {
+  background-color: rgba(221, 221, 221, 0.41);
+  color: rgba(221, 221, 221, 0.41);
+  cursor: not-allowed;
+}
+
+

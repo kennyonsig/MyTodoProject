@@ -1,24 +1,23 @@
-<div *ngIf="!isTaskEditing" [class.completed]="task.completed" class="task">
+<div *ngIf="!task.taskEdit" [class.completed]="task.taskCompleted" class="task">
   <input (click)="completeTask(task)" type="checkbox">
   <p class="task-number">{{ taskIndex }}</p>
-  <button (click)="editTaskInfo()">
+  <button (click)="editTaskInfo(task)">
     <fa-icon [icon]="editIcon" class="edit-icon"></fa-icon>
   </button>
   <p class="task-description">{{ task.taskDescription }}</p>
   <p class="task-time">{{ task.taskTime }} </p>
-  <button (click)="removeTask(task)" class="delete-btn all-btn">Delete</button>
+  <button (click)="removeTask(task)" class="delete-btn global-btn">Delete</button>
   <fa-icon [icon]="dragArrowsV"></fa-icon>
-
 </div>
 
-<div *ngIf="isTaskEditing" [ngClass]="{'completed': task.completed}" class="task">
+<div *ngIf="task.taskEdit" [class.completed]="task.taskCompleted" class="task">
   <input (click)="completeTask(task)" type="checkbox">
   <p class="id">{{ taskIndex }}</p>
   <button>
-    <fa-icon (click)="editTaskInfo()" [icon]="saveIcon" class="edit-icon"></fa-icon>
+    <fa-icon (click)="saveTaskInfo(task)" [icon]="saveIcon" class="edit-icon"></fa-icon>
   </button>
-  <input [(ngModel)]="task.taskDescription" type="text">
-  <input [(ngModel)]="task.taskTime" type="time">
-  <button (click)="removeTask(task)" class="delete-btn all-btn">Delete</button>
+  <input [(ngModel)]="task.taskDescription" class="global-input" type="text">
+  <input [(ngModel)]="task.taskTime" class="global-input" type="time">
+  <button (click)="removeTask(task)" class="delete-btn global-btn">Delete</button>
   <fa-icon [icon]="dragArrowsV"></fa-icon>
 </div>

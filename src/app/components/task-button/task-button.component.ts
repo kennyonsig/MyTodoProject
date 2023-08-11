@@ -11,8 +11,10 @@ import { ListService } from '../../service/list.service';
 export class TaskButtonComponent {
   selectedDupListNumber: number;
   selectedDelListNumber: number;
+  findValue: string;
 
   constructor(private listService: ListService) {
+
   }
 
   addNewToDoList() {
@@ -29,6 +31,11 @@ export class TaskButtonComponent {
 
   deleteAllList() {
     this.listService.deleteAllList();
+  }
 
+  findInput() {
+
+    
+    console.log(this.findValue);
   }
 }

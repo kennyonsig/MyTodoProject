@@ -1,54 +1,27 @@
-.buttons {
-  margin-bottom: 20px;
-  display: flex;
+.btn {
 
-  .find-input {
-    padding: 10px;
-  }
+  &-block {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 
-  .duplicate-input, .duplicate, .delete, .delete-input, .add-new, .delete-all {
-    margin-right: 10px;
-  }
 
-  .add-new, .delete-all, .delete, .duplicate {
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    transition: background-color 0.3s ease;
-  }
-
-  .btn-without-input {
-    background-color: #ff8c00;
-
-    &:hover {
-      background-color: #dc7d10;
+    &-elem {
+      margin-right: 5px;
     }
 
-    &:active {
-      background-color: #f8843c;
+    button {
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      transition: background-color 0.1s linear;
     }
   }
 
-  .btn-with-input {
-    background-color: #4CAF50;
-
-    &:hover {
-      background-color: #138e18;
-    }
-
-    &:active {
-      background-color: #20e230;
-    }
+  &-disable {
 
     &:disabled {
-      background-color: #ddd;
       cursor: not-allowed;
     }
-
   }
-
 }

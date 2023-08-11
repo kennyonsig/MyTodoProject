@@ -1,16 +1,26 @@
 <div>
-  <input #taskInput (input)="onInputChange(taskInput.value)" placeholder="Enter a task" type="text">
-
-  <label for="time-input">Select a time:</label>
+  <input #taskInput
+         (input)="onInputChange(taskInput.value)"
+         [class.invalid]="!taskInput.value"
+         class="global-input input-task"
+         placeholder="Enter a task"
+         type="text">
+  <label class="label-time" for="time-input">Select a time:</label>
   <input #timeInput [(ngModel)]="taskTime"
-         id="time-input" name="time" type="time">
+         [class.invalid]="!taskTime"
+         class="global-input"
+         id="time-input"
+         name="time"
+         type="time">
 
-  <label for="input-select">Select a list number</label>
-  <input [(ngModel)]="selectedListNumber" id="input-select" type="number">
-
+  <label class="label-number" for="number-input">Select a list number</label>
+  <input [(ngModel)]="selectedListNumber"
+         [class.invalid]="!selectedListNumber"
+         class="global-input"
+         id="number-input"
+         type="number">
   <button (click)="enterTask(taskInput, timeInput)"
           [disabled]="!taskTime || isDisabled || !selectedListNumber"
-          class="add-task all-button">Add task
+          class="add-task global-btn">Add task
   </button>
-
 </div>

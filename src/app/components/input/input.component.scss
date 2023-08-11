@@ -1,25 +1,35 @@
 div {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 20px;
-  
+}
 
-  .add-task {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
+.input-task {
+  flex-grow: 1;
+  margin-right: 5px;
+}
 
-    &:hover {
-      background-color: #327635;
-    }
-
-    &:disabled {
-      background-color: #ddd;
-      cursor: not-allowed;
-    }
+.label {
+  &-time, &-number {
+    margin-right: 5px;
+    font-size: 16pt;
   }
+}
+
+#time-input, #number-input {
+  margin-right: 5px;
+}
+
+.add-task {
+  font-size: 16px;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.invalid {
+  box-shadow: 0 1px 0 rgb(254, 0, 0);
+  transition: box-shadow 0.3s ease;
+  border-radius: 3px;
 }

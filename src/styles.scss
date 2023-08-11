@@ -5,52 +5,41 @@
   text-decoration: none;
 }
 
-html, body {
-  height: 100vh;
+body {
+  min-height: 100vh;
 }
 
-.auth {
-  background-color: rgba(157, 157, 157, 0.12);
-  border-radius: 5px;
-  color: rgb(88, 86, 86);
-  font-size: 20px;
-  margin-right: 10px;
-  padding: 10px 20px;
-  transition: background-color 0.3s ease,
-  color 0.3s ease;
-
-  &:hover {
-    background-color: #10f4eb;
-    color: #1B365C;
-  }
-
-  &:active {
-    background-color: #028982;
-  }
-
-}
-
-.all-btn {
+.global-btn {
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(0, 0, 0);
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all .1s linear;
+  padding: 10px;
+  border-radius: 4px;
+
+  &:after {
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
 }
 
-input {
-  font-size: 16px;
+
+.global-input {
+  padding: 5px;
+  font-size: 15px;
   border: none;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  outline: none;
-  transition: box-shadow 0.3s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 
-  &:hover,
   &:focus {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    outline: 1px solid rgba(0, 0, 0, 0.53);;
   }
-
-  &::placeholder {
-    color: #999;
-  }
-  
 }

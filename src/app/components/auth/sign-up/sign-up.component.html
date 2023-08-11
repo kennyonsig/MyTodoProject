@@ -1,40 +1,36 @@
-<ng-container *ngIf="!successReg">
-  <form (ngSubmit)="signUp()" [formGroup]="loginForm" class="sign-up-block">
-    <p class="sign-up sign-up-element">Sign Up on MyToDo</p>
-    <input
-      class="email sign-up-element"
-      formControlName="email"
-      placeholder="Enter email"
-      type="email">
-    <input
-      class="password sign-up-element"
-      formControlName="password"
-      placeholder="Enter a password"
-      type="password">
-    <div [class.error-border]="loginForm.errors?.['passwordMatchError']">
-      <input
-        class="repeat-password sign-up-element"
-        formControlName="repeatPassword"
-        placeholder="Repeat the password"
-        type="password">
-    </div>
-    <div class="link-button-block">
-      <a class="auth "
-         routerLink="/sign-in">
-        Sign In
-      </a>
-      <button [disabled]="loginForm.invalid"
-              class="auth  all-btn confirm-btn">Confirm
-      </button>
-    </div>
-  </form>
-</ng-container>
-<ng-container *ngIf="successReg">
-  <div class="sign-up-block">
-    <h2>Success registration</h2>
-    <p>Check your mailbox</p>
-    <p>We’ve sent you a verification link to the email address {{email}}</p>
-    <button>Resending</button>
-    <a class="auth " routerLink="/sign-in">Sign In</a>
+<form (ngSubmit)="signUp()" *ngIf="!successReg" [formGroup]="loginForm" class="sign-up-block">
+  <p class="sign-up sign-up-element">Sign Up on MyToDo</p>
+  <input
+    class="email sign-up-element global-input"
+    formControlName="email"
+    placeholder="Enter email"
+    type="email">
+  <input
+    class="password sign-up-element global-input"
+    formControlName="password"
+    placeholder="Enter a password"
+    type="password">
+  <input [class.error-border]="loginForm.errors?.['passwordMatchError']"
+         class="repeat-password sign-up-element global-input"
+         formControlName="repeatPassword"
+         placeholder="Repeat the password"
+         type="password">
+  <div class="link-button-block">
+    <a class="auth "
+       routerLink="/sign-in">
+      Sign In
+    </a>
+    <button [disabled]="loginForm.invalid"
+            class="auth global-btn confirm-btn">Confirm
+    </button>
   </div>
-</ng-container>
+</form>
+
+<div *ngIf="successReg" class="sign-up-block success-reg">
+  <h2 class="success-element">Success registration</h2>
+  <p class="success-element">Check your mailbox</p>
+  <p class="success-element">We’ve sent you a verification link to the email address {{email}}</p>
+  <button class="success-element btn-resending global-btn">Resending</button>
+  <a class="auth success-sign-in success-element" routerLink="/sign-in">Sign In</a>
+</div>
+

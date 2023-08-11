@@ -1,33 +1,30 @@
 <div *ngFor="let list of lists$ | async" class="todo-list">
   <div class="list-wrapper">
 
-    <ng-container *ngIf="isListEditing">
-      <p class="todo-number">{{list.listNumber}}</p>
-      <button (click)="editListInfo()">
+    <ng-container *ngIf="!list.listEdit">
+      <p class="todo-number">{{ list.listNumber }}</p>
+      <button (click)="editListInfo(list)">
         <fa-icon [icon]="editIcon" class="edit-icon"></fa-icon>
       </button>
-      <p class="todo-name"> {{list.listName}}</p>
-      <p class="todo-date">{{list.listDate | date:'dd.MM.yyyy'}}</p>
+      <p class="todo-name"> {{ list.listName }}</p>
+      <p class="todo-date">{{ list.listDate | date:'dd.MM.yyyy' }}</p>
       <fa-icon [icon]="dragIcon"></fa-icon>
     </ng-container>
-
-    <ng-container *ngIf="!isListEditing">
-      <p class="todo-number">{{list.listNumber}}</p>
-      <button (click)="editListInfo()">
+    <ng-container *ngIf="list.listEdit">
+      <p class="todo-number">{{ list.listNumber }}</p>
+      <button (click)="saveListInfo(list)">
         <fa-icon [icon]="saveIcon" class="save-icon"></fa-icon>
       </button>
-      <input [(ngModel)]="list.listName" name="todoName">
-      <input [(ngModel)]=list.listDate type="date">
+      <input [(ngModel)]="list.listName" class="global-input" name="todoName">
+      <input [(ngModel)]=list.listDate class="global-input" type="date">
       <fa-icon [icon]="dragIcon"></fa-icon>
     </ng-container>
-
   </div>
 
   <ul class="list-block">
     <li
       *ngFor="let task of list.tasksArr; let i = index"
       class="task-box-li">
-      <div class="task-placeholder"></div>
       <app-task (taskRemove)="removeTask($event, list.listNumber)" [taskIndex]="i + 1" [task]="task"></app-task>
     </li>
   </ul>

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../../service/task.service';
 
-
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
@@ -15,5 +14,4 @@ export class ProfilePageComponent {
   addTask(taskDescription: string, taskTime: string, listNumber: number) {
     this.taskService.addTaskToList(taskDescription, taskTime, listNumber);
   }
-
 }

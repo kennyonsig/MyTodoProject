@@ -9,53 +9,74 @@ export class ListService {
   listName = 'Enter a list name';
   listDate = new Date();
 
-  private lists$ = new BehaviorSubject<IList[]>([]);
+  public lists$ = new BehaviorSubject<IList[]>([]);
 
-  getLists(): BehaviorSubject<IList[]> {
-    return this.lists$;
+  constructor() {
+    const savedLists = localStorage.getItem('lists');
+    if (savedLists) {
+      const parsedLists = JSON.parse(savedLists);
+      this.lists$.next(parsedLists);
+    } //что-то типо временной БД
+  }
+
+  getLists(): IList[] {
+    return this.lists$.getValue();
+  }
+
+  updateLists(updatedLists: IList[]) {
+    this.lists$.next(updatedLists);
+    localStorage.setItem('lists', JSON.stringify(updatedLists));
+  }
+
+  updListInfo(updListInfo: IList) {
+    const updatedListsArr: IList[] = this.getLists().map((currentListInfo: IList) =>
+      currentListInfo.listNumber === updListInfo.listNumber
+        ? updListInfo
+        : currentListInfo
+    );
+
+    this.updateLists(updatedListsArr);
   }
 
   addNewList() {
-    const currentListLength = this.lists$.getValue().length;
-
+    const currentListLength = this.getLists().length;
     const newList: IList = {
       listDate: this.listDate,
       listName: this.listName,
       listNumber: currentListLength + 1,
       tasksArr: [],
+      listEdit: false
     };
+    const updatedListsArr: IList[] = [...this.getLists(), newList];
 
-    const currentListsArr = this.lists$.getValue();
-    const updatedListsArr = [...currentListsArr, newList];
-    this.lists$.next(updatedListsArr);
-
+    this.updateLists(updatedListsArr);
   }
 
   duplicateList(selectedDupListNumber: number) {
-
-    const currentListsArr = this.lists$.getValue();
-    const selectedList = currentListsArr.find(list => list.listNumber === selectedDupListNumber);
+    const selectedList = this.getLists().find(list => list.listNumber === selectedDupListNumber);
 
     if (selectedList) {
       const dupList: IList = {
         ...selectedList,
-        listNumber: currentListsArr.length + 1,
+        tasksArr: selectedList.tasksArr.map(task => ({ ...task })),
+        listNumber: this.getLists().length + 1,
       };
-      const updatedListsArr = [...currentListsArr, dupList];
-      this.lists$.next(updatedListsArr);
+      const updatedListsArr = [...this.getLists(), dupList];
+
+      this.updateLists(updatedListsArr);
     }
   }
 
   deleteList(selectedDelListNumber: number) {
-    const currentListsArr = this.lists$.getValue();
-    const updatedListsArr = currentListsArr
+    const updatedListsArr: IList[] = this.getLists()
       .filter((list) => list.listNumber !== selectedDelListNumber)
-      .map((list: IList, index: number) => ({...list, listNumber: index + 1}));
+      .map((list: IList, index: number) => ({ ...list, listNumber: index + 1 }));
 
-    this.lists$.next(updatedListsArr);
+    this.updateLists(updatedListsArr);
   }
 
   deleteAllList() {
     this.lists$.next([]);
+    localStorage.removeItem('lists');
   }
 }

@@ -2,18 +2,18 @@
   <p class="sign-in sign-in-element">Sign In on MyToDo </p>
   <span>mor_2314 ::: 83r5^_</span>
   <input [(ngModel)]="email"
-         class="email sign-in-element"
+         class="email sign-in-element global-input"
          placeholder="Enter the email mor_2314"
          type="email">
   <input [(ngModel)]="password"
-         class="password sign-in-element"
+         class="password sign-in-element global-input"
          placeholder="Enter the password 83r5^_"
          type="password">
 
   <div class="link-button-block">
     <a class="auth sign-in-element" routerLink="/sign-up">Sign Up</a>
     <button (click)="login(email, password)" [disabled]="!email || !password"
-            class="login-btn auth sign-in-element all-btn">Login
+            class="login-btn auth sign-in-element global-btn">Login
     </button>
   </div>
 </div>

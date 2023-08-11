@@ -1,3 +1,5 @@
+@import '../auth.scss';
+
 .sign-up {
   font-size: 50px;
 
@@ -6,24 +8,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh
   }
 
-  &-element:not(.auth, .repeat-password) {
+  &-element:not(.auth) {
     margin-bottom: 10px;
     padding: 20px;
     max-width: 500px;
   }
-}
-
-.link-button-block {
-  display: inline-block;
-}
-
-.confirm-btn:disabled {
-  background-color: rgba(221, 221, 221, 0.41);
-  color: rgba(221, 221, 221, 0.41);
-  cursor: not-allowed;
 }
 
 .error-border {
@@ -32,11 +23,23 @@
   border-radius: 3px;
 }
 
-.auth {
-  margin-top: 10px;
+.success {
+  &-reg {
+    font-size: 20pt;
+  }
+
+  &-element {
+    margin-bottom: 10px;
+  }
+
+  &-sign-in {
+    margin: 0;
+  }
 }
 
-.repeat-password {
-  padding: 20px;
-  max-width: 500px;
+.btn-resending {
+  padding: 10px;
 }
+
+
+

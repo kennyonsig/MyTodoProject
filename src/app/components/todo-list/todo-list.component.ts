@@ -6,8 +6,8 @@ import { ITask } from '../../model/ITask';
 import { faArrows } from '@fortawesome/free-solid-svg-icons/faArrows';
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
-import { Observable } from 'rxjs';
 import { ListService } from '../../service/list.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -21,8 +21,6 @@ export class TodoListComponent implements OnInit {
 
   lists$: Observable<IList[]>;
 
-  isListEditing = true;
-
   constructor(
     private taskService: TaskService,
     private listService: ListService,
@@ -30,15 +28,19 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.lists$ = this.listService.getLists();
+    this.lists$ = this.listService.lists$;
   }
 
   removeTask(task: ITask, listNumber: number) {
     this.taskService.onTaskRemove(task.taskNumber, listNumber);
   }
 
-  editListInfo() {
-    this.isListEditing = !this.isListEditing;
+  editListInfo(list: IList) {
+    list.listEdit = true;
   }
 
+  saveListInfo(list: IList) {
+    list.listEdit = false;
+    this.listService.updListInfo(list);
+  }
 }
