@@ -3,8 +3,8 @@
 
     <ng-container *ngIf="!list.listEdit">
       <p class="todo-number">{{ list.listNumber }}</p>
-      <button (click)="editListInfo(list)">
-        <fa-icon [icon]="editIcon" class="edit-icon"></fa-icon>
+      <button (click)="editListInfo(list)" class="btn-edit-save">
+        <fa-icon [icon]="editIcon"></fa-icon>
       </button>
       <p class="todo-name"> {{ list.listName }}</p>
       <p class="todo-date">{{ list.listDate | date:'dd.MM.yyyy' }}</p>
@@ -12,11 +12,19 @@
     </ng-container>
     <ng-container *ngIf="list.listEdit">
       <p class="todo-number">{{ list.listNumber }}</p>
-      <button (click)="saveListInfo(list)">
-        <fa-icon [icon]="saveIcon" class="save-icon"></fa-icon>
+      <button (click)="saveListInfo(list)" class="btn-edit-save">
+        <fa-icon [icon]="saveIcon"></fa-icon>
       </button>
-      <input [(ngModel)]="list.listName" class="global-input" name="todoName">
-      <input [(ngModel)]=list.listDate class="global-input" type="date">
+      <input [(ngModel)]="list.listName"
+             class="global-input"
+             name="todoName">
+      <form [formGroup]="dateListForm" class="list-input-date-form">
+        <input
+          class="global-input"
+          formControlName="presentDate"
+          type="date">
+      </form>
+
       <fa-icon [icon]="dragIcon"></fa-icon>
     </ng-container>
   </div>

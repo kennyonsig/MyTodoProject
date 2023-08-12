@@ -1,8 +1,8 @@
 <div *ngIf="!task.taskEdit" [class.completed]="task.taskCompleted" class="task">
   <input (click)="completeTask(task)" type="checkbox">
   <p class="task-number">{{ taskIndex }}</p>
-  <button (click)="editTaskInfo(task)">
-    <fa-icon [icon]="editIcon" class="edit-icon"></fa-icon>
+  <button (click)="editTaskInfo(task)" class="btn-edit-save">
+    <fa-icon [icon]="editIcon"></fa-icon>
   </button>
   <p class="task-description">{{ task.taskDescription }}</p>
   <p class="task-time">{{ task.taskTime }} </p>
@@ -13,8 +13,8 @@
 <div *ngIf="task.taskEdit" [class.completed]="task.taskCompleted" class="task">
   <input (click)="completeTask(task)" type="checkbox">
   <p class="id">{{ taskIndex }}</p>
-  <button>
-    <fa-icon (click)="saveTaskInfo(task)" [icon]="saveIcon" class="edit-icon"></fa-icon>
+  <button class="btn-edit-save">
+    <fa-icon (click)="saveTaskInfo(task)" [icon]="saveIcon"></fa-icon>
   </button>
   <input [(ngModel)]="task.taskDescription" class="global-input" type="text">
   <input [(ngModel)]="task.taskTime" class="global-input" type="time">

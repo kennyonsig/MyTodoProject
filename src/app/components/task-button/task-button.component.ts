@@ -34,8 +34,6 @@ export class TaskButtonComponent {
   }
 
   findInput() {
-
-    
     console.log(this.findValue);
   }
 }

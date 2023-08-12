@@ -8,6 +8,7 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { ListService } from '../../service/list.service';
 import { Observable } from 'rxjs';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-list',
@@ -20,6 +21,7 @@ export class TodoListComponent implements OnInit {
   saveIcon = faCheck;
 
   lists$: Observable<IList[]>;
+  dateListForm: FormGroup;
 
   constructor(
     private taskService: TaskService,
@@ -29,6 +31,9 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.lists$ = this.listService.lists$;
+    this.dateListForm = new FormGroup({
+      'presentDate': new FormControl((new Date()).toISOString().substring(0, 10)),
+    });
   }
 
   removeTask(task: ITask, listNumber: number) {
@@ -41,6 +46,7 @@ export class TodoListComponent implements OnInit {
 
   saveListInfo(list: IList) {
     list.listEdit = false;
+    list.listDate = this.dateListForm.get('presentDate')?.value;
     this.listService.updListInfo(list);
   }
 }

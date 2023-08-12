@@ -1,27 +1,32 @@
 <div class="btn-block">
+  <button (click)="addNewToDoList()" class="global-btn btn-add-list">Add ToDo list
+  </button>
   <input (input)="findInput()"
          [(ngModel)]="findValue"
-         class="global-input btn-block-elem"
+         class="global-input input-find"
          placeholder="Find a list by name" type="text">
-  <button (click)="addNewToDoList()" class="global-btn btn-block-elem">Add ToDo list
-  </button>
-
-  <button (click)="duplicateListNumber(selectedDupListNumber)"
-          [disabled]="!selectedDupListNumber"
-          class="btn-disable btn-block-elem global-btn ">Duplicate list number:
-  </button>
-  <input [(ngModel)]="selectedDupListNumber"
-         class="global-input btn-block-elem"
-         type="number">
-  <button (click)="deleteListNumber(selectedDelListNumber)"
-          [disabled]="!selectedDelListNumber"
-          class="btn-disable btn-block-elem global-btn">Delete list number:
-  </button>
-  <input [(ngModel)]="selectedDelListNumber"
-         class="global-input  btn-block-elem"
-         type="number">
+  <div class="choice-list-block">
+    <button (click)="duplicateListNumber(selectedDupListNumber)"
+            [disabled]="!selectedDupListNumber"
+            class="btn-disable global-btn btn-duplicate ">Duplicate list:
+    </button>
+    <input [(ngModel)]="selectedDupListNumber"
+           class="global-input input-duplicate"
+           placeholder="num"
+           type="number">
+  </div>
+  <div class="choice-list-block">
+    <button (click)="deleteListNumber(selectedDelListNumber)"
+            [disabled]="!selectedDelListNumber"
+            class="btn-disable global-btn btn-delete">Delete list:
+    </button>
+    <input [(ngModel)]="selectedDelListNumber"
+           class="global-input input-delete"
+           placeholder="num"
+           type="number">
+  </div>
   <button (click)="deleteAllList()"
-          class="global-btn btn-block-elem">Delete all list's
+          class="global-btn">Delete all list's
   </button>
 
 </div>

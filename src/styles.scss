@@ -11,12 +11,9 @@ body {
 
 .global-btn {
   background-color: rgba(255, 255, 255, 0);
-  color: rgb(0, 0, 0);
   border: none;
   cursor: pointer;
   transition: all .1s linear;
-  padding: 10px;
-  border-radius: 4px;
 
   &:after {
     content: '';
@@ -32,14 +29,21 @@ body {
   }
 }
 
-
 .global-input {
-  padding: 5px;
   font-size: 15px;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease-in;
+  border-radius: 4px;
+  outline: none;
+  min-height: 30px;
+
+  &:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s ease-out;
+  }
 
   &:focus {
-    outline: 1px solid rgba(0, 0, 0, 0.53);;
+    border: 1px solid black;
   }
+
 }

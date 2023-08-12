@@ -1,14 +1,7 @@
 .btn {
-
   &-block {
-    margin-bottom: 20px;
     display: flex;
-    align-items: center;
-
-
-    &-elem {
-      margin-right: 5px;
-    }
+    flex-direction: column;
 
     button {
       text-align: center;
@@ -18,10 +11,27 @@
     }
   }
 
-  &-disable {
+  &-disable:disabled {
+    cursor: not-allowed;
+  }
 
-    &:disabled {
-      cursor: not-allowed;
-    }
+  &-add-list {
+    margin-bottom: 10px;
+  }
+}
+
+.choice-list-block {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.input {
+  &-duplicate, &-delete {
+    max-width: 50px;
+  }
+
+  &-find {
+    margin-bottom: 10px;
+    padding: 0;
   }
 }
