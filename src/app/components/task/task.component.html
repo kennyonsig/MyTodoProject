@@ -12,7 +12,7 @@
 
 <div *ngIf="task.taskEdit" [class.completed]="task.taskCompleted" class="task">
   <input (click)="completeTask(task)" type="checkbox">
-  <p class="id">{{ taskIndex }}</p>
+  <p class="task-number">{{ taskIndex }}</p>
   <button class="btn-edit-save">
     <fa-icon (click)="saveTaskInfo(task)" [icon]="saveIcon"></fa-icon>
   </button>

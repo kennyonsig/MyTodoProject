@@ -1,7 +1,7 @@
 <div class="btn-block">
   <button (click)="addNewToDoList()" class="global-btn btn-add-list">Add ToDo list
   </button>
-  <input (input)="findInput()"
+  <input (input)="findListInput()"
          [(ngModel)]="findValue"
          class="global-input input-find"
          placeholder="Find a list by name" type="text">
@@ -14,6 +14,9 @@
            class="global-input input-duplicate"
            placeholder="num"
            type="number">
+    <div *ngIf="dupListNotFound" class="list-not-found">
+      List not found!
+    </div>
   </div>
   <div class="choice-list-block">
     <button (click)="deleteListNumber(selectedDelListNumber)"
@@ -24,6 +27,9 @@
            class="global-input input-delete"
            placeholder="num"
            type="number">
+    <div *ngIf="delListNotFound" class="list-not-found">
+      List not found!
+    </div>
   </div>
   <button (click)="deleteAllList()"
           class="global-btn">Delete all list's

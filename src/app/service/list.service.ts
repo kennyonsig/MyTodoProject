@@ -6,7 +6,6 @@ import { IList } from '../model/IList';
   providedIn: 'root'
 })
 export class ListService {
-  listName = 'Enter a list name';
   listDate = new Date();
 
   public lists$ = new BehaviorSubject<IList[]>([]);
@@ -42,7 +41,7 @@ export class ListService {
     const currentListLength = this.getLists().length;
     const newList: IList = {
       listDate: this.listDate,
-      listName: this.listName,
+      listName: 'ToDo' + `#${currentListLength + 1}`,
       listNumber: currentListLength + 1,
       tasksArr: [],
       listEdit: true
@@ -69,7 +68,7 @@ export class ListService {
 
   deleteList(selectedDelListNumber: number) {
     const updatedListsArr: IList[] = this.getLists()
-      .filter((list) => list.listNumber !== selectedDelListNumber)
+      .filter((list: IList): boolean => list.listNumber !== selectedDelListNumber)
       .map((list: IList, index: number) => ({ ...list, listNumber: index + 1 }));
 
     this.updateLists(updatedListsArr);
@@ -78,5 +77,14 @@ export class ListService {
   deleteAllList() {
     this.lists$.next([]);
     localStorage.removeItem('lists');
+  }
+
+  isListSelected(selectedListNumber: number): boolean {
+    return this.getLists()
+      .some((list: IList): boolean => list.listNumber === selectedListNumber);
+  }
+
+  searchListByName() {
+
   }
 }

@@ -1,26 +1,29 @@
-<div>
+<div class="input-task-block">
   <input #taskInput
          (input)="onInputChange(taskInput.value)"
-         [class.invalid]="!taskInput.value"
+         [class.invalid]="!taskInput.value.trim()"
          class="global-input input-task"
          placeholder="Enter a task"
          type="text">
   <label class="label-time" for="time-input">Select a time:</label>
   <input #timeInput [(ngModel)]="taskTime"
          [class.invalid]="!taskTime"
-         class="global-input"
+         class="global-input input-time"
          id="time-input"
          name="time"
          type="time">
-
   <label class="label-number" for="number-input">Select a list number</label>
   <input [(ngModel)]="selectedListNumber"
          [class.invalid]="!selectedListNumber"
-         class="global-input"
+         class="global-input input-number"
          id="number-input"
          type="number">
+  <div *ngIf="isListNotFound" class="list-not-found">
+    List not found!
+  </div>
   <button (click)="enterTask(taskInput, timeInput)"
           [disabled]="!taskTime || isDisabled || !selectedListNumber"
-          class="add-task global-btn">Add task
+          class="btn-add-task global-btn">Add task
   </button>
 </div>
+

@@ -12,9 +12,10 @@ export class TaskButtonComponent {
   selectedDupListNumber: number;
   selectedDelListNumber: number;
   findValue: string;
+  dupListNotFound: boolean;
+  delListNotFound: boolean;
 
   constructor(private listService: ListService) {
-
   }
 
   addNewToDoList() {
@@ -22,18 +23,28 @@ export class TaskButtonComponent {
   }
 
   duplicateListNumber(selectedDupListNumber: number) {
-    this.listService.duplicateList(selectedDupListNumber);
+    if (!this.listService.isListSelected(selectedDupListNumber)) {
+      this.dupListNotFound = true;
+    } else {
+      this.listService.duplicateList(selectedDupListNumber);
+      this.dupListNotFound = false;
+    }
   }
 
   deleteListNumber(selectedDelListNumber: number) {
-    this.listService.deleteList(selectedDelListNumber);
+    if (!this.listService.isListSelected(selectedDelListNumber)) {
+      this.delListNotFound = true;
+    } else {
+      this.listService.deleteList(selectedDelListNumber);
+      this.delListNotFound = false;
+    }
   }
 
   deleteAllList() {
     this.listService.deleteAllList();
   }
 
-  findInput() {
+  findListInput() {
     console.log(this.findValue);
   }
 }

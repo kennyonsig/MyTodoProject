@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { ListService } from '../../service/list.service';
 
 
 @Component({
@@ -12,25 +13,36 @@ export class InputComponent {
     taskTime: string;
     listNumber: number;
   }>();
-
   isDisabled = true;
+  isListNotFound = false;
   taskTime: string;
   selectedListNumber: number;
 
+  constructor(private listService: ListService) {
+  }
+
   onInputChange(value: string) {
-    this.isDisabled = value.trim().length === 0;
+    this.isDisabled = !value.trim();
+    this.isListNotFound = false;
   }
 
   enterTask(taskInput: HTMLInputElement, timeInput: HTMLInputElement) {
-    this.outEnterTask.emit({
-      taskDescription: taskInput.value,
-      taskTime: this.taskTime,
-      listNumber: this.selectedListNumber,
-    });
 
-    taskInput.value = '';
-    timeInput.value = '';
-    this.isDisabled = true;
-    this.taskTime = '';
+    if (!this.listService.isListSelected(this.selectedListNumber)) {
+      this.isListNotFound = true;
+    } else {
+
+      this.outEnterTask.emit({
+        taskDescription: taskInput.value,
+        taskTime: this.taskTime,
+        listNumber: this.selectedListNumber,
+      });
+
+      taskInput.value = '';
+      timeInput.value = '';
+      this.isDisabled = true;
+      this.isListNotFound = false;
+      this.taskTime = '';
+    }
   }
 }

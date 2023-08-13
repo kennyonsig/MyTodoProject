@@ -1,12 +1,7 @@
-div {
+.input-task-block {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
-}
-
-.input-task {
-  flex-grow: 1;
-  margin-right: 5px;
 }
 
 .label {
@@ -16,20 +11,40 @@ div {
   }
 }
 
-#time-input, #number-input {
-  margin-right: 5px;
+.input {
+  &-task {
+    flex-grow: 1;
+  }
+
+  &-task, &-time, &-number {
+    margin-right: 5px;
+    transition: all 0.3s ease-out;
+
+    &:focus {
+      border: 1px solid #1dbe1d;
+      box-shadow: 0 0 10px -4px rgb(73, 223, 88);
+    }
+  }
 }
 
-.add-task {
+.invalid {
+  border-radius: 4px;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    border-bottom: 1px solid rgb(255, 0, 0);
+  }
+
+  &:focus {
+    border: 1px solid #ff0000;
+    box-shadow: 0 0 10px -4px rgb(223, 73, 73);
+  }
+}
+
+.btn-add-task {
   font-size: 16px;
 
   &:disabled {
     cursor: not-allowed;
   }
-}
-
-.invalid {
-  box-shadow: 0 1px 0 rgb(254, 0, 0);
-  transition: box-shadow 0.3s ease;
-  border-radius: 3px;
 }
