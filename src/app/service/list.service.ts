@@ -44,7 +44,8 @@ export class ListService {
       listName: 'ToDo' + `#${currentListLength + 1}`,
       listNumber: currentListLength + 1,
       tasksArr: [],
-      listEdit: true
+      listEdit: true,
+      listExpand: false
     };
     const updatedListsArr: IList[] = [...this.getLists(), newList];
 
@@ -84,7 +85,14 @@ export class ListService {
       .some((list: IList): boolean => list.listNumber === selectedListNumber);
   }
 
-  searchListByName() {
+  clearList(selectedClearListNumber: number) {
+    const selectedList = this.getLists()
+      .find(list => list.listNumber === selectedClearListNumber);
+    if (selectedList) {
+      selectedList.tasksArr = [];
 
+      const updatedListsArr = [...this.getLists()];
+      this.updateLists(updatedListsArr);
+    }
   }
 }

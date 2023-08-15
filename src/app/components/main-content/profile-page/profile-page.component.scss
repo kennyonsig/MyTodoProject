@@ -1,4 +1,3 @@
-
 header, main, app-todo-list {
   display: flex;
 }
@@ -10,12 +9,11 @@ header {
 }
 
 app-todo-list {
-  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
 app-task-button {
-  margin-right: 40px;
+  margin-right: 5px;
   min-width: 240px;
 }
 

@@ -11,9 +11,11 @@ import { ListService } from '../../service/list.service';
 export class TaskButtonComponent {
   selectedDupListNumber: number;
   selectedDelListNumber: number;
+  selectedClearListNumber: number;
   findValue: string;
   dupListNotFound: boolean;
   delListNotFound: boolean;
+  clearListNotFound: boolean;
 
   constructor(private listService: ListService) {
   }
@@ -40,6 +42,15 @@ export class TaskButtonComponent {
     }
   }
 
+  clearListNumber(selectedClearListNumber: number) {
+    if (!this.listService.isListSelected(selectedClearListNumber)) {
+      this.clearListNotFound = true;
+    } else {
+      this.listService.clearList(selectedClearListNumber);
+      this.clearListNotFound = false;
+    }
+  }
+
   deleteAllList() {
     this.listService.deleteAllList();
   }
@@ -47,4 +58,5 @@ export class TaskButtonComponent {
   findListInput() {
     console.log(this.findValue);
   }
+
 }

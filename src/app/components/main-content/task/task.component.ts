@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ITask } from '../../model/ITask';
+import { ITask } from '../../../model/ITask';
 import { faArrowsV } from '@fortawesome/free-solid-svg-icons/faArrowsV';
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
-import { TaskService } from '../../service/task.service';
+import { TaskService } from '../../../service/task.service';
 
 @Component({
   selector: 'app-task',

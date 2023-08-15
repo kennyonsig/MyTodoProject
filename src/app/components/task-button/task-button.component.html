@@ -12,6 +12,7 @@
     </button>
     <input [(ngModel)]="selectedDupListNumber"
            class="global-input input-duplicate"
+           min="0"
            placeholder="num"
            type="number">
     <div *ngIf="dupListNotFound" class="list-not-found">
@@ -25,9 +26,24 @@
     </button>
     <input [(ngModel)]="selectedDelListNumber"
            class="global-input input-delete"
+           min="0"
            placeholder="num"
            type="number">
     <div *ngIf="delListNotFound" class="list-not-found">
+      List not found!
+    </div>
+  </div>
+  <div class="choice-list-block">
+    <button (click)="clearListNumber(selectedClearListNumber)"
+            [disabled]="!selectedClearListNumber"
+            class="btn-disable global-btn btn-delete">Clear list:
+    </button>
+    <input [(ngModel)]="selectedClearListNumber"
+           class="global-input input-delete"
+           min="0"
+           placeholder="num"
+           type="number">
+    <div *ngIf="clearListNotFound" class="list-not-found">
       List not found!
     </div>
   </div>

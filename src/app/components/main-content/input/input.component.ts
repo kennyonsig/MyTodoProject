@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ListService } from '../../service/list.service';
+import { ListService } from '../../../service/list.service';
 
 
 @Component({
@@ -45,4 +45,5 @@ export class InputComponent {
       this.taskTime = '';
     }
   }
+
 }

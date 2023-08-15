@@ -1,5 +1,5 @@
 <div *ngFor="let list of lists$ | async" class="todo-list">
-  <div class="list-wrapper">
+  <div class="list-info-wrapper">
 
     <ng-container *ngIf="!list.listEdit">
       <p class="todo-number">{{ list.listNumber }}</p>
@@ -8,33 +8,43 @@
       </button>
       <p class="todo-name"> {{ list.listName }}</p>
       <p class="todo-date">{{ list.listDate | date:'dd.MM.yyyy' }}</p>
-      <fa-icon [icon]="dragIcon"></fa-icon>
+      <fa-icon [icon]="dragIcon" class="drag-icon"></fa-icon>
     </ng-container>
     <ng-container *ngIf="list.listEdit">
       <p class="todo-number">{{ list.listNumber }}</p>
       <button (click)="saveListInfo(list)" class="btn-edit-save">
         <fa-icon [icon]="saveIcon"></fa-icon>
       </button>
-      <input [(ngModel)]="list.listName"
-             class="global-input"
-             name="todoName">
+      <input
+        [(ngModel)]="list.listName"
+        [autofocus]="true"
+        class="global-input todo-name-input"
+        maxlength="10"
+        name="todoName">
       <form [formGroup]="dateListForm" class="list-input-date-form">
         <input
-          class="global-input"
+          class="global-input list-date-input"
           formControlName="presentDate"
           type="date">
       </form>
 
-      <fa-icon [icon]="dragIcon"></fa-icon>
+      <fa-icon [icon]="dragIcon" class="drag-icon"></fa-icon>
     </ng-container>
   </div>
-
-  <ul class="list-block">
+  <div class="collapse-expand-list">
+    <button
+      (click)="collapseExpandList(list)"
+      class="global-btn">{{ list.listExpand ? 'Expand list' : 'Collapse list' }}</button>
+  </div>
+  <ul *ngIf="!list.listExpand" class="list-block">
     <li
       *ngFor="let task of list.tasksArr; let i = index"
       class="task-box-li">
       <app-task (taskRemove)="removeTask($event, list.listNumber)" [taskIndex]="i + 1" [task]="task"></app-task>
     </li>
   </ul>
+  <div class="list-btn-block">
+    <app-list-btn [listNumber]="list.listNumber"></app-list-btn>
+  </div>
 </div>
 

@@ -6,7 +6,8 @@
          placeholder="Enter a task"
          type="text">
   <label class="label-time" for="time-input">Select a time:</label>
-  <input #timeInput [(ngModel)]="taskTime"
+  <input #timeInput
+         [(ngModel)]="taskTime"
          [class.invalid]="!taskTime"
          class="global-input input-time"
          id="time-input"
@@ -17,6 +18,7 @@
          [class.invalid]="!selectedListNumber"
          class="global-input input-number"
          id="number-input"
+         min="0"
          type="number">
   <div *ngIf="isListNotFound" class="list-not-found">
     List not found!

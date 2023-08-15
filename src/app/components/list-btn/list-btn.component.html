@@ -1,0 +1,9 @@
+<div class="list-btn-wrapper">
+  <button (click)="dupList()" class="global-btn">Duplicate</button>
+  <button (click)="delList()" class="global-btn">Delete</button>
+  <button (click)="clearList()" class="global-btn">Clear the list</button>
+  <div class="favorite-list-block">
+    <label [for]="'favorite-list-' + listNumber" class="label-favorite-list">Add to favorites</label>
+    <input [id]="'favorite-list-' + listNumber"  type="checkbox">
+  </div>
+</div>

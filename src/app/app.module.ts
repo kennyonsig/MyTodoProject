@@ -4,11 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { TodoListComponent } from './components/main-content/todo-list/todo-list.component';
 import { TaskButtonComponent } from './components/task-button/task-button.component';
-import { TaskComponent } from './components/task/task.component';
-import { ProfilePageComponent } from './components/profile-page/profile-page.component';
-import { InputComponent } from './components/input/input.component';
+import { TaskComponent } from './components/main-content/task/task.component';
+import { ProfilePageComponent } from './components/main-content/profile-page/profile-page.component';
+import { InputComponent } from './components/main-content/input/input.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
@@ -16,6 +16,8 @@ import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
+import { AutofocusDirective } from './directives/autofocus.directive';
+import { ListBtnComponent } from './components/list-btn/list-btn.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { CommonModule } from '@angular/common';
     HomePageComponent,
     SignUpComponent,
     SignInComponent,
+    AutofocusDirective,
+    ListBtnComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [],
 

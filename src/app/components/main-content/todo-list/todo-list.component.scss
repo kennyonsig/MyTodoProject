@@ -1,0 +1,80 @@
+.todo {
+  &-list {
+    margin: 0 5px 10px 0;
+    min-width: 380px;
+    font-size: 20px;
+  }
+
+  &-name {
+    max-width: 150px;
+
+    &-input {
+      max-width: 100px;
+    }
+  }
+}
+
+.btn-edit-save {
+  padding: 10px 0 10px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.list {
+  &-info-wrapper {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+    border: solid #ccc 1px;
+    border-radius: 5px 5px 0 0;
+    align-items: center;
+  }
+
+  &-block {
+    border: solid 1px #ccc;
+    min-height: 50px;
+    background: white;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+
+  &-date-input {
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+  }
+
+  &-btn-block {
+    display: flex;
+    align-items: center;
+    border: solid #ccc 1px;
+    border-radius: 0 0 5px 5px;
+    min-height: 30px;
+  }
+}
+
+.task-box-li {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  border-bottom: solid 1px #ccc;
+
+  &:last-child {
+    border: none;
+  }
+}
+
+app-task, app-list-btn {
+  flex-grow: 1;
+}
+
+.drag-icon {
+  font-size: 15px;
+}
+
+.collapse-expand-list {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 3px;
+}

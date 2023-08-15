@@ -6,4 +6,5 @@ export interface IList {
   listNumber: number;
   tasksArr: ITask[];
   listEdit: boolean;
+  listExpand: boolean;
 }
