@@ -8,19 +8,24 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
   }
 
   &-element:not(.auth) {
     margin-bottom: 10px;
-    padding: 20px;
-    max-width: 500px;
+    padding: 10px;
+  }
+
+  &-email, &-password, &-repeat-password {
+    text-align: center;
   }
 }
 
 .error-border {
-  box-shadow: 0 0 5px rgb(254, 0, 0);
-  transition: box-shadow 0.3s ease;
-  border-radius: 3px;
+  border: 1px solid rgba(255, 0, 0, 0.33);
+  box-shadow: 0 0 11px -4px rgb(255, 0, 0);
+  transition: all 0.3s ease-out;
+  border-radius: 4px;
 }
 
 .success {

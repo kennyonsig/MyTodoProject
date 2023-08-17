@@ -1,11 +1,15 @@
-<header>
-  <h1>
-    MY TODO
-  </h1>
-  <a class="log-out" routerLink="/homePage">Log Out</a>
-</header>
-<app-input (outEnterTask)="addTask($event.taskDescription, $event.taskTime, $event.listNumber)"></app-input>
-<main>
-  <app-task-button></app-task-button>
-  <app-todo-list></app-todo-list>
-</main>
+<div class="profile-block">
+  <header>
+    <h1>
+      MY TODO
+    </h1>
+    <button class="log-out global-btn">
+      Log Out
+    </button>
+  </header>
+  <app-input (outEnterTask)="addTask($event.taskDescription, $event.taskTime, $event.listNumber)"></app-input>
+  <main>
+    <app-task-button></app-task-button>
+    <app-todo-list></app-todo-list>
+  </main>
+</div>

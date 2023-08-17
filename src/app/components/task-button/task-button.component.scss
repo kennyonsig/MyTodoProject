@@ -2,6 +2,7 @@
   &-block {
     display: flex;
     flex-direction: column;
+    min-width: 100px;
 
     button {
       text-align: center;
@@ -9,6 +10,7 @@
       font-size: 17px;
       transition: background-color 0.1s linear;
     }
+
   }
 
   &-disable:disabled {
@@ -17,12 +19,19 @@
 
   &-add-list {
     margin-bottom: 10px;
+    max-width: 100px;
   }
+
+  &-delete-all {
+    max-width: 100px;
+  }
+
 }
 
 .choice-list-block {
   display: inline-block;
   margin-bottom: 10px;
+  padding-left: 3px;
 }
 
 .input {
@@ -32,5 +41,6 @@
 
   &-find {
     margin-bottom: 10px;
+    max-width: 100px;
   }
 }

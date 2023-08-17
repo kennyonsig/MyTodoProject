@@ -1,20 +1,27 @@
-<div class="sign-in-block">
+<form (ngSubmit)="login()" class="sign-in-form">
   <p class="sign-in sign-in-element">Sign In on MyToDo </p>
-  <span>mor_2314 ::: 83r5^_</span>
   <input [(ngModel)]="email"
+         autocomplete="email"
          class="email sign-in-element global-input"
-         placeholder="Enter the email mor_2314"
+         name="email"
+         placeholder="Enter the email"
          type="email">
   <input [(ngModel)]="password"
+         autocomplete="password"
          class="password sign-in-element global-input"
-         placeholder="Enter the password 83r5^_"
+         name="password"
+         placeholder="Enter the password"
          type="password">
-
+  <div *ngIf="errorAuth" class="error-auth">
+    {{ errorAuth }}
+  </div>
   <div class="link-button-block">
-    <a class="auth sign-in-element" routerLink="/sign-up">Sign Up</a>
-    <button (click)="login(email, password)" [disabled]="!email || !password"
-            class="login-btn auth sign-in-element global-btn">Login
+    <a class="sign-up-link global-btn" routerLink="/sign-up">Sign Up</a>
+    <button [disabled]="!email || !password"
+            class="global-btn login-btn">Login
     </button>
   </div>
-</div>
+</form>
+
+
 

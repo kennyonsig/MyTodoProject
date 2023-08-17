@@ -8,19 +8,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent {
-  email = '';
-  password = '';
+  email = 'mor_2314';
+  password = '83r5^_';
+
+  errorAuth: string;
 
   constructor(private authService: AuthService, private router: Router) {
   }
 
-  login(username: string, password: string) {
-    this.authService.checkLogin(username, password).subscribe({
-      next: response => {
+  login() {
+    this.authService.checkLogin(this.email, this.password).subscribe({
+      next: () => {
         this.router.navigate(['/profilePage']).then();
       },
       error: error => {
-        alert('false auth');
+        this.errorAuth = 'False auth';
         console.error(error);
       }
     });

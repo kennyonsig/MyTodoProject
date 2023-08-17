@@ -1,36 +1,25 @@
-header, main, app-todo-list {
+header, app-todo-list, main {
   display: flex;
+}
+
+main {
+  justify-content: flex-start;
 }
 
 header {
   margin-bottom: 20px;
   justify-content: space-between;
+  min-height: 50px;
   align-items: center;
 }
 
 app-todo-list {
   flex-wrap: wrap;
+  align-items: flex-start;
+  flex-basis: 90%;
 }
+
 
 app-task-button {
-  margin-right: 5px;
-  min-width: 240px;
-}
-
-.log-out {
-  background-color: rgba(157, 157, 157, 0.12);
-  border-radius: 5px;
-  color: rgb(88, 86, 86);
-  font-size: 15px;
-  padding: 10px;
-  transition: background-color 0.3s ease,
-  color 0.3s ease;
-
-  &:hover {
-    background-color: #10f4eb;
-    color: #1B365C;
-  }
-  &:active {
-    background-color: #028982;
-  }
+  flex-basis: 10%;
 }

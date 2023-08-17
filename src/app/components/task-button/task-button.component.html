@@ -4,7 +4,7 @@
   <input (input)="findListInput()"
          [(ngModel)]="findValue"
          class="global-input input-find"
-         placeholder="Find a list by name" type="text">
+         placeholder="Find a list" type="text">
   <div class="choice-list-block">
     <button (click)="duplicateListNumber(selectedDupListNumber)"
             [disabled]="!selectedDupListNumber"
@@ -48,7 +48,7 @@
     </div>
   </div>
   <button (click)="deleteAllList()"
-          class="global-btn">Delete all list's
+          class="global-btn btn-delete-all">Delete all list's
   </button>
 
 </div>

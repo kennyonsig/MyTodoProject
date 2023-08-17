@@ -1,22 +1,28 @@
 <form (ngSubmit)="signUp()" *ngIf="!successReg" [formGroup]="loginForm" class="sign-up-block">
   <p class="sign-up sign-up-element">Sign Up on MyToDo</p>
   <input
-    class="email sign-up-element global-input"
+    autocomplete="email"
+    class="sign-up-email sign-up-element global-input"
     formControlName="email"
+    name="email"
     placeholder="Enter email"
     type="email">
   <input
-    class="password sign-up-element global-input"
+    autocomplete="new-password"
+    class="sign-up-password sign-up-element global-input"
     formControlName="password"
+    name="password"
     placeholder="Enter a password"
     type="password">
   <input [class.error-border]="loginForm.errors?.['passwordMatchError']"
-         class="repeat-password sign-up-element global-input"
+         autocomplete="new-password"
+         class="sign-up-repeat-password sign-up-element global-input"
          formControlName="repeatPassword"
+         name="repeatPassword"
          placeholder="Repeat the password"
          type="password">
   <div class="link-button-block">
-    <a class="auth "
+    <a class="auth global-btn"
        routerLink="/sign-in">
       Sign In
     </a>
@@ -31,6 +37,6 @@
   <p class="success-element">Check your mailbox</p>
   <p class="success-element">We’ve sent you a verification link to the email address {{email}}</p>
   <button class="success-element btn-resending global-btn">Resending</button>
-  <a class="auth success-sign-in success-element" routerLink="/sign-in">Sign In</a>
+  <a class="auth global-btn success-sign-in success-element" routerLink="/sign-in">Sign In</a>
 </div>
 

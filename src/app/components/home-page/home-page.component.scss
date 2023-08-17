@@ -1,34 +1,11 @@
 .home-page {
   display: flex;
-  justify-content: space-around;
   align-items: center;
   font-size: 24px;
+  position: absolute;
+  top: 44%;
+  right: 28%;
+  width: 50%;
+  justify-content: space-around;
 }
 
-.left-section, .right-section {
-  flex: 1;
-  text-align: center;
-}
-
-.home-page-link {
-  display: block;
-  margin: 0 250px 10px;
-  background-color: rgba(157, 157, 157, 0.12);
-  border-radius: 5px;
-  color: rgb(88, 86, 86);
-  font-size: 20px;
-  padding: 10px 20px;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-
-  &:active {
-    background-color: #028982;
-  }
-
-  &:hover {
-    background-color: #10f4eb;
-    color: #1B365C;
-  }
-
-}

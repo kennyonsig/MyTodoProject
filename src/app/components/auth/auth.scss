@@ -1,31 +1,21 @@
 .auth {
-  background-color: rgba(157, 157, 157, 0.12);
-  border-radius: 5px;
-  color: rgb(88, 86, 86);
   font-size: 20px;
-  margin-right: 10px;
-  padding: 10px 20px;
-  transition: background-color 0.3s ease,
-  color 0.3s ease;
-
-  &:hover {
-    background-color: #10f4eb;
-    color: #1B365C;
-  }
-
-  &:active {
-    background-color: #028982;
-  }
 }
 
 .link-button-block {
-  display: inline-block;
+  display: flex;
+  min-width: 170px;
+  justify-content: space-around;
+  margin-bottom: 5px;
 }
 
 .login-btn:disabled, .confirm-btn:disabled {
-  background-color: rgba(221, 221, 221, 0.41);
-  color: rgba(221, 221, 221, 0.41);
   cursor: not-allowed;
+
+  &:after {
+    transform: scaleX(0);
+  }
+
 }
 
 
