@@ -1,4 +1,6 @@
-<div *ngFor="let list of lists$ | async" class="todo-list">
+<div (click)="selectClickList(list.listNumber)"
+     *ngFor="let list of lists$ | async"
+     class="todo-list">
   <div class="list-info-wrapper">
 
     <ng-container *ngIf="!list.listEdit">

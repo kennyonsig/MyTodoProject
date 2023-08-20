@@ -7,9 +7,10 @@
       Log Out
     </button>
   </header>
-  <app-input (outEnterTask)="addTask($event.taskDescription, $event.taskTime, $event.listNumber)"></app-input>
+  <app-input (outEnterTask)="addTask($event.taskDescription, $event.taskTime, $event.listNumber)"
+             [selectedListNumber]="selectedListNum"></app-input>
   <main>
     <app-task-button></app-task-button>
-    <app-todo-list></app-todo-list>
+    <app-todo-list (listSelected)="selectedListNum = $event"></app-todo-list>
   </main>
 </div>

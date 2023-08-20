@@ -15,6 +15,10 @@
 
   &-disable:disabled {
     cursor: not-allowed;
+
+    &:after {
+      transform: scaleX(0);
+    }
   }
 
   &-add-list {

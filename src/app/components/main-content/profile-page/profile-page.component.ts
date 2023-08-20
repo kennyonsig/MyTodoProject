@@ -8,6 +8,8 @@ import { TaskService } from '../../../service/task.service';
 
 })
 export class ProfilePageComponent {
+  selectedListNum: number;
+
   constructor(private taskService: TaskService) {
   }
 

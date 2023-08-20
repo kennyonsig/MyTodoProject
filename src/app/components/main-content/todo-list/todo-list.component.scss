@@ -4,6 +4,12 @@
     min-width: 380px;
     font-size: 20px;
     flex-basis: 24%;
+    border-radius: 4px;
+
+    &:hover {
+      box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+
+    }
   }
 
   &-name {
@@ -13,6 +19,7 @@
       max-width: 100px;
     }
   }
+
 }
 
 .btn-edit-save {
@@ -26,8 +33,8 @@
   &-info-wrapper {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 5px;
     border: solid #ccc 1px;
+    border-bottom: transparent;
     border-radius: 5px 5px 0 0;
     align-items: center;
   }
@@ -37,7 +44,6 @@
     min-height: 50px;
     background: white;
     overflow: hidden;
-    margin-bottom: 4px;
   }
 
   &-date-input {
@@ -52,6 +58,7 @@
     border: solid #ccc 1px;
     border-radius: 0 0 5px 5px;
     min-height: 30px;
+    border-top: transparent;
   }
 }
 
@@ -77,5 +84,7 @@ app-task, app-list-btn {
 .collapse-expand-list {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 3px;
+  padding-bottom: 3px;
+  border-right: solid 1px #ccc;
+  border-left: solid 1px #ccc;
 }

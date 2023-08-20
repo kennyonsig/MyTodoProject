@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ListService } from '../../../service/list.service';
 
 
@@ -8,15 +8,16 @@ import { ListService } from '../../../service/list.service';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent {
+  isDisabled = true;
+  isListNotFound = false;
+  taskTime: string;
+
+  @Input() selectedListNumber: number;
   @Output() readonly outEnterTask = new EventEmitter<{
     taskDescription: string;
     taskTime: string;
     listNumber: number;
   }>();
-  isDisabled = true;
-  isListNotFound = false;
-  taskTime: string;
-  selectedListNumber: number;
 
   constructor(private listService: ListService) {
   }
@@ -45,5 +46,4 @@ export class InputComponent {
       this.taskTime = '';
     }
   }
-
 }

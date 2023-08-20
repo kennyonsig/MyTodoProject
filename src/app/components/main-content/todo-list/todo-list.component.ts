@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IList } from '../../../model/IList';
 import { TaskService } from '../../../service/task.service';
 import { ITask } from '../../../model/ITask';
@@ -22,6 +22,7 @@ export class TodoListComponent implements OnInit {
 
   lists$: Observable<IList[]>;
   dateListForm: FormGroup;
+  @Output() readonly listSelected = new EventEmitter<number>();
 
   constructor(
     private taskService: TaskService,
@@ -53,6 +54,10 @@ export class TodoListComponent implements OnInit {
   collapseExpandList(list: IList) {
     list.listExpand = !list.listExpand;
     this.listService.updListInfo(list);
+  }
+
+  selectClickList(selectedListNumber: number) {
+    this.listSelected.emit(selectedListNumber);
   }
 }
 
