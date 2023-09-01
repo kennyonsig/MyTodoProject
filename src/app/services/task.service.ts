@@ -18,8 +18,8 @@ export class TaskService {
       taskDescription: taskDescription,
       taskTime: taskTime,
       taskNumber: this.tasks$.getValue().length + 1,
-      taskCompleted: false,
-      taskEdit: false
+      isTaskCompleted: false,
+      isTaskEdit: false
     };
     const updatedTaskArr = [...this.tasks$.getValue(), newTask];
     const list = lists.find((list) => list.listNumber === listNumber);

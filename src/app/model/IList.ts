@@ -5,6 +5,7 @@ export interface IList {
   listName: string;
   listNumber: number;
   tasksArr: ITask[];
-  listEdit: boolean;
-  listExpand: boolean;
+  isListEdit: boolean;
+  isListExpand: boolean;
+  isListSelected: boolean;
 }

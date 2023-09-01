@@ -1,27 +1,34 @@
-<form (ngSubmit)="login()" class="sign-in-form">
-  <p class="sign-in sign-in-element">Sign In on MyToDo </p>
-  <input [(ngModel)]="email"
-         autocomplete="email"
-         class="email sign-in-element global-input"
-         name="email"
-         placeholder="Enter the email"
-         type="email">
-  <input [(ngModel)]="password"
-         autocomplete="password"
-         class="password sign-in-element global-input"
-         name="password"
-         placeholder="Enter the password"
-         type="password">
-  <div *ngIf="errorAuth" class="error-auth">
-    {{ errorAuth }}
-  </div>
-  <div class="link-button-block">
-    <a class="sign-up-link global-btn" routerLink="/sign-up">Sign Up</a>
-    <button [disabled]="!email || !password"
-            class="global-btn login-btn">Login
-    </button>
-  </div>
-</form>
-
-
+<div class="register-wrapper">
+  <form (ngSubmit)="login()" id="formContent">
+    <p class="sign-in">Sign In on MyToDo </p>
+    <a class="active sign-link" routerLink="/sign-in"> Sign In </a>
+    <a class="underlineHover sign-link" routerLink="/sign-up">Sign Up </a>
+    <input [(ngModel)]="email"
+           autocomplete="email"
+           class="input-login-form"
+           name="email"
+           placeholder="Email"
+           type="email">
+    <div class="password-block">
+      <input [(ngModel)]="password"
+             [type]="showHidePassword"
+             autocomplete="password"
+             class="input-login-form"
+             name="password"
+             placeholder="password">
+      <button (click)="toggleShowHidePassword()" class="show-hide-password" type="button">
+        <fa-icon [icon]="lockIcon"></fa-icon>
+      </button>
+    </div>
+    <input [disabled]="!email || !password"
+           class="input-login"
+           type="submit"
+           value="Log In">
+    <div *ngIf="errorAuth"
+         class="error-auth">{{ errorAuth }}</div>
+    <div id="formFooter">
+      <a class="underlineHover forgot-password-link" href="#">Forgot Password?</a>
+    </div>
+  </form>
+</div>
 

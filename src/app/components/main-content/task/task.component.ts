@@ -3,7 +3,7 @@ import { ITask } from '../../../model/ITask';
 import { faArrowsV } from '@fortawesome/free-solid-svg-icons/faArrowsV';
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
-import { TaskService } from '../../../service/task.service';
+import { TaskService } from '../../../services/task.service';
 
 @Component({
   selector: 'app-task',
@@ -24,7 +24,7 @@ export class TaskComponent {
   }
 
   completeTask(task: ITask) {
-    task.taskCompleted = !task.taskCompleted;
+    task.isTaskCompleted = !task.isTaskCompleted;
   }
 
   removeTask(task: ITask) {
@@ -32,11 +32,11 @@ export class TaskComponent {
   }
 
   editTaskInfo(task: ITask) {
-    task.taskEdit = true;
+    task.isTaskEdit = true;
   }
 
   saveTaskInfo(task: ITask) {
-    task.taskEdit = false;
+    task.isTaskEdit = false;
     this.taskService.updTaskInfo(task);
   }
 }

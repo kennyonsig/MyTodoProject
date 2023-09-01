@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { matchPassword } from '../matchpassword.validator';
-import { HttpClient } from '@angular/common/http';
+import { IUsersAuth } from '../../../model/IUsersAuth';
+import { AuthService } from '../../../services/auth.service';
+import { faLock, faUnlock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,12 +11,13 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-
+  showHidePassword = 'password';
+  email = 'sds';
   loginForm: FormGroup;
   successReg = false;
-  email: string;
+  lockIcon = faLock;
 
-  constructor(private http: HttpClient) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -27,19 +30,18 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp() {
-    const formData = this.loginForm.value;
-
-    this.http.post('url', formData).subscribe({
-      next: response => {
-        this.successReg = true;
-        this.email = formData.email;
-        console.log(response);
-      },
-      error: error => {
-        this.successReg = true; //Якобы успешная отправка данных на сервер
-        console.log(error);
-      }
-    });
+    const { email, password } = this.loginForm.value;
+    const user: IUsersAuth = {
+      userEmail: email,
+      userPassword: password,
+      userToken: Math.random().toString()
+    };
+    this.authService.saveUser(user);
+    this.successReg = true;
   }
 
+  toggleShowHidePassword() {
+    this.showHidePassword = this.showHidePassword === 'password' ? 'text' : 'password';
+    this.lockIcon = this.lockIcon === faLock ? faUnlock : faLock;
+  }
 }

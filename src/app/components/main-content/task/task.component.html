@@ -1,4 +1,4 @@
-<div *ngIf="!task.taskEdit" [class.completed]="task.taskCompleted" class="task">
+<div *ngIf="!task.isTaskEdit" [class.completed]="task.isTaskCompleted" class="task">
   <input (click)="completeTask(task)" class=" task-el" type="checkbox">
   <p class="task-number task-el">{{ taskIndex }}</p>
   <button (click)="editTaskInfo(task)" class="btn-edit-save task-el">
@@ -10,7 +10,7 @@
   <fa-icon [icon]="dragArrowsV" class="drag-icon"></fa-icon>
 </div>
 
-<div *ngIf="task.taskEdit" [class.completed]="task.taskCompleted" class="task">
+<div *ngIf="task.isTaskEdit" [class.completed]="task.isTaskCompleted" class="task">
   <input (click)="completeTask(task)" class="task-el" type="checkbox">
   <p class="task-number task-el">{{ taskIndex }}</p>
   <button class="btn-edit-save task-el">

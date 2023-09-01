@@ -5,10 +5,10 @@
     font-size: 20px;
     flex-basis: 24%;
     border-radius: 4px;
+    transition: all 0.3s ease-in-out;;
 
     &:hover {
-      box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
-
+      box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6)
     }
   }
 
@@ -19,7 +19,10 @@
       max-width: 100px;
     }
   }
+}
 
+.listSelected {
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
 }
 
 .btn-edit-save {
@@ -88,3 +91,4 @@ app-task, app-list-btn {
   border-right: solid 1px #ccc;
   border-left: solid 1px #ccc;
 }
+

@@ -1,42 +1,61 @@
-<form (ngSubmit)="signUp()" *ngIf="!successReg" [formGroup]="loginForm" class="sign-up-block">
-  <p class="sign-up sign-up-element">Sign Up on MyToDo</p>
-  <input
-    autocomplete="email"
-    class="sign-up-email sign-up-element global-input"
-    formControlName="email"
-    name="email"
-    placeholder="Enter email"
-    type="email">
-  <input
-    autocomplete="new-password"
-    class="sign-up-password sign-up-element global-input"
-    formControlName="password"
-    name="password"
-    placeholder="Enter a password"
-    type="password">
-  <input [class.error-border]="loginForm.errors?.['passwordMatchError']"
-         autocomplete="new-password"
-         class="sign-up-repeat-password sign-up-element global-input"
-         formControlName="repeatPassword"
-         name="repeatPassword"
-         placeholder="Repeat the password"
-         type="password">
-  <div class="link-button-block">
-    <a class="auth global-btn"
-       routerLink="/sign-in">
-      Sign In
-    </a>
-    <button [disabled]="loginForm.invalid"
-            class="auth global-btn confirm-btn">Confirm
-    </button>
-  </div>
-</form>
+<div class="register-wrapper">
+  <form (ngSubmit)="signUp()" *ngIf="!successReg" [formGroup]="loginForm" id="formContent">
+    <p class="sign-up">Sign Up on MyToDo</p>
+    <a class="underlineHover sign-link"
+       routerLink="/sign-in">Sign In</a>
+    <a class="active sign-link"
+       routerLink="/sign-up">Sign Up</a>
+    <input
+      autocomplete="email"
+      class="input-login-form"
+      formControlName="email"
+      id="email"
+      name="login"
+      placeholder="Email"
+      type="email">
+    <div class="password-block">
+      <input
+        [type]="showHidePassword"
+        autocomplete="new-password"
+        class="input-login-form"
+        formControlName="password"
+        id="password"
+        name="login"
+        placeholder="Password">
+      <button (click)="toggleShowHidePassword()" class="show-hide-password" type="button">
+        <fa-icon [icon]="lockIcon"></fa-icon>
+      </button>
+    </div>
+    <div class="password-block">
+      <input
+        [class.error-border]="loginForm.errors?.['passwordMatchError']"
+        [type]="showHidePassword"
+        autocomplete="new-password"
+        class="input-login-form"
+        formControlName="repeatPassword"
+        id="password-repeat"
+        name="login"
+        placeholder="Repeat the password">
+      <button (click)="toggleShowHidePassword()" class="show-hide-password" type="button">
+        <fa-icon [icon]="lockIcon"></fa-icon>
+      </button>
+    </div>
+    <input
+      [disabled]="loginForm.invalid"
+      class="input-register"
+      type="submit"
+      value="register">
+  </form>
+</div>
 
-<div *ngIf="successReg" class="sign-up-block success-reg">
-  <h2 class="success-element">Success registration</h2>
-  <p class="success-element">Check your mailbox</p>
-  <p class="success-element">We’ve sent you a verification link to the email address {{email}}</p>
-  <button class="success-element btn-resending global-btn">Resending</button>
-  <a class="auth global-btn success-sign-in success-element" routerLink="/sign-in">Sign In</a>
+<div *ngIf="successReg" class="success-wrapper">
+  <div class="success-wrapper-content">
+    <h2 class="success-wrapper-element">Success registration</h2>
+    <p class="success-wrapper-element">Check your mailbox</p>
+    <p class="success-wrapper-element">We’ve sent you a verification link to the email
+                                       address {{email}}</p>
+    <button class="global-btn underlineHover btn-resending">Resending</button>
+    <a class="sign-link underlineHover" routerLink="/sign-in">Sign In</a>
+  </div>
 </div>
 

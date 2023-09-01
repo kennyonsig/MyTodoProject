@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { ListService } from '../../service/list.service';
+import { ListService } from '../../services/list.service';
 import { IList } from '../../model/IList';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
+
 
 @Component({
   selector: 'app-list-btn',
@@ -9,22 +11,22 @@ import { IList } from '../../model/IList';
 })
 export class ListBtnComponent {
   @Input() listNumber: number;
-
+  starIcon = faStar;
   list: IList;
+
 
   constructor(private listService: ListService) {
   }
 
-
-  dupList(){
-    this.listService.duplicateList(this.listNumber)
+  dupList() {
+    this.listService.duplicateList(this.listNumber);
   }
 
-  delList(){
-    this.listService.deleteList(this.listNumber)
+  delList() {
+    this.listService.deleteList(this.listNumber);
   }
 
-  clearList(){
-    this.listService.clearList(this.listNumber)
+  clearList() {
+    this.listService.clearList(this.listNumber);
   }
 }

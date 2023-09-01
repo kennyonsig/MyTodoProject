@@ -44,8 +44,9 @@ export class ListService {
       listName: 'ToDo' + `#${currentListLength + 1}`,
       listNumber: currentListLength + 1,
       tasksArr: [],
-      listEdit: true,
-      listExpand: false
+      isListEdit: true,
+      isListExpand: false,
+      isListSelected: false,
     };
     const updatedListsArr: IList[] = [...this.getLists(), newList];
 

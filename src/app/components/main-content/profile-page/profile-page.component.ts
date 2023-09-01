@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { TaskService } from '../../../service/task.service';
+import { TaskService } from '../../../services/task.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -10,10 +12,14 @@ import { TaskService } from '../../../service/task.service';
 export class ProfilePageComponent {
   selectedListNum: number;
 
-  constructor(private taskService: TaskService) {
+  constructor(private taskService: TaskService, private router: Router, private authService: AuthService) {
   }
 
   addTask(taskDescription: string, taskTime: string, listNumber: number) {
     this.taskService.addTaskToList(taskDescription, taskTime, listNumber);
+  }
+
+  doLogOut() {
+    this.authService.logOut();
   }
 }

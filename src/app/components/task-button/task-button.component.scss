@@ -2,7 +2,7 @@
   &-block {
     display: flex;
     flex-direction: column;
-    min-width: 100px;
+    min-width: 144px;
 
     button {
       text-align: center;
@@ -15,6 +15,7 @@
 
   &-disable:disabled {
     cursor: not-allowed;
+    color: rgba(121, 119, 119, 0.53);
 
     &:after {
       transform: scaleX(0);
@@ -47,4 +48,8 @@
     margin-bottom: 10px;
     max-width: 100px;
   }
+}
+
+.underlineHover {
+  color: black;
 }

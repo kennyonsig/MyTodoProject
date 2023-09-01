@@ -1,9 +1,10 @@
-<div (click)="selectClickList(list.listNumber)"
+<div (click)="selectClickList(list.listNumber, list)"
      *ngFor="let list of lists$ | async"
+     [ngClass]="{'listSelected': list.isListSelected}"
      class="todo-list">
   <div class="list-info-wrapper">
 
-    <ng-container *ngIf="!list.listEdit">
+    <ng-container *ngIf="!list.isListEdit">
       <p class="todo-number">{{ list.listNumber }}</p>
       <button (click)="editListInfo(list)" class="btn-edit-save">
         <fa-icon [icon]="editIcon"></fa-icon>
@@ -12,7 +13,7 @@
       <p class="todo-date">{{ list.listDate | date:'dd.MM.yyyy' }}</p>
       <fa-icon [icon]="dragIcon" class="drag-icon"></fa-icon>
     </ng-container>
-    <ng-container *ngIf="list.listEdit">
+    <ng-container *ngIf="list.isListEdit">
       <p class="todo-number">{{ list.listNumber }}</p>
       <button (click)="saveListInfo(list)" class="btn-edit-save">
         <fa-icon [icon]="saveIcon"></fa-icon>
@@ -36,9 +37,11 @@
   <div class="collapse-expand-list">
     <button
       (click)="collapseExpandList(list)"
-      class="global-btn">{{ list.listExpand ? 'Expand list' : 'Collapse list' }}</button>
+      class="global-btn">{{ list.isListExpand ? 'Expand list' : 'Collapse list' }}
+    </button>
+    <p>Number of tasks {{ numberOfTask }}</p>
   </div>
-  <ul *ngIf="!list.listExpand" class="list-block">
+  <ul *ngIf="!list.isListExpand" class="list-block">
     <li
       *ngFor="let task of list.tasksArr; let i = index"
       class="task-box-li">

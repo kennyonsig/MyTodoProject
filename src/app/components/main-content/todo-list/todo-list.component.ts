@@ -1,12 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IList } from '../../../model/IList';
-import { TaskService } from '../../../service/task.service';
+import { TaskService } from '../../../services/task.service';
 import { ITask } from '../../../model/ITask';
 
 import { faArrows } from '@fortawesome/free-solid-svg-icons/faArrows';
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
-import { ListService } from '../../../service/list.service';
+import { ListService } from '../../../services/list.service';
 import { Observable } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -20,8 +20,10 @@ export class TodoListComponent implements OnInit {
   editIcon = faEdit;
   saveIcon = faCheck;
 
+
   lists$: Observable<IList[]>;
   dateListForm: FormGroup;
+  numberOfTask: number;
   @Output() readonly listSelected = new EventEmitter<number>();
 
   constructor(
@@ -42,21 +44,24 @@ export class TodoListComponent implements OnInit {
   }
 
   editListInfo(list: IList) {
-    list.listEdit = true;
+    list.isListEdit = true;
   }
 
   saveListInfo(list: IList) {
-    list.listEdit = false;
+    list.isListEdit = false;
     list.listDate = this.dateListForm.get('presentDate')?.value;
     this.listService.updListInfo(list);
   }
 
   collapseExpandList(list: IList) {
-    list.listExpand = !list.listExpand;
+    list.isListExpand = !list.isListExpand;
     this.listService.updListInfo(list);
   }
 
-  selectClickList(selectedListNumber: number) {
+  selectClickList(selectedListNumber: number, list: IList) {
+    this.listService.getLists()
+      .forEach((list: IList) => list.isListSelected = false);
+    list.isListSelected = true;
     this.listSelected.emit(selectedListNumber);
   }
 }

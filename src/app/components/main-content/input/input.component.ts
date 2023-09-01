@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ListService } from '../../../service/list.service';
+import { ListService } from '../../../services/list.service';
 
 
 @Component({

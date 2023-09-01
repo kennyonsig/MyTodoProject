@@ -1,5 +1,5 @@
 <div class="btn-block">
-  <button (click)="addNewToDoList()" class="global-btn btn-add-list">Add ToDo list
+  <button (click)="addNewToDoList()" class="global-btn btn-add-list underlineHover">Add ToDo list
   </button>
   <input (input)="findListInput()"
          [(ngModel)]="findValue"
@@ -8,7 +8,7 @@
   <div class="choice-list-block">
     <button (click)="duplicateListNumber(selectedDupListNumber)"
             [disabled]="!selectedDupListNumber"
-            class="btn-disable global-btn btn-duplicate ">Duplicate list:
+            class="btn-disable global-btn underlineHover">Duplicate list:
     </button>
     <input [(ngModel)]="selectedDupListNumber"
            class="global-input input-duplicate"
@@ -22,7 +22,7 @@
   <div class="choice-list-block">
     <button (click)="deleteListNumber(selectedDelListNumber)"
             [disabled]="!selectedDelListNumber"
-            class="btn-disable global-btn btn-delete">Delete list:
+            class="btn-disable global-btn btn-delete underlineHover">Delete list:
     </button>
     <input [(ngModel)]="selectedDelListNumber"
            class="global-input input-delete"
@@ -36,7 +36,7 @@
   <div class="choice-list-block">
     <button (click)="clearListNumber(selectedClearListNumber)"
             [disabled]="!selectedClearListNumber"
-            class="btn-disable global-btn btn-delete">Clear list:
+            class="btn-disable global-btn btn-delete underlineHover">Clear list:
     </button>
     <input [(ngModel)]="selectedClearListNumber"
            class="global-input input-delete"
@@ -48,7 +48,7 @@
     </div>
   </div>
   <button (click)="deleteAllList()"
-          class="global-btn btn-delete-all">Delete all list's
+          class="global-btn btn-delete-all underlineHover">Delete all list's
   </button>
 
 </div>

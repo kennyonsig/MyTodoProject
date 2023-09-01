@@ -5,17 +5,15 @@
   text-decoration: none;
   font-family: "Georgia", Georgia, serif;
   letter-spacing: -0.6px;
-  word-spacing: -1.2px
+  word-spacing: -1.2px;
+  box-sizing: border-box;
+
+
 }
 
 html, body {
   min-height: 100vh;
 }
-
-a:visited {
-  color: inherit;
-}
-
 
 .global-btn {
   background-color: transparent;
@@ -23,18 +21,6 @@ a:visited {
   cursor: pointer;
   transition: all .1s linear;
 
-  &:after {
-    content: '';
-    display: block;
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.5);
-    transform: scaleX(0);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  &:hover::after {
-    transform: scaleX(1);
-  }
 }
 
 .global-input {
@@ -54,5 +40,29 @@ a:visited {
   &:focus {
     border: 1px solid black;
   }
+
+}
+
+
+.underlineHover {
+  color: rgba(110, 110, 110, 0.62);
+  
+  &:after {
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #56baed;
+    content: "";
+    transition: width .5s;
+  }
+
+  &:hover {
+    color: #0d0d0d;
+
+    &:after {
+      width: 100%;
+    }
+  }
+
 
 }

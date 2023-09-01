@@ -1,50 +1,41 @@
 @import '../auth.scss';
 
 .sign-up {
-  font-size: 50px;
-
-  &-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-
-  &-element:not(.auth) {
-    margin-bottom: 10px;
-    padding: 10px;
-  }
-
-  &-email, &-password, &-repeat-password {
-    text-align: center;
-  }
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 
 .error-border {
-  border: 1px solid rgba(255, 0, 0, 0.33);
-  box-shadow: 0 0 11px -4px rgb(255, 0, 0);
-  transition: all 0.3s ease-out;
-  border-radius: 4px;
+  border: 2px solid red;
 }
 
-.success {
-  &-reg {
-    font-size: 20pt;
+.success-wrapper {
+  display: flex;
+  justify-content: center;
+
+  &-content {
+    border-radius: 10px;
+    background: #fff;
+    padding: 30px;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, .3);
+    text-align: center;
   }
 
   &-element {
-    margin-bottom: 10px;
-  }
-
-  &-sign-in {
-    margin: 0;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 23px;
+    margin-bottom: 30px;
   }
 }
 
 .btn-resending {
-  padding: 10px;
+  font-size: 16px;
+  text-transform: uppercase;
 }
 
-
+.input-register {
+  margin: 5px 20px 30px;
+}
 
