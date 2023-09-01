@@ -18,6 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { ListBtnComponent } from './components/list-btn/list-btn.component';
+import { ListFilterComponent } from './components/main-content/list-filter/list-filter.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ListBtnComponent } from './components/list-btn/list-btn.component';
     SignInComponent,
     AutofocusDirective,
     ListBtnComponent,
+    ListFilterComponent,
   ],
   imports: [
     BrowserModule,

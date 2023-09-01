@@ -1,9 +1,9 @@
-header, app-todo-list, main {
+header, main, app-todo-list {
   display: flex;
 }
 
 main {
-  justify-content: flex-start;
+  gap: 10px;
 }
 
 header {
@@ -14,14 +14,14 @@ header {
 }
 
 app-todo-list {
+  gap: 10px;
   flex-wrap: wrap;
   align-items: flex-start;
   flex-basis: 90%;
+  justify-content: center;
 }
-
 
 app-task-button {
   flex-basis: 10%;
-  margin-right: 10%;
 }
 
