@@ -11,6 +11,7 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
 })
 export class ListBtnComponent {
   @Input() listNumber: number;
+  @Input() dateOfCreation: Date;
   starIcon = faStar;
   list: IList;
 

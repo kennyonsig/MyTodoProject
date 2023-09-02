@@ -9,6 +9,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { ListService } from '../../../services/list.service';
 import { Observable } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-todo-list',
@@ -16,14 +17,12 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-  dragIcon = faArrows;
-  editIcon = faEdit;
-  saveIcon = faCheck;
-
+  readonly dragIcon = faArrows;
+  readonly editIcon = faEdit;
+  readonly saveIcon = faCheck;
 
   lists$: Observable<IList[]>;
   dateListForm: FormGroup;
-  numberOfTask: number;
   @Output() readonly listSelected = new EventEmitter<number>();
 
   constructor(
@@ -32,11 +31,21 @@ export class TodoListComponent implements OnInit {
   ) {
   }
 
+  getCompletedTasksPercentage(list: IList): number {
+    const totalTasksCount = list.tasksArr.length;
+    if (totalTasksCount === 0) {
+      return 100;
+    }
+    const completedTasksCount = list.tasksArr.filter(task => task.isTaskCompleted).length;
+    return (completedTasksCount / totalTasksCount) * 100;
+  }
+
   ngOnInit() {
     this.lists$ = this.listService.lists$;
     this.dateListForm = new FormGroup({
       'presentDate': new FormControl((new Date()).toISOString().substring(0, 10)),
     });
+
   }
 
   removeTask(task: ITask, listNumber: number) {
@@ -49,7 +58,7 @@ export class TodoListComponent implements OnInit {
 
   saveListInfo(list: IList) {
     list.isListEdit = false;
-    list.listDate = this.dateListForm.get('presentDate')?.value;
+    list.listDeadLine = this.dateListForm.get('presentDate')?.value;
     this.listService.updListInfo(list);
   }
 
@@ -63,6 +72,11 @@ export class TodoListComponent implements OnInit {
       .forEach((list: IList) => list.isListSelected = false);
     list.isListSelected = true;
     this.listSelected.emit(selectedListNumber);
+  }
+
+  drop(event: CdkDragDrop<ITask[]>, list: IList) {
+    moveItemInArray(list.tasksArr, event.previousIndex, event.currentIndex);
+    this.listService.updListInfo(list);
   }
 }
 

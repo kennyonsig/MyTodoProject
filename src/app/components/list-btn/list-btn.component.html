@@ -1,10 +1,9 @@
 <div class="list-btn-wrapper">
-  <button (click)="dupList()" class="global-btn">Duplicate</button>
-  <button (click)="delList()" class="global-btn">Delete</button>
-  <button (click)="clearList()" class="global-btn">Clear the list</button>
+  <button (click)="dupList()" class="global-btn underlineHover ">Duplicate</button>
+  <button (click)="delList()" class="global-btn underlineHover">Delete</button>
+  <button (click)="clearList()" class="global-btn underlineHover">Clear the list</button>
+  <p>Date of creation {{ dateOfCreation | date:'dd.MM.yyyy' }}</p>
   <div class="favorite-list-block">
-    <!--    <label [for]="'favorite-list-' + listNumber" class="label-favorite-list">Add to favorites</label>-->
-
     <fa-icon [icon]="starIcon">
       <input [id]="'favorite-list-' + listNumber" type="checkbox">
     </fa-icon>

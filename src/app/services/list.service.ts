@@ -6,9 +6,9 @@ import { IList } from '../model/IList';
   providedIn: 'root'
 })
 export class ListService {
-  listDate = new Date();
-
   public lists$ = new BehaviorSubject<IList[]>([]);
+  readonly listDate = new Date();
+  listDeadLine = new Date();
 
   constructor() {
     const savedLists = localStorage.getItem('lists');
@@ -41,6 +41,7 @@ export class ListService {
     const currentListLength = this.getLists().length;
     const newList: IList = {
       listDate: this.listDate,
+      listDeadLine: this.listDeadLine,
       listName: 'ToDo' + `#${currentListLength + 1}`,
       listNumber: currentListLength + 1,
       tasksArr: [],

@@ -1,5 +1,5 @@
 <div *ngIf="!task.isTaskEdit" [class.completed]="task.isTaskCompleted" class="task">
-  <input (click)="completeTask(task)" class=" task-el" type="checkbox">
+  <input (click)="completeTask(task)" class="task-el" type="checkbox">
   <p class="task-number task-el">{{ taskIndex }}</p>
   <button (click)="editTaskInfo(task)" class="btn-edit-save task-el">
     <fa-icon [icon]="editIcon"></fa-icon>

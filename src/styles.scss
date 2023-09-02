@@ -25,7 +25,8 @@ html, body {
 
 .global-input {
   font-size: 15px;
-  border: 1px solid transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   transition: border-color 0.3s ease-in;
   border-radius: 4px;
   outline: none;
@@ -33,7 +34,7 @@ html, body {
   padding-left: 3px;
 
   &:hover {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.86);
     transition: border-color 0.3s ease-out;
   }
 
@@ -46,7 +47,7 @@ html, body {
 
 .underlineHover {
   color: rgba(110, 110, 110, 0.62);
-  
+
   &:after {
     display: block;
     width: 0;
@@ -63,6 +64,4 @@ html, body {
       width: 100%;
     }
   }
-
-
 }

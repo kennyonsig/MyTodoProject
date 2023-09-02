@@ -1,17 +1,35 @@
 <div class="profile-block">
   <header>
-    <h1>
-      MY TODO
-    </h1>
-    <button (click)="doLogOut()" class="log-out global-btn underlineHover">
-      Log Out
-    </button>
+    <div class="title-and-logout">
+      <h1 class="title">
+        MY TODO
+      </h1>
+      <button (click)="doLogOut()" class="log-out global-btn underlineHover">
+        Log Out
+      </button>
+    </div>
+    <div class="input-task">
+      <app-input (outEnterTask)="addTask($event.taskDescription, $event.taskTime, $event.listNumber)"
+                 [selectedListNumber]="selectedListNum">
+      </app-input>
+    </div>
   </header>
-  <app-input (outEnterTask)="addTask($event.taskDescription, $event.taskTime, $event.listNumber)"
-             [selectedListNumber]="selectedListNum"></app-input>
-  <main>
-    <app-task-button></app-task-button>
-    <app-todo-list (listSelected)="selectedListNum = $event"></app-todo-list>
-    <app-list-filter></app-list-filter>
-  </main>
+  <div class="left-btn-block">
+    <section class="main-content">
+      <div class="task-button-block">
+        <app-task-button></app-task-button>
+      </div>
+      <main>
+        <app-todo-list (listSelected)="selectedListNum = $event"></app-todo-list>
+      </main>
+      <div class="list-filter-block">
+        <app-list-filter></app-list-filter>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <div>
+      <p> some information</p>
+    </div>
+  </footer>
 </div>

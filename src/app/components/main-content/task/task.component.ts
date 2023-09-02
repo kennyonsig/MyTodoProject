@@ -11,13 +11,12 @@ import { TaskService } from '../../../services/task.service';
   styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent {
-  dragArrowsV = faArrowsV;
-  editIcon = faEdit;
-  saveIcon = faCheck;
+  readonly dragArrowsV = faArrowsV;
+  readonly editIcon = faEdit;
+  readonly saveIcon = faCheck;
 
   @Input() task: ITask;
   @Input() taskIndex: number;
-
   @Output() readonly taskRemove: EventEmitter<ITask> = new EventEmitter<ITask>();
 
   constructor(private taskService: TaskService) {
@@ -25,6 +24,7 @@ export class TaskComponent {
 
   completeTask(task: ITask) {
     task.isTaskCompleted = !task.isTaskCompleted;
+    this.taskService.updTaskInfo(task);
   }
 
   removeTask(task: ITask) {

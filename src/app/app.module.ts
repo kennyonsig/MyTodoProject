@@ -19,6 +19,7 @@ import { CommonModule } from '@angular/common';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { ListBtnComponent } from './components/list-btn/list-btn.component';
 import { ListFilterComponent } from './components/main-content/list-filter/list-filter.component';
+import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -44,6 +45,8 @@ import { ListFilterComponent } from './components/main-content/list-filter/list-
     FontAwesomeModule,
     ReactiveFormsModule,
     CommonModule,
+    CdkDropList,
+    CdkDrag,
   ],
   providers: [],
 
