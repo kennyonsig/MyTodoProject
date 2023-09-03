@@ -25,24 +25,22 @@ export class SignInComponent implements OnDestroy {
     this.loginSubscription = this.authService.checkLogin(this.email, this.password)
       .subscribe((result: boolean) => {
         if (result) {
-
           this.router.navigate(['/profile-page']);
         } else {
           this.errorAuth = 'Invalid email or password';
-          console.log('Invalid email or password');
         }
       });
+  }
+
+  toggleShowHidePassword() {
+    this.showHidePassword = this.showHidePassword === 'password' ? 'text' : 'password';
+    this.lockIcon = this.lockIcon === faLock ? faUnlock : faLock;
   }
 
   ngOnDestroy() {
     if (this.loginSubscription) {
       this.loginSubscription.unsubscribe();
     }
-  }
-
-  toggleShowHidePassword() {
-    this.showHidePassword = this.showHidePassword === 'password' ? 'text' : 'password';
-    this.lockIcon = this.lockIcon === faLock ? faUnlock : faLock;
   }
 }
 

@@ -1,9 +1,9 @@
 <div (click)="selectClickList(list.listNumber, list)"
      *ngFor="let list of lists$ | async"
      [ngClass]="{'listSelected': list.isListSelected}"
-     class="todo-list">
+     class="todo-list ">
   <div class="list-info-wrapper">
-<!--    шапка листа-->
+    <!--    шапка листа-->
     <ng-container *ngIf="!list.isListEdit">
       <p class="todo-number">{{ list.listNumber }}</p>
       <button (click)="editListInfo(list)" class="btn-edit-save">
@@ -12,7 +12,6 @@
       <p class="todo-name"> {{ list.listName }}</p>
       <p class="todo-date">Deadline {{ list.listDeadLine | date:'dd.MM.yyyy' }}</p>
       <p>Completed: {{ getCompletedTasksPercentage(list) }}%</p>
-      <fa-icon [icon]="dragIcon" class="drag-icon"></fa-icon>
     </ng-container>
     <!--    Редактирование шапки листа-->
     <ng-container *ngIf="list.isListEdit">
@@ -34,7 +33,6 @@
           type="date">
       </form>
       <p>Completed: {{ getCompletedTasksPercentage(list) }}%</p>
-      <fa-icon [icon]="dragIcon" class="drag-icon"></fa-icon>
     </ng-container>
   </div>
   <!--  свернуть развернуть список-->
@@ -46,8 +44,8 @@
     <p>Number of tasks {{ list.tasksArr.length }}</p>
   </div>
   <!--  задачи списка-->
-  <ul (cdkDropListDropped)="drop($event, list)" *ngIf="!list.isListExpand" cdkDropList
-      class="list-block example-list ">
+  <ul (cdkDropListDropped)="dropTask($event, list)" *ngIf="!list.isListExpand" cdkDropList
+      class="list-block example-list">
     <li
       *ngFor="let task of list.tasksArr; let i = index"
       cdkDrag class="task-box-li example-box">

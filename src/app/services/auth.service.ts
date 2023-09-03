@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedInValue: boolean;
+  isLoggedInValue: boolean;
 
   constructor(private router: Router) {
     this.isLoggedInValue = !!localStorage.getItem('token');
@@ -21,15 +21,15 @@ export class AuthService {
     const storedUsers = localStorage.getItem('users');
     const users: Array<IUsersAuth> = storedUsers ? JSON.parse(storedUsers) : [];
     const foundUser = users.find((user) => user.userEmail === email && user.userPassword === password);
+
     if (foundUser?.userToken) {
       this.isLoggedInValue = true;
-      localStorage.setItem('token', foundUser?.userToken);
-      return of(true);
-    } else {
-      console.log('Invalid email or password');
-      return of(false);
+      localStorage.setItem('token', foundUser.userToken);
     }
+
+    return of(foundUser?.userToken !== undefined);
   }
+
 
   logOut() {
     this.isLoggedInValue = false;
@@ -47,8 +47,6 @@ export class AuthService {
     users.push(user);
     localStorage.setItem('users', JSON.stringify(users));
   }
-
-
 }
 
 /*

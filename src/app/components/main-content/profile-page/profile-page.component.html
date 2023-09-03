@@ -9,9 +9,9 @@
       </button>
     </div>
     <div class="input-task">
-      <app-input (outEnterTask)="addTask($event.taskDescription, $event.taskTime, $event.listNumber)"
-                 [selectedListNumber]="selectedListNum">
-      </app-input>
+      <app-input-task (outEnterTask)="addTask($event.taskDescription, $event.taskTime, $event.listNumber)"
+                      [selectedListNumber]="selectedListNum">
+      </app-input-task>
     </div>
   </header>
   <div class="left-btn-block">
@@ -20,7 +20,11 @@
         <app-task-button></app-task-button>
       </div>
       <main>
-        <app-todo-list (listSelected)="selectedListNum = $event"></app-todo-list>
+        <app-list-page-btn (changeComponentEvent)="changeComponent($event)"></app-list-page-btn>
+        <app-todo-list (listSelected)="selectedListNum = $event"
+                       *ngIf="selectedComponent === 'todoList'"></app-todo-list>
+        <app-all-task *ngIf="selectedComponent === 'allTask'"></app-all-task>
+        <app-completed-list *ngIf="selectedComponent === 'completedList'"></app-completed-list>
       </main>
       <div class="list-filter-block">
         <app-list-filter></app-list-filter>

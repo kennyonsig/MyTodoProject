@@ -11,6 +11,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class ProfilePageComponent {
   selectedListNum: number;
+  selectedComponent: string = 'todoList'; // Компонент по умолчанию
 
   constructor(private taskService: TaskService, private router: Router, private authService: AuthService) {
   }
@@ -21,5 +22,9 @@ export class ProfilePageComponent {
 
   doLogOut() {
     this.authService.logOut();
+  }
+
+  changeComponent(component: string) {
+    this.selectedComponent = component;
   }
 }

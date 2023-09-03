@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ListService } from '../../services/list.service';
+import { ListService } from '../../../../services/list.service';
 
 @Component({
   selector: 'app-task-button',
@@ -51,12 +51,13 @@ export class TaskButtonComponent {
     }
   }
 
+  findListInput() {
+    this.listService.findList(this.findValue).subscribe(value => {
+      console.log(value);
+    });
+  }
+
   deleteAllList() {
     this.listService.deleteAllList();
   }
-
-  findListInput() {
-    console.log(this.findValue);
-  }
-
 }

@@ -30,8 +30,12 @@ const routes: Routes = [
     component: SignUpComponent
   },
   {
+    path: '404',
+    loadComponent: () => import('src/app/components/errors/not-found/not-found.component').then(component => component.NotFoundComponent)
+  },
+  {
     path: '**',
-    redirectTo: ''
+    redirectTo: '404'
   },
 ];
 

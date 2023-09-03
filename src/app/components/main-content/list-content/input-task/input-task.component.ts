@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ListService } from '../../../services/list.service';
+import { ListService } from '../../../../services/list.service';
 
 
 @Component({
-  selector: 'app-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
+  selector: 'app-input-task',
+  templateUrl: './input-task.component.html',
+  styleUrls: ['./input-task.component.scss'],
 })
-export class InputComponent {
+export class InputTaskComponent {
   isDisabled = true;
   isListNotFound = false;
   taskTime: string;

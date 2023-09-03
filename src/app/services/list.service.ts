@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, debounceTime, map, Observable } from 'rxjs';
 import { IList } from '../model/IList';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListService {
-  public lists$ = new BehaviorSubject<IList[]>([]);
+  lists$ = new BehaviorSubject<IList[]>([]);
   readonly listDate = new Date();
   listDeadLine = new Date();
 
@@ -60,7 +60,7 @@ export class ListService {
     if (selectedList) {
       const dupList: IList = {
         ...selectedList,
-        tasksArr: selectedList.tasksArr.map(task => ({ ...task })),
+        tasksArr: selectedList.tasksArr.map(task => ({...task})),
         listNumber: this.getLists().length + 1,
       };
       const updatedListsArr = [...this.getLists(), dupList];
@@ -72,7 +72,7 @@ export class ListService {
   deleteList(selectedDelListNumber: number) {
     const updatedListsArr: IList[] = this.getLists()
       .filter((list: IList): boolean => list.listNumber !== selectedDelListNumber)
-      .map((list: IList, index: number) => ({ ...list, listNumber: index + 1 }));
+      .map((list: IList, index: number) => ({...list, listNumber: index + 1}));
 
     this.updateLists(updatedListsArr);
   }
@@ -96,5 +96,14 @@ export class ListService {
       const updatedListsArr = [...this.getLists()];
       this.updateLists(updatedListsArr);
     }
+  }
+
+  findList(value: string): Observable<IList[]> {
+    return this.lists$.pipe(
+      map(lists => {
+        return lists.filter(list => list.listName.toLowerCase().includes(value.toLowerCase()));
+      }),
+      debounceTime(500)
+    );
   }
 }

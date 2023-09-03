@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ListService } from '../../services/list.service';
-import { IList } from '../../model/IList';
+import { ListService } from '../../../../services/list.service';
+import { IList } from '../../../../model/IList';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 
 
