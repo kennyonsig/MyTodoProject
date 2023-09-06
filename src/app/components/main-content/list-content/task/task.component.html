@@ -6,18 +6,16 @@
   </button>
   <p class="task-description task-el">{{ task.taskDescription }}</p>
   <p class="task-time task-el">{{ task.taskTime }} </p>
-  <button (click)="removeTask(task)" class="delete-btn global-btn task-el">Delete</button>
-  <fa-icon [icon]="dragArrowsV" class="drag-icon"></fa-icon>
+  <button (click)="removeTask(task)" class="delete-btn global-btn task-el underlineHover">Delete</button>
 </div>
 
 <div *ngIf="task.isTaskEdit" [class.completed]="task.isTaskCompleted" class="task">
   <input (click)="completeTask(task)" class="task-el" type="checkbox">
   <p class="task-number task-el">{{ taskIndex }}</p>
   <button class="btn-edit-save task-el">
-    <fa-icon (click)="saveTaskInfo(task)" [icon]="saveIcon"></fa-icon>
+    <fa-icon (click)="saveTaskInfo(task)" [icon]="saveIcon" class="btn-edit-save task-el"></fa-icon>
   </button>
-  <input [(ngModel)]="task.taskDescription" class="global-input task-el task-input" type="text">
+  <input [(ngModel)]="task.taskDescription" class="global-input task-el task-input" maxlength="31" type="text">
   <input [(ngModel)]="task.taskTime" class="global-input task-el" type="time">
-  <button (click)="removeTask(task)" class="delete-btn global-btn task-el">Delete</button>
-  <fa-icon [icon]="dragArrowsV" class="drag-icon"></fa-icon>
+  <button (click)="removeTask(task)" class="delete-btn global-btn task-el underlineHover">Delete</button>
 </div>

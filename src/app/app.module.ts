@@ -23,12 +23,12 @@ import { ListBtnComponent } from './components/main-content/list-manipulation-co
 import {
   ListFilterComponent
 } from './components/main-content/list-manipulation-content/list-filter/list-filter.component';
-import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragHandle, CdkDropList } from '@angular/cdk/drag-drop';
 import { CompletedListComponent } from './components/main-content/completed-list/completed-list.component';
 import {
   ListPageBtnComponent
 } from './components/main-content/list-manipulation-content/list-page-btn/list-page-btn.component';
-import { AllTaskComponent } from './components/main-content/all-task/all-task.component';
+import { AllTasksComponent } from './components/main-content/all-tasks/all-tasks.component';
 
 
 @NgModule({
@@ -45,7 +45,7 @@ import { AllTaskComponent } from './components/main-content/all-task/all-task.co
     AutofocusDirective,
     ListBtnComponent,
     ListFilterComponent,
-    AllTaskComponent,
+    AllTasksComponent,
     CompletedListComponent,
     ListPageBtnComponent,
   ],
@@ -59,6 +59,7 @@ import { AllTaskComponent } from './components/main-content/all-task/all-task.co
     CommonModule,
     CdkDropList,
     CdkDrag,
+    CdkDragHandle,
   ],
   providers: [],
 

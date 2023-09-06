@@ -1,25 +1,28 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {IList} from '../../../../model/IList';
-import {TaskService} from '../../../../services/task.service';
-import {ITask} from '../../../../model/ITask';
-import {faEdit} from '@fortawesome/free-solid-svg-icons/faEdit';
-import {faCheck} from '@fortawesome/free-solid-svg-icons/faCheck';
-import {ListService} from '../../../../services/list.service';
-import {Observable} from 'rxjs';
-import {FormControl, FormGroup} from '@angular/forms';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { IList } from '../../../../model/IList';
+import { TaskService } from '../../../../services/task.service';
+import { ITask } from '../../../../model/ITask';
+import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { ListService } from '../../../../services/list.service';
+import { Observable } from 'rxjs';
+import { FormControl, FormGroup } from '@angular/forms';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { faArrowsV } from '@fortawesome/free-solid-svg-icons/faArrowsV';
 
 @Component({
-    selector: 'app-todo-list',
-    templateUrl: './todo-list.component.html',
-    styleUrls: ['./todo-list.component.scss'],
+  selector: 'app-todo-list',
+  templateUrl: './todo-list.component.html',
+  styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-    readonly editIcon = faEdit;
-    readonly saveIcon = faCheck;
+  readonly editIcon = faEdit;
+  readonly saveIcon = faCheck;
+  readonly dragArrowsV = faArrowsV;
 
-    lists$: Observable<IList[]>;
+  lists$: Observable<IList[]>;
   dateListForm: FormGroup;
+
   @Output() readonly listSelected = new EventEmitter<number>();
 
   constructor(
@@ -28,25 +31,24 @@ export class TodoListComponent implements OnInit {
   ) {
   }
 
-  getCompletedTasksPercentage(list: IList): number {
-    const totalTasksCount = list.tasksArr.length;
-    if (totalTasksCount === 0) {
-      return 100;
-    }
-    const completedTasksCount = list.tasksArr.filter(task => task.isTaskCompleted).length;
-    return (completedTasksCount / totalTasksCount) * 100;
-  }
-
   ngOnInit() {
     this.lists$ = this.listService.lists$;
     this.dateListForm = new FormGroup({
       'presentDate': new FormControl((new Date()).toISOString().substring(0, 10)),
     });
-
   }
 
-  removeTask(task: ITask, listNumber: number) {
-    this.taskService.onTaskRemove(task.taskNumber, listNumber);
+  getCompletedTasksPercent(list: IList): number {
+    const totalTasksCount = list.tasksArr.length;
+    if (totalTasksCount === 0) {
+      return 0;
+    }
+    const completedTasksCount = list.tasksArr.filter(task => task.isTaskCompleted).length;
+    return (completedTasksCount / totalTasksCount) * 100;
+  }
+
+  removeTask(task: ITask) {
+    this.taskService.onTaskRemove(task.taskNumber);
   }
 
   editListInfo(list: IList) {
@@ -65,20 +67,14 @@ export class TodoListComponent implements OnInit {
   }
 
   selectClickList(selectedListNumber: number, list: IList) {
-      this.listService.getLists()
-          .forEach((list: IList) => list.isListSelected = false);
-      list.isListSelected = true;
-      this.listSelected.emit(selectedListNumber);
+    this.listService.getLists()
+      .forEach((list: IList) => list.isListSelected = false);
+    list.isListSelected = true;
+    this.listSelected.emit(selectedListNumber);
   }
 
-    dropTask(event: CdkDragDrop<ITask[]>, list: IList) {
-        moveItemInArray(list.tasksArr, event.previousIndex, event.currentIndex);
-        this.listService.updListInfo(list);
-    }
-
-    dropList(event: CdkDragDrop<IList[]>) {
-        moveItemInArray(event.previousContainer.data, event.previousIndex, event.currentIndex);
-    }
+  dropTask(event: CdkDragDrop<ITask[]>, list: IList) {
+    moveItemInArray(list.tasksArr, event.previousIndex, event.currentIndex);
+    this.listService.updListInfo(list);
+  }
 }
-
-

@@ -1,11 +1,13 @@
+@import "src/app/components/main-content/drag-task.scss";
+
 .todo {
   &-list {
-    min-width: 49%;
+    width: 32%;
     border-radius: 4px;
     transition: all 0.3s ease-in-out;;
 
     &:hover {
-      box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6)
+      box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
     }
   }
 
@@ -19,7 +21,7 @@
 }
 
 .listSelected {
-  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+  box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
 }
 
 .btn-edit-save {
@@ -34,15 +36,23 @@
     display: flex;
     justify-content: space-around;
     border: solid #ccc 1px;
-    border-bottom: transparent;
     border-radius: 5px 5px 0 0;
     align-items: center;
   }
 
   &-block {
     border: solid 1px #ccc;
-    min-height: 50px;
+    border-bottom: none;
+    transition: max-height 0.5s ease;
     overflow: hidden;
+
+    &.collapse {
+      max-height: 500px;
+    }
+
+    &.expand {
+      max-height: 0;
+    }
   }
 
   &-date-input {
@@ -51,84 +61,37 @@
     }
   }
 
-  &-btn-block {
+  &-btn-block-bottom {
     display: flex;
     align-items: center;
     border: solid #ccc 1px;
     border-radius: 0 0 5px 5px;
     min-height: 30px;
-    border-top: transparent;
+    border-top: none;
+  }
+
+  &-btn-block-top {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 3px 0;
+    border-right: solid 1px #ccc;
+    border-left: solid 1px #ccc;
+    align-items: baseline;
   }
 }
 
 .task-box-li {
   display: flex;
   align-items: center;
-  min-height: 50px;
+  min-height: 71px;
   border-bottom: solid 1px #ccc;
-
-  &:last-child {
-    border: none;
-  }
+  gap: 10px;
 }
 
 app-task, app-list-btn {
   flex-grow: 1;
 }
 
-.drag-icon {
-  font-size: 15px;
-}
-
-.collapse-expand-list {
-  display: flex;
-  justify-content: space-evenly;
-  padding-bottom: 3px;
-  border-right: solid 1px #ccc;
-  border-left: solid 1px #ccc;
-}
-
-.example-list {
-  //width: 500px;
-  //max-width: 100%;
-  border: solid 1px #ccc;
-  //min-height: 60px;
-  display: block;
-  background: white;
-  //border-radius: 4px;
-  overflow: hidden;
-}
-
-.example-box {
-  padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
-  justify-content: space-between;
-  box-sizing: border-box;
-  cursor: move;
-  background: white;
-  font-size: 14px;
-}
-
-.cdk-drag-preview {
-  border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-  0 8px 10px 1px rgba(0, 0, 0, 0.14),
-  0 3px 14px 2px rgba(0, 0, 0, 0.12);
-}
-
-.cdk-drag-placeholder {
-  opacity: 0;
-}
-
-.cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.example-box:last-child {
-  border: none;
-}
-
-.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+.underlineHover {
+  color: black;
 }

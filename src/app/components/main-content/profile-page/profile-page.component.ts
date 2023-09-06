@@ -13,7 +13,9 @@ export class ProfilePageComponent {
   selectedListNum: number;
   selectedComponent: string = 'todoList'; // Компонент по умолчанию
 
-  constructor(private taskService: TaskService, private router: Router, private authService: AuthService) {
+  constructor(private taskService: TaskService,
+              private router: Router,
+              private authService: AuthService) {
   }
 
   addTask(taskDescription: string, taskTime: string, listNumber: number) {

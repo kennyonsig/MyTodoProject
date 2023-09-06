@@ -1,7 +1,7 @@
 <div (click)="selectClickList(list.listNumber, list)"
      *ngFor="let list of lists$ | async"
      [ngClass]="{'listSelected': list.isListSelected}"
-     class="todo-list ">
+     class="todo-list">
   <div class="list-info-wrapper">
     <!--    шапка листа-->
     <ng-container *ngIf="!list.isListEdit">
@@ -11,8 +11,9 @@
       </button>
       <p class="todo-name"> {{ list.listName }}</p>
       <p class="todo-date">Deadline {{ list.listDeadLine | date:'dd.MM.yyyy' }}</p>
-      <p>Completed: {{ getCompletedTasksPercentage(list) }}%</p>
+      <p>Completed: {{ getCompletedTasksPercent(list) | number: '1.1-1'}}%</p>
     </ng-container>
+
     <!--    Редактирование шапки листа-->
     <ng-container *ngIf="list.isListEdit">
       <p class="todo-number">{{ list.listNumber }}</p>
@@ -32,27 +33,34 @@
           formControlName="presentDate"
           type="date">
       </form>
-      <p>Completed: {{ getCompletedTasksPercentage(list) }}%</p>
+      <p>Completed: {{ getCompletedTasksPercent(list) | number: '1.1-1'}}%</p>
     </ng-container>
   </div>
   <!--  свернуть развернуть список-->
-  <div class="collapse-expand-list">
+  <div class="list-btn-block-top">
     <button
       (click)="collapseExpandList(list)"
-      class="global-btn">{{ list.isListExpand ? 'Expand list' : 'Collapse list' }}
+      class="global-btn underlineHover">{{ list.isListExpand ? 'Expand list' : 'Collapse list' }}
     </button>
     <p>Number of tasks {{ list.tasksArr.length }}</p>
   </div>
   <!--  задачи списка-->
-  <ul (cdkDropListDropped)="dropTask($event, list)" *ngIf="!list.isListExpand" cdkDropList
-      class="list-block example-list">
-    <li
-      *ngFor="let task of list.tasksArr; let i = index"
-      cdkDrag class="task-box-li example-box">
-      <app-task (taskRemove)="removeTask($event, list.listNumber)" [taskIndex]="i + 1" [task]="task"></app-task>
+  <ul (cdkDropListDropped)="dropTask($event, list)"
+      [ngClass]="{'collapse': !list.isListExpand, 'expand': list.isListExpand}"
+      cdkDropList
+      class="list-block drag-drop-list task-boundary">
+    <li *ngFor="let task of list.tasksArr; let i = index"
+        cdkDrag
+        cdkDragBoundary=".task-boundary"
+        cdkDragLockAxis="y"
+        class="task-box-li li-drag-box">
+      <app-task (taskRemove)="removeTask($event)"
+                [taskIndex]="i + 1"
+                [task]="task"></app-task>
+      <fa-icon [icon]="dragArrowsV" cdkDragHandle class="drag-icon"></fa-icon>
     </li>
   </ul>
-  <div class="list-btn-block">
+  <div class="list-btn-block-bottom">
     <app-list-btn [dateOfCreation]="list.listDate" [listNumber]="list.listNumber"></app-list-btn>
   </div>
 </div>

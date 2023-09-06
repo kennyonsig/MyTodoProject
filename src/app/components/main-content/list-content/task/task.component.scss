@@ -17,19 +17,17 @@
   }
 
   &-description {
-    width: 100px;
-    overflow: hidden;
-    word-wrap: break-word;
-    padding: 10px 0 10px 0;
-    resize: none;
+    flex-basis: 80%;
+    user-select: none;
   }
 
   &-input {
-    max-width: 50px;
+    flex-basis: 58%;
   }
 
   &-time {
     color: #999;
+    user-select: none;
   }
 
   &.completed {
@@ -39,13 +37,18 @@
 
 .delete-btn {
   font-size: 17px;
+  user-select: none;
 }
 
 .btn-edit-save {
   border: none;
   background-color: transparent;
+  cursor: pointer;
+  user-select: none;
 }
 
 .drag-icon {
-  font-size: 15px;
+  cursor: move;
+  font-size: 16px;
+  user-select: none;
 }

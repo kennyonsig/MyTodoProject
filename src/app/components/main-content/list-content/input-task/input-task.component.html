@@ -3,6 +3,7 @@
          (input)="onInputChange(taskInput.value)"
          [class.invalid]="!taskInput.value.trim()"
          class="global-input input-task"
+         maxlength="31"
          placeholder="Enter a task"
          type="text">
   <label class="label-time" for="time-input">Select a time:</label>

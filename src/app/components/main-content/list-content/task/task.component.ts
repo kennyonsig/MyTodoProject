@@ -17,6 +17,7 @@ export class TaskComponent {
 
   @Input() task: ITask;
   @Input() taskIndex: number;
+  @Input() isTaskEdit: boolean;
   @Output() readonly taskRemove: EventEmitter<ITask> = new EventEmitter<ITask>();
 
   constructor(private taskService: TaskService) {
