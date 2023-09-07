@@ -6,8 +6,10 @@ import { ProfilePageComponent } from './components/main-content/profile-page/pro
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
-import { authGuard } from './guards/auth.guard';
 import { isLoginGuard } from './guards/is-login.guard';
+import { AllTasksComponent } from './components/main-content/all-tasks/all-tasks.component';
+import { CompletedListComponent } from './components/main-content/completed-list/completed-list.component';
+import { authGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -22,7 +24,21 @@ const routes: Routes = [
   },
   {
     path: 'profile-page',
+    redirectTo: 'profile-page/all-lists'
+  },
+  {
+    path: 'profile-page/all-lists',
     component: ProfilePageComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'profile-page/all-tasks',
+    component: AllTasksComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'profile-page/completed-list',
+    component: CompletedListComponent,
     canActivate: [authGuard]
   },
   {

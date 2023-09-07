@@ -7,7 +7,7 @@ export const isLoginGuard: CanActivateFn = () => {
   const router = inject(Router);
 
   if (authService.isLoggedIn()) {
-    router.navigateByUrl('/profile-page');
+    router.navigateByUrl('/profile-page/all-lists');
   }
   return true;
 };

@@ -1,6 +1,6 @@
 <p>Number of tasks: {{ allTasks.length }}</p>
-<p>Completed: {{ getCompletedTasksPercent(allTasks) | number: '1.1-1' }}%</p>
-<div (cdkDropListDropped)="dropTask($event, allTasks)"
+<p>Completed: {{ getCompletedTasksPercent() | number: '1.1-1' }}%</p>
+<div (cdkDropListDropped)="dropTask($event)"
      cdkDropList
      class="list-block drag-drop-list task-boundary drop-task-block">
   <ng-container *ngIf="allTasks.length > 0; else noTasks">

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { IList } from '../../../../model/IList';
+import { IList } from '../../../../interface/IList';
 import { TaskService } from '../../../../services/task.service';
-import { ITask } from '../../../../model/ITask';
+import { ITask } from '../../../../interface/ITask';
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { ListService } from '../../../../services/list.service';
@@ -48,7 +48,7 @@ export class TodoListComponent implements OnInit {
   }
 
   removeTask(task: ITask) {
-    this.taskService.onTaskRemove(task.taskNumber);
+    this.taskService.onTaskRemove(task.taskNumber, task.isTaskInListNumber);
   }
 
   editListInfo(list: IList) {
@@ -61,16 +61,16 @@ export class TodoListComponent implements OnInit {
     this.listService.updListInfo(list);
   }
 
-  collapseExpandList(list: IList) {
-    list.isListExpand = !list.isListExpand;
-    this.listService.updListInfo(list);
-  }
-
   selectClickList(selectedListNumber: number, list: IList) {
     this.listService.getLists()
       .forEach((list: IList) => list.isListSelected = false);
     list.isListSelected = true;
     this.listSelected.emit(selectedListNumber);
+  }
+
+  collapseExpandList(list: IList) {
+    list.isListExpand = !list.isListExpand;
+    this.listService.updListInfo(list);
   }
 
   dropTask(event: CdkDragDrop<ITask[]>, list: IList) {

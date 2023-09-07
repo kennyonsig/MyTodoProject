@@ -26,8 +26,8 @@ import {
 import { CdkDrag, CdkDragHandle, CdkDropList } from '@angular/cdk/drag-drop';
 import { CompletedListComponent } from './components/main-content/completed-list/completed-list.component';
 import {
-  ListPageBtnComponent
-} from './components/main-content/list-manipulation-content/list-page-btn/list-page-btn.component';
+  ListPageLinkComponent
+} from './components/main-content/list-manipulation-content/list-page-link/list-page-link.component';
 import { AllTasksComponent } from './components/main-content/all-tasks/all-tasks.component';
 
 
@@ -47,7 +47,7 @@ import { AllTasksComponent } from './components/main-content/all-tasks/all-tasks
     ListFilterComponent,
     AllTasksComponent,
     CompletedListComponent,
-    ListPageBtnComponent,
+    ListPageLinkComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ITask } from '../../../model/ITask';
+import { ITask } from '../../../interface/ITask';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Subscription } from 'rxjs';
 import { TaskService } from '../../../services/task.service';
@@ -25,28 +25,27 @@ export class AllTasksComponent implements OnInit, OnDestroy {
         this.allTasks = tasks;
       }
     );
+    console.table(this.allTasks);
   }
 
-  dropTask(event: CdkDragDrop<ITask[]>, allTasks: ITask[]) {
-    moveItemInArray(allTasks, event.previousIndex, event.currentIndex);
+  dropTask(event: CdkDragDrop<ITask[]>) {
+    moveItemInArray(this.allTasks, event.previousIndex, event.currentIndex);
   }
 
   removeTask(task: ITask) {
-    this.taskService.onTaskRemove(task.taskNumber);
+    this.taskService.onTaskRemove(task.taskNumber, task.isTaskInListNumber);
   }
 
-  ngOnDestroy() {
-    if (this.tasksSubscription) {
-      this.tasksSubscription.unsubscribe();
-    }
-  }
-
-  getCompletedTasksPercent(allTasks: ITask[]): number {
-    const totalTasksCount = allTasks.length;
+  getCompletedTasksPercent(): number {
+    const totalTasksCount = this.allTasks.length;
     if (totalTasksCount === 0) {
       return 100;
     }
-    const completedTasksCount = allTasks.filter(task => task.isTaskCompleted).length;
+    const completedTasksCount = this.allTasks.filter((task: ITask) => task.isTaskCompleted).length;
     return (completedTasksCount / totalTasksCount) * 100;
+  }
+
+  ngOnDestroy() {
+    this.tasksSubscription?.unsubscribe();
   }
 }

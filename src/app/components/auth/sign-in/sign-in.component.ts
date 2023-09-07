@@ -25,7 +25,7 @@ export class SignInComponent implements OnDestroy {
     this.loginSubscription = this.authService.checkLogin(this.email, this.password)
       .subscribe((result: boolean) => {
         if (result) {
-          this.router.navigate(['/profile-page']);
+          this.router.navigate(['/profile-page/all-lists']);
         } else {
           this.errorAuth = 'Invalid email or password';
         }

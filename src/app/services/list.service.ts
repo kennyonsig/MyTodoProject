@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, debounceTime, map, Observable } from 'rxjs';
-import { IList } from '../model/IList';
+import { IList } from '../interface/IList';
 
 @Injectable({
   providedIn: 'root'
@@ -60,7 +60,10 @@ export class ListService {
     if (selectedList) {
       const dupList: IList = {
         ...selectedList,
-        tasksArr: selectedList.tasksArr.map(task => ({...task})),
+        tasksArr: selectedList.tasksArr.map(task => ({
+          ...task,
+          isTaskInListNumber: this.getLists().length + 1
+        })),
         listNumber: this.getLists().length + 1,
       };
       const updatedListsArr = [...this.getLists(), dupList];

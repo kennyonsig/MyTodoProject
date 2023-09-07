@@ -1,27 +1,16 @@
-main {
-  padding: 100px 1rem 2rem;
-  margin: 0 20px;
-}
-
-header {
-  width: 100%;
-  position: fixed;
-  display: flex;
-  color: #f0e7e7;
-  height: 80px;
-  justify-content: space-between;
-  min-height: 50px;
-  align-items: center;
-  background-color: #1B365C;
-}
-
 app-todo-list {
   display: flex;
-  gap: 10px;
+  column-gap: 2%;
   flex-wrap: wrap;
   align-items: flex-start;
-  flex-basis: 90%;
   justify-content: center;
+}
+
+.input-task {
+  padding-right: 10px;
+  box-shadow: 0 0 0 1px rgba(34, 60, 80, 0.2);
+  margin-bottom: 20px;
+  border-radius: 4px;
 }
 
 .main-content {
@@ -46,40 +35,4 @@ app-todo-list {
 
 .list-filter-block {
   right: 0;
-}
-
-.underlineHover {
-  color: #aba9a9;
-
-  &:hover {
-    color: #ffffff;
-  }
-}
-
-.profile-block {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  justify-content: space-between;
-}
-
-footer {
-  background-color: #1B365C;
-  color: #f0e7e7;
-  padding: 20px;
-  text-align: center;
-}
-
-.title {
-  padding-left: 20px;
-  margin-right: 10px;
-}
-
-.log-out {
-  padding-left: 20px;
-}
-
-.input-task {
-  flex-grow: 1;
-  padding-right: 20px;
 }

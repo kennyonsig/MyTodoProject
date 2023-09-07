@@ -1,40 +1,16 @@
-<div class="profile-block">
-  <header>
-    <div class="title-and-logout">
-      <h1 class="title">
-        MY TODO
-      </h1>
-      <button (click)="doLogOut()" class="log-out global-btn underlineHover">
-        Log Out
-      </button>
+<div class="left-btn-block">
+  <section class="main-content">
+    <div class="task-button-block">
+      <app-task-button></app-task-button>
     </div>
     <div class="input-task">
       <app-input-task (outEnterTask)="addTask($event.taskDescription, $event.taskTime, $event.listNumber)"
                       [selectedListNumber]="selectedListNum">
       </app-input-task>
     </div>
-  </header>
-  <div class="left-btn-block">
-    <section class="main-content">
-      <div class="task-button-block">
-        <app-task-button></app-task-button>
-      </div>
-      <main>
-        <app-list-page-btn (changeComponentEvent)="changeComponent($event)"></app-list-page-btn>
-        <app-todo-list (listSelected)="selectedListNum = $event"
-                       *ngIf="selectedComponent === 'todoList'">
-        </app-todo-list>
-        <app-all-tasks *ngIf="selectedComponent === 'allTask'"></app-all-tasks>
-        <app-completed-list *ngIf="selectedComponent === 'completedList'"></app-completed-list>
-      </main>
-      <div class="list-filter-block">
-        <app-list-filter></app-list-filter>
-      </div>
-    </section>
-  </div>
-  <footer>
-    <div>
-      <p> some information</p>
+    <app-todo-list (listSelected)="selectedListNum = $event"></app-todo-list>
+    <div class="list-filter-block">
+      <app-list-filter></app-list-filter>
     </div>
-  </footer>
+  </section>
 </div>

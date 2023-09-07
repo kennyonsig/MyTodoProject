@@ -1,4 +1,29 @@
-<div class="app"
-     id="app">
-  <router-outlet></router-outlet>
+<div class="app" id="app">
+  <ng-container *ngIf="checkPath">
+    <router-outlet></router-outlet>
+  </ng-container>
+  <ng-container *ngIf="!checkPath">
+    <div class="profile-block">
+      <header>
+        <div class="title-and-logout">
+          <h1 class="title">
+            MY TODO
+          </h1>
+          <button (click)="doLogOut()" class="log-out global-btn underlineHover">
+            Log Out
+          </button>
+        </div>
+      </header>
+      <main>
+        <app-list-page-link></app-list-page-link>
+        <router-outlet></router-outlet>
+      </main>
+      <footer>
+        <div>
+          <p> some information</p>
+        </div>
+      </footer>
+    </div>
+  </ng-container>
 </div>
+

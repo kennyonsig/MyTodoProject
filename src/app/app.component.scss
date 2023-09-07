@@ -2,3 +2,52 @@
   min-height: 100%;
 }
 
+main {
+  padding: 100px 1rem 2rem;
+  margin: 0 20px;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  display: flex;
+  color: #f0e7e7;
+  height: 80px;
+  justify-content: space-between;
+  min-height: 50px;
+  align-items: center;
+  background-color: #1B365C;
+}
+
+
+.underlineHover {
+  color: #aba9a9;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.profile-block {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
+footer {
+  background-color: #1B365C;
+  color: #f0e7e7;
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  padding-left: 20px;
+  margin-right: 10px;
+}
+
+.log-out {
+  padding-left: 20px;
+}
+

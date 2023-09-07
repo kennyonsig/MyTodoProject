@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../../../services/task.service';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -11,22 +9,10 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class ProfilePageComponent {
   selectedListNum: number;
-  selectedComponent: string = 'todoList'; // Компонент по умолчанию
-
-  constructor(private taskService: TaskService,
-              private router: Router,
-              private authService: AuthService) {
+  constructor(private taskService: TaskService) {
   }
 
   addTask(taskDescription: string, taskTime: string, listNumber: number) {
     this.taskService.addTaskToList(taskDescription, taskTime, listNumber);
-  }
-
-  doLogOut() {
-    this.authService.logOut();
-  }
-
-  changeComponent(component: string) {
-    this.selectedComponent = component;
   }
 }

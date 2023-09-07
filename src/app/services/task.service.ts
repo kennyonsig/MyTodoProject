@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ITask } from '../model/ITask';
+import { ITask } from '../interface/ITask';
 import { ListService } from './list.service';
-import { IList } from '../model/IList';
+import { IList } from '../interface/IList';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,8 @@ export class TaskService {
       taskTime: taskTime,
       taskNumber: this.tasks$.getValue().length + 1,
       isTaskCompleted: false,
-      isTaskEdit: false
+      isTaskEdit: false,
+      isTaskInListNumber: listNumber
     };
     const updatedTaskArr: ITask[] = [...this.tasks$.getValue(), newTask];
     const list: IList | undefined = lists.find((list) => list.listNumber === listNumber);
@@ -39,13 +40,15 @@ export class TaskService {
     this.tasks$.next(updatedTaskArr);
   }
 
-  onTaskRemove(taskNumber: number) {
-    const lists = this.listService.getLists();
+  onTaskRemove(taskNumber: number, isTaskInListNumber: number) {
+    const lists: IList[] = this.listService.getLists();
 
     lists.forEach((list: IList) => {
-      const taskIndex = list.tasksArr.findIndex((task: ITask) => task.taskNumber === taskNumber);
-      if (taskIndex !== -1) {
-        list.tasksArr.splice(taskIndex, 1);
+      if (list.listNumber === isTaskInListNumber) {
+        const taskIndex = list.tasksArr.findIndex((task: ITask) => task.taskNumber === taskNumber);
+        if (taskIndex !== -1) {
+          list.tasksArr.splice(taskIndex, 1);
+        }
       }
     });
 
