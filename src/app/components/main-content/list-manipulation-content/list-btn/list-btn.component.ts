@@ -14,7 +14,7 @@ export class ListBtnComponent {
   @Input() dateOfCreation: Date;
   starIcon = faStar;
   list: IList;
-
+  isStarFilled: boolean = false;
 
   constructor(private listService: ListService) {
   }

@@ -32,10 +32,6 @@ export class AllTasksComponent implements OnInit, OnDestroy {
     moveItemInArray(this.allTasks, event.previousIndex, event.currentIndex);
   }
 
-  removeTask(task: ITask) {
-    this.taskService.onTaskRemove(task.taskNumber, task.isTaskInListNumber);
-  }
-
   getCompletedTasksPercent(): number {
     const totalTasksCount = this.allTasks.length;
     if (totalTasksCount === 0) {
@@ -43,6 +39,22 @@ export class AllTasksComponent implements OnInit, OnDestroy {
     }
     const completedTasksCount = this.allTasks.filter((task: ITask) => task.isTaskCompleted).length;
     return (completedTasksCount / totalTasksCount) * 100;
+  }
+
+  removeTask(task: ITask) {
+    this.taskService.onTaskRemove(task.taskNumber, task.isTaskInListNumber);
+  }
+
+  completeTask(task: ITask) {
+    this.taskService.onTaskCompleted(task.taskNumber, task.isTaskInListNumber);
+  }
+
+  editTaskInfo(task: ITask) {
+    this.taskService.onTaskEdit(task.taskNumber, task.isTaskInListNumber);
+  }
+
+  saveTaskInfo(task: ITask) {
+    this.taskService.onTaskSave(task.taskNumber, task.isTaskInListNumber);
   }
 
   ngOnDestroy() {

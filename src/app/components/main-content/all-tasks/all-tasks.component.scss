@@ -1,6 +1,5 @@
 @import "src/app/components/main-content/drag-task.scss";
 
-
 .drop-task-block {
   border: solid 1px #ccc;
   border-bottom: none;
@@ -18,4 +17,8 @@
 
 app-task {
   flex-grow: 1;
+}
+
+.table-header {
+  display: flex;
 }

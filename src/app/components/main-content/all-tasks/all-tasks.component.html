@@ -1,5 +1,6 @@
 <p>Number of tasks: {{ allTasks.length }}</p>
 <p>Completed: {{ getCompletedTasksPercent() | number: '1.1-1' }}%</p>
+
 <div (cdkDropListDropped)="dropTask($event)"
      cdkDropList
      class="list-block drag-drop-list task-boundary drop-task-block">
@@ -8,7 +9,13 @@
         cdkDrag
         cdkDragBoundary=".task-boundary"
         class="task-box-li li-drag-box">
-      <app-task (taskRemove)="removeTask($event)" [task]="task"></app-task>
+      <p>LIST {{ task.isTaskInListNumber }}</p>
+      <p>TASK NUM {{ task.taskNumber }}</p>
+      <app-task (isTaskComplete)="completeTask($event)"
+                (isTaskEdit)="editTaskInfo($event)"
+                (isTaskSave)="saveTaskInfo($event)"
+                (taskRemove)="removeTask($event)"
+                [task]="task"></app-task>
       <fa-icon [icon]="dragArrowsV" cdkDragHandle class="drag-icon"></fa-icon>
     </li>
   </ng-container>

@@ -54,7 +54,11 @@
         cdkDragBoundary=".task-boundary"
         cdkDragLockAxis="y"
         class="task-box-li li-drag-box">
-      <app-task (taskRemove)="removeTask($event)"
+      <app-task (isTaskComplete)="completeTask($event)"
+                (isTaskEdit)="editTaskInfo($event)"
+                (isTaskSave)="saveTaskInfo($event)"
+                (taskRemove)="removeTask($event)"
+                [listNumber]="list.listNumber"
                 [taskIndex]="i + 1"
                 [task]="task"></app-task>
       <fa-icon [icon]="dragArrowsV" cdkDragHandle class="drag-icon"></fa-icon>

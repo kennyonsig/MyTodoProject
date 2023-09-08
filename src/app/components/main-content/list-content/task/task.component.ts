@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ITask } from '../../../../interface/ITask';
-import { faArrowsV } from '@fortawesome/free-solid-svg-icons/faArrowsV';
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { TaskService } from '../../../../services/task.service';
@@ -11,21 +10,22 @@ import { TaskService } from '../../../../services/task.service';
   styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent {
-  readonly dragArrowsV = faArrowsV;
   readonly editIcon = faEdit;
   readonly saveIcon = faCheck;
 
   @Input() task: ITask;
   @Input() taskIndex: number;
-  @Input() isTaskEdit: boolean;
+  @Input() listNumber: number;
   @Output() readonly taskRemove: EventEmitter<ITask> = new EventEmitter<ITask>();
+  @Output() readonly isTaskComplete: EventEmitter<ITask> = new EventEmitter<ITask>();
+  @Output() readonly isTaskEdit: EventEmitter<ITask> = new EventEmitter<ITask>();
+  @Output() readonly isTaskSave: EventEmitter<ITask> = new EventEmitter<ITask>();
 
   constructor(private taskService: TaskService) {
   }
 
   completeTask(task: ITask) {
-    task.isTaskCompleted = !task.isTaskCompleted;
-    this.taskService.updTaskInfo(task);
+    this.isTaskComplete.emit(task);
   }
 
   removeTask(task: ITask) {
@@ -33,11 +33,10 @@ export class TaskComponent {
   }
 
   editTaskInfo(task: ITask) {
-    task.isTaskEdit = true;
+    this.isTaskEdit.emit(task);
   }
 
   saveTaskInfo(task: ITask) {
-    task.isTaskEdit = false;
-    this.taskService.updTaskInfo(task);
+    this.isTaskSave.emit(task);
   }
 }

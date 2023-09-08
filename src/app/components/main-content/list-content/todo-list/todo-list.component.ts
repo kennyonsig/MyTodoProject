@@ -51,6 +51,18 @@ export class TodoListComponent implements OnInit {
     this.taskService.onTaskRemove(task.taskNumber, task.isTaskInListNumber);
   }
 
+  completeTask(task: ITask) {
+    this.taskService.onTaskCompleted(task.taskNumber, task.isTaskInListNumber);
+  }
+
+  editTaskInfo(task: ITask) {
+    this.taskService.onTaskEdit(task.taskNumber, task.isTaskInListNumber);
+  }
+
+  saveTaskInfo(task: ITask) {
+    this.taskService.onTaskSave(task.taskNumber, task.isTaskInListNumber);
+  }
+
   editListInfo(list: IList) {
     list.isListEdit = true;
   }
