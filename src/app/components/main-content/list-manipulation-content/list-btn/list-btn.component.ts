@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ListService } from '../../../../services/list.service';
-import { IList } from '../../../../interface/IList';
-import { faStar } from '@fortawesome/free-regular-svg-icons';
+import { faList } from '@fortawesome/free-solid-svg-icons/faList';
 
 
 @Component({
@@ -10,13 +9,28 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
   styleUrls: ['./list-btn.component.scss']
 })
 export class ListBtnComponent {
+  readonly listIcon = faList;
+
   @Input() listNumber: number;
   @Input() dateOfCreation: Date;
-  starIcon = faStar;
-  list: IList;
-  isStarFilled: boolean = false;
+  isStarActive = false;
+  screenWidth = window.innerWidth;
+  isDropdownOpen = false;
 
   constructor(private listService: ListService) {
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  handleResize = () => {
+    this.screenWidth = window.innerWidth;
+  };
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  toggleStar() {
+    this.isStarActive = !this.isStarActive;
   }
 
   dupList() {
