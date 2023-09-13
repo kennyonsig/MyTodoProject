@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { AuthService } from '../../../shared/services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { faLock, faUnlock } from '@fortawesome/free-solid-svg-icons';

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { SignInComponent } from './components/auth/sign-in/sign-in.component';
-import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
+import { HomePageComponent } from './shared/components/home-page/home-page.component';
+import { SignInComponent } from './shared/components/auth/sign-in/sign-in.component';
+import { SignUpComponent } from './shared/components/auth/sign-up/sign-up.component';
 import { isLoginGuard } from './shared/guards/is-login.guard';
 import { AllTasksComponent } from './todo-pages/myTodo/components/all-tasks/all-tasks.component';
 import { CompletedListComponent } from './todo-pages/myTodo/components/completed-list/completed-list.component';
@@ -39,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: '404',
-    loadComponent: () => import('src/app/components/errors/not-found/not-found.component').then(component => component.NotFoundComponent)
+    loadComponent: () => import('src/app/shared/components/errors/not-found/not-found.component').then(component => component.NotFoundComponent)
   },
   {
     path: '**',
