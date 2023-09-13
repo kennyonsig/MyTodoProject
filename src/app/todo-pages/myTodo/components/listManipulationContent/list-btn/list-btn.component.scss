@@ -1,0 +1,101 @@
+.list-btn-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  gap: 6px;
+}
+
+.toggle-dropdown {
+  &:active {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+}
+
+.action-block {
+  position: relative;
+}
+
+.dropdown-btn-block {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background-color: white;
+  position: absolute;
+  top: 109%;
+  right: -17%;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .5s ease,
+  border .5s ease,
+  display .5s ease,
+  padding .5s ease;
+
+  &.open {
+    padding: 2px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    max-height: 64px;
+    box-shadow: 0 5px 5px -5px rgba(34, 60, 80, .6);
+    z-index: 1;
+  }
+}
+
+.underlineHover {
+  color: black;
+}
+
+.date-of-creation {
+  font-size: 13px;
+  color: #918d8d;
+  flex-grow: 1;
+}
+
+.number-of-tasks {
+  font-size: 13px;
+}
+
+.add-to-favorite:active {
+  transform: scale(.9);
+  opacity: .8;
+}
+
+//иконка звезды
+.c-icon {
+  height: 24px;
+  width: 24px;
+  stroke: #fece3c;
+  --star-active: #fece3c;
+  --star-inactive: #6c6962;
+  fill: var(--star-inactive);
+
+  &:hover {
+    fill: var(--star-active);
+    stroke: #6c6962;
+  }
+
+  &.active {
+    fill: var(--star-active);
+    stroke: #6c6962;
+
+    &:hover {
+      fill: rgba(173, 150, 84, .67);
+      stroke: #6c6962
+    }
+  }
+}
+
+@media (max-width: 1300px) {
+  .date-of-creation {
+    font-size: 10px;
+    text-align: left;
+  }
+
+  .c-icon {
+    height: 18px;
+    width: 18px;
+  }
+}
+

@@ -4,7 +4,6 @@
 
 main {
   padding: 100px 1rem 2rem;
-  margin: 0 20px;
 }
 
 header {
@@ -17,8 +16,8 @@ header {
   min-height: 50px;
   align-items: center;
   background-color: #1B365C;
+  z-index: 1;
 }
-
 
 .underlineHover {
   color: #aba9a9;
@@ -48,6 +47,23 @@ footer {
 }
 
 .log-out {
-  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.work-todo-link {
+  padding: 30px;
+  background-color: transparent;
+  cursor: pointer;
+  color: white;
+  transition: .1s ease-in-out;
+
+  &:hover {
+    background-color: #305083;
+  }
+
+  &:active {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
 }
 

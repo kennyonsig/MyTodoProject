@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ProfilePageComponent } from './components/main-content/profile-page/profile-page.component';
-
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
-import { isLoginGuard } from './guards/is-login.guard';
-import { AllTasksComponent } from './components/main-content/all-tasks/all-tasks.component';
-import { CompletedListComponent } from './components/main-content/completed-list/completed-list.component';
-import { authGuard } from './guards/auth.guard';
+import { isLoginGuard } from './shared/guards/is-login.guard';
+import { AllTasksComponent } from './todo-pages/myTodo/components/all-tasks/all-tasks.component';
+import { CompletedListComponent } from './todo-pages/myTodo/components/completed-list/completed-list.component';
+import { authGuard } from './shared/guards/auth.guard';
+import { AllListsComponent } from './todo-pages/myTodo/components/all-lists/all-lists.component';
+import { MyTodoComponent } from './todo-pages/myTodo/my-todo.component';
+import { MyTodoRoutingModule } from './todo-pages/myTodo/my-todo-routing.module';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: HomePageComponent
+    component: HomePageComponent,
   },
   {
     path: 'sign-in',
@@ -23,23 +24,14 @@ const routes: Routes = [
     canActivate: [isLoginGuard]
   },
   {
-    path: 'profile-page',
-    redirectTo: 'profile-page/all-lists'
-  },
-  {
-    path: 'profile-page/all-lists',
-    component: ProfilePageComponent,
-    canActivate: [authGuard]
-  },
-  {
-    path: 'profile-page/all-tasks',
-    component: AllTasksComponent,
-    canActivate: [authGuard]
-  },
-  {
-    path: 'profile-page/completed-list',
-    component: CompletedListComponent,
-    canActivate: [authGuard]
+    path: 'my-todo',
+    canActivate: [authGuard],
+    component: MyTodoComponent,
+    children: [
+      {path: 'all-lists', component: AllListsComponent},
+      {path: 'all-tasks', component: AllTasksComponent},
+      {path: 'completed-list', component: CompletedListComponent}
+    ]
   },
   {
     path: 'sign-up',
@@ -57,7 +49,10 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    MyTodoRoutingModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

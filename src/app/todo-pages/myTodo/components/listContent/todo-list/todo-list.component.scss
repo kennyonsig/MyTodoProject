@@ -1,0 +1,166 @@
+@import "src/app/todo-pages/myTodo/components/drag-task.scss";
+
+
+.todo {
+  &-list {
+    width: 23%;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 10px;
+
+    &:hover {
+      box-shadow: 0 5px 5px -5px rgba(34, 60, 80, 0.6);
+    }
+  }
+
+  &-name {
+    flex-basis: 36%;
+    display: block;
+
+    &-input {
+      max-width: 100px;
+    }
+  }
+}
+
+.list-selected {
+  box-shadow: 0 5px 5px -5px rgba(34, 60, 80, 0.6);
+}
+
+.btn-edit-save {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.list {
+  &-info-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 5px;
+    border: solid #ccc 1px;
+    border-radius: 5px 5px 0 0;
+    height: 46px;
+  }
+
+  &-block {
+    border: solid 1px #ccc;
+    border-bottom: none;
+    transition: max-height .3s ease;
+    overflow: hidden;
+
+    &.collapse {
+      max-height: 500px;
+    }
+
+    &.expand {
+      max-height: 0;
+    }
+  }
+
+  &-date-input {
+    border-top: 1px solid transparent;
+
+    &-form {
+      text-align: center;
+      position: relative;
+    }
+  }
+
+  &-btn-block-bottom {
+    display: flex;
+    align-items: center;
+    border: solid #ccc 1px;
+    border-radius: 0 0 5px 5px;
+    min-height: 30px;
+    border-top: none;
+  }
+
+  &-btn-block-top {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 3px 0;
+    border-right: solid 1px #ccc;
+    border-left: solid 1px #ccc;
+    align-items: baseline;
+  }
+}
+
+.task-box-li {
+  display: flex;
+  align-items: center;
+  min-height: 71px;
+  border-bottom: solid 1px #ccc;
+  gap: 10px;
+}
+
+app-task, app-list-btn {
+  flex-grow: 1;
+}
+
+.underlineHover {
+  color: black;
+}
+
+//deadline style
+
+.deadline-block {
+  position: relative;
+  top: 5px;
+}
+
+.deadline {
+  position: absolute;
+  font-size: 13px;
+  bottom: 16px;
+
+  &-in-form {
+    left: 4px;
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 1600px) {
+
+  .todo {
+    &-list {
+      width: 32%;
+    }
+  }
+
+  .list-info-wrapper {
+    font-size: 14px;
+  }
+
+  .todo-name-input {
+    min-height: 10px;
+    font-size: 13px;
+  }
+
+  .list-date-input {
+    font-size: 12px;
+    min-height: 10px;
+  }
+
+  .deadline-block {
+    display: block;
+    position: relative;
+    top: 4px;
+  }
+
+  .deadline {
+    position: absolute;
+    font-size: 10px;
+    bottom: 13px;
+
+    &-in-form {
+      left: 4px;
+    }
+  }
+
+  .completed-percent {
+    display: none;
+  }
+
+}

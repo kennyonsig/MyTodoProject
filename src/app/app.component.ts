@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from './services/task.service';
-import { AuthService } from './services/auth.service';
+import { TaskService } from './todo-pages/myTodo/services/task.service';
+import { AuthService } from './shared/services/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
@@ -11,6 +11,7 @@ import { filter } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   checkPath = false;
+  excludedPaths = ['/sign-in', '/sign-up', '/404'];
 
   constructor(private taskService: TaskService,
               private authService: AuthService,
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
         filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         const currentUrl = this.router.routerState.snapshot.url;
-        this.checkPath = ['/sign-in', '/sign-up', '/404'].includes(currentUrl);
+        this.checkPath = this.excludedPaths.includes(currentUrl);
       });
   }
 

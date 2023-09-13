@@ -1,26 +1,24 @@
-<div class="app" id="app">
+<div class="app choice-list-block" id="app">
   <ng-container *ngIf="checkPath">
     <router-outlet></router-outlet>
   </ng-container>
   <ng-container *ngIf="!checkPath">
     <div class="profile-block">
       <header>
-        <div class="title-and-logout">
-          <h1 class="title">
-            MY TODO
-          </h1>
-          <button (click)="doLogOut()" class="log-out global-btn underlineHover">
-            Log Out
-          </button>
+        <div class="choice-workspace-button">
+          <a class="work-todo-link" routerLink="/my-todo">MY TODO</a>
+          <a class="work-todo-link" routerLink="/work-todo">WORK TODO</a>
         </div>
+        <button (click)="doLogOut()" class="log-out global-btn underlineHover">
+          Log Out
+        </button>
       </header>
       <main>
-        <app-list-page-link></app-list-page-link>
         <router-outlet></router-outlet>
       </main>
       <footer>
         <div>
-          <p> some information</p>
+          <p>some information</p>
         </div>
       </footer>
     </div>

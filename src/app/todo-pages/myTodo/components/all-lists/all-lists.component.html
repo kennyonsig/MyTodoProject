@@ -1,0 +1,18 @@
+<div class="left-btn-block">
+  <section class="right-block-filter">
+    <main class="main-content">
+      <div class="task-button">
+        <app-list-left-btn></app-list-left-btn>
+      </div>
+      <div class="input-task">
+        <app-input-task (outEnterTask)="addTask($event.taskDescription, $event.taskTime, $event.listNumber)"
+                        [selectedListNumber]="selectedListNum">
+        </app-input-task>
+      </div>
+      <app-todo-list (listSelected)="selectedListNum = $event"></app-todo-list>
+      <div class="list-filter">
+        <app-list-filter></app-list-filter>
+      </div>
+    </main>
+  </section>
+</div>

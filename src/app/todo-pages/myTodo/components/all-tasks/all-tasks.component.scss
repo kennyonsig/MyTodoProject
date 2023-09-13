@@ -1,0 +1,24 @@
+@import "src/app/todo-pages/myTodo/components/drag-task.scss";
+
+.drop-task-block {
+  border: solid 1px #ccc;
+  border-bottom: none;
+  min-height: 50px;
+  overflow: hidden;
+}
+
+.task-box-li {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  border-bottom: solid 1px #ccc;
+  gap: 10px;
+}
+
+app-task {
+  flex-grow: 1;
+}
+
+.table-header {
+  display: flex;
+}

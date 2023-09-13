@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { matchPassword } from '../matchpassword.validator';
-import { IUsersAuth } from '../../../interface/IUsersAuth';
-import { AuthService } from '../../../services/auth.service';
+import { IUsersAuth } from '../../../shared/interface/IUsersAuth';
+import { AuthService } from '../../../shared/services/auth.service';
 import { faLock, faUnlock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

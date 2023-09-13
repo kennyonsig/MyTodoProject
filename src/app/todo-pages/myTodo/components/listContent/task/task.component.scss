@@ -1,0 +1,59 @@
+.task {
+  display: flex;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: space-around;
+
+  &-el {
+    margin-right: 5px;
+
+    &:first-child {
+      margin-left: 5px;
+    }
+
+    &:last-child {
+      margin-right: 2px;
+    }
+  }
+
+  &-description {
+    flex-basis: 80%;
+    user-select: none;
+  }
+
+  &-input {
+    flex-grow: 1;
+    width: 1%;
+  }
+
+  &-time {
+    color: #999;
+    user-select: none;
+  }
+
+  &.completed {
+    text-decoration: line-through;
+  }
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.delete-btn {
+  font-size: 17px;
+  user-select: none;
+}
+
+.btn-edit-save {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+.drag-icon {
+  cursor: move;
+  font-size: 16px;
+  user-select: none;
+}

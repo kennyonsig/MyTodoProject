@@ -1,0 +1,67 @@
+app-todo-list {
+  display: flex;
+  column-gap: 2%;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.input-task {
+  padding-right: 10px;
+  box-shadow: 0 0 0 1px rgba(34, 60, 80, 0.2);
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.main-content {
+  min-height: 100vh;
+}
+
+.right-block-filter {
+  margin-right: 9vw;
+}
+
+.left-btn-block {
+  margin-left: 9vw;
+}
+
+.task-button,
+.list-filter {
+  position: fixed;
+  top: 100px;
+  bottom: 0;
+  min-width: 100px;
+}
+
+.task-button {
+  left: 0;
+  max-height: 213px;
+}
+
+.list-filter {
+  right: 0;
+  max-height: 213px;
+}
+
+
+@media (max-width: 1600px) {
+  .left-btn-block {
+    margin-left: 0;
+  }
+
+  .right-block-filter {
+    margin-right: 0;
+  }
+
+  .list-filter {
+    display: none;
+  }
+
+  .task-button {
+    background-color: gray;
+    min-width: 0;
+    display: none;
+    overflow: hidden;
+  }
+}
+
