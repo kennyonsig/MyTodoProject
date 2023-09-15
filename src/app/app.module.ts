@@ -11,7 +11,6 @@ import { HomePageComponent } from './shared/components/home-page/home-page.compo
 import { SignUpComponent } from './shared/components/auth/sign-up/sign-up.component';
 import { SignInComponent } from './shared/components/auth/sign-in/sign-in.component';
 import { AutofocusDirective } from './shared/directives/autofocus.directive';
-import { MyTodoModule } from './todo-pages/myTodo/my-todo.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { MyTodoModule } from './todo-pages/myTodo/my-todo.module';
     CommonModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    MyTodoModule
   ],
   providers: [],
 

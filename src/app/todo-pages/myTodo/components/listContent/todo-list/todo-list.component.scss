@@ -127,26 +127,22 @@ app-task, app-list-btn {
     &-list {
       width: 32%;
     }
+
+    &-name-input {
+      min-height: 10px;
+      font-size: 13px;
+    }
   }
 
-  .list-info-wrapper {
-    font-size: 14px;
-  }
+  .list {
+    &-info-wrapper {
+      font-size: 14px;
+    }
 
-  .todo-name-input {
-    min-height: 10px;
-    font-size: 13px;
-  }
-
-  .list-date-input {
-    font-size: 12px;
-    min-height: 10px;
-  }
-
-  .deadline-block {
-    display: block;
-    position: relative;
-    top: 4px;
+    &-date-input {
+      font-size: 12px;
+      min-height: 10px;
+    }
   }
 
   .deadline {
@@ -157,10 +153,23 @@ app-task, app-list-btn {
     &-in-form {
       left: 4px;
     }
+
+    &-block {
+      display: block;
+      position: relative;
+      top: 4px;
+    }
   }
 
   .completed-percent {
     display: none;
   }
+}
 
+@media (max-width: 500px) {
+  .todo {
+    &-list {
+      width: 100%;
+    }
+  }
 }

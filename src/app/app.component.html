@@ -1,13 +1,10 @@
-<div class="app choice-list-block" id="app">
-  <ng-container *ngIf="checkPath">
-    <router-outlet></router-outlet>
-  </ng-container>
-  <ng-container *ngIf="!checkPath">
+<div class="app" id="app">
+  <ng-container *ngIf="isLogin(); else loginTemplate">
     <div class="profile-block">
       <header>
         <div class="choice-workspace-button">
-          <a class="work-todo-link" routerLink="/my-todo">MY TODO</a>
-          <a class="work-todo-link" routerLink="/work-todo">WORK TODO</a>
+          <a class="todo-page-link" routerLink="/my-todo" routerLinkActive="active-header-link">MY TODO</a>
+          <a class="todo-page-link" routerLink="/work-todo" routerLinkActive="active-header-link">WORK TODO</a>
         </div>
         <button (click)="doLogOut()" class="log-out global-btn underlineHover">
           Log Out
@@ -23,5 +20,8 @@
       </footer>
     </div>
   </ng-container>
+  <ng-template #loginTemplate>
+    <router-outlet></router-outlet>
+  </ng-template>
 </div>
 

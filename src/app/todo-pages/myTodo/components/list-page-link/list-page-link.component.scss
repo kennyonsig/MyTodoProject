@@ -4,3 +4,12 @@
   gap: 30px;
   margin-bottom: 10px;
 }
+
+.page-link-active {
+  color: black;
+
+  &:after {
+    width: 100%;
+  }
+
+}

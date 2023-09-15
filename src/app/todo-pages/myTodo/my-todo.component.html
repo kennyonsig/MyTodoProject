@@ -1,2 +1,6 @@
 <app-list-page-link></app-list-page-link>
+<div *ngIf="isDefaultPath()">
+  <app-my-todo-statistics></app-my-todo-statistics>
+</div>
+
 <router-outlet></router-outlet>

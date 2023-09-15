@@ -1,7 +1,7 @@
 <div class="list-btn-wrapper">
   <span class="date-of-creation">Date of creation: <b>{{ dateOfCreation | date:'dd.MM.yyyy' }}</b></span>
   <p class="number-of-tasks">Number of tasks {{ numberOfTasks }}</p>
-    <div class="action-block">
+    <div #actionBlock class="action-block">
       <button (click)="toggleDropdown()" class="global-btn toggle-dropdown">
         <fa-icon [icon]="listIcon"></fa-icon>
       </button>

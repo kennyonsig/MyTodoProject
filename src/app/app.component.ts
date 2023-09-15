@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from './todo-pages/myTodo/services/task.service';
-import { AuthService } from './shared/services/auth.service';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { AuthService } from './shared/components/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,22 +7,15 @@ import { filter } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  checkPath = false;
-  excludedPaths = ['/sign-in', '/sign-up', '/404'];
 
-  constructor(private taskService: TaskService,
-              private authService: AuthService,
-              private router: Router) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
-    this.router.events
-      .pipe(
-        filter(event => event instanceof NavigationEnd))
-      .subscribe(() => {
-        const currentUrl = this.router.routerState.snapshot.url;
-        this.checkPath = this.excludedPaths.includes(currentUrl);
-      });
+  }
+
+  isLogin() {
+    return this.authService.isLoggedIn();
   }
 
   doLogOut() {
