@@ -121,7 +121,7 @@ app-task, app-list-btn {
   }
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1690px) {
 
   .todo {
     &-list {
@@ -166,7 +166,19 @@ app-task, app-list-btn {
   }
 }
 
-@media (max-width: 500px) {
+.hidden-not-favorite {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .todo {
+    &-list {
+      width: 49%;
+    }
+  }
+}
+
+@media (max-width: 590px) {
   .todo {
     &-list {
       width: 100%;

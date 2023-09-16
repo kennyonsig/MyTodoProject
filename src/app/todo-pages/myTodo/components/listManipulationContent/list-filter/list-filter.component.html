@@ -1,4 +1,5 @@
 <div class="filter-block">
-  <p>list-filter works!</p>
-  <input type="checkbox">Favorite list
+  <label for="favoriteList">Favorite list
+    <input (change)="onListFilterChange($event)" id="favoriteList" type="checkbox">
+  </label>
 </div>

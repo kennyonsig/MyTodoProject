@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { ListService } from '../../../services/list.service';
 import { faList } from '@fortawesome/free-solid-svg-icons/faList';
+import { IList } from '../../../../../shared/interface/IList';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class ListBtnComponent {
   @Input() listNumber: number;
   @Input() dateOfCreation: Date;
   @Input() numberOfTasks: number;
+  @Input() list: IList;
 
   isDropdownOpen = false;
   isStarActive = false;
@@ -38,8 +40,9 @@ export class ListBtnComponent {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  toggleStar() {
-    this.isStarActive = !this.isStarActive;
+  addToFavorite(listNumber: number, list: IList) {
+    list.isFavoriteList = !list.isFavoriteList;
+    this.listService.updListInfo(list);
   }
 
   dupList() {

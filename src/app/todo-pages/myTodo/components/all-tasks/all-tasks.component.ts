@@ -16,6 +16,7 @@ export class AllTasksComponent implements OnInit, OnDestroy {
   readonly dragArrowsV = faArrowsV;
   private tasksSubscription: Subscription;
 
+
   constructor(private taskService: TaskService) {
   }
 

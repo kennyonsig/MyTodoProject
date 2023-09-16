@@ -7,7 +7,6 @@ import { IList } from '../../../shared/interface/IList';
 })
 export class ListService {
   public lists$ = new BehaviorSubject<IList[]>([]);
-  private foundLists$ = new BehaviorSubject<IList[]>([]);
   private listDeadLine = new Date();
   private listDate = new Date();
 
@@ -22,6 +21,7 @@ export class ListService {
   getLists(): IList[] {
     return this.lists$.getValue();
   }
+
 
   updateLists(updatedLists: IList[]) {
     this.lists$.next(updatedLists);
@@ -49,6 +49,7 @@ export class ListService {
       isListEdit: true,
       isListExpand: false,
       isListSelected: false,
+      isFavoriteList: false
     };
     const updatedListsArr: IList[] = [...this.getLists(), newList];
 
@@ -114,4 +115,5 @@ export class ListService {
       })
     );
   }
+
 }

@@ -34,6 +34,12 @@
 
 .input-number {
   max-width: 40px;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 .global-input {
@@ -51,16 +57,23 @@
   }
 }
 
-.btn-add-task {
-  font-size: 16px;
+.btn-add {
+  &-task {
+    font-size: 16px;
 
-  &:disabled {
-    color: rgba(164, 159, 159, 0.6);
-    cursor: not-allowed;
+    &:disabled {
+      color: rgba(164, 159, 159, 0.6);
+      cursor: not-allowed;
 
-    &:after {
-      transform: scaleX(0);
+      &:after {
+        transform: scaleX(0);
+      }
     }
+  }
+
+  &-list {
+    max-width: 100px;
+    margin-right: 10px;
   }
 }
 
@@ -74,4 +87,42 @@
 
 .underlineHover {
   color: #000000;
+}
+
+@media(max-width: 670px) {
+  .label {
+    &-time, &-number {
+      font-size: 12pt;
+    }
+  }
+  .input-task-block {
+    justify-content: space-between
+  }
+}
+
+@media(max-width: 590px) {
+
+  .label {
+    &-time, &-number {
+      font-size: 10pt;
+    }
+  }
+}
+
+@media(max-width: 480px) {
+
+  .input {
+    &-task {
+      flex-grow: 0;
+      max-width: 100px;
+    }
+
+    &-number {
+      max-width: 38px;
+    }
+  }
+
+  .btn-add-task {
+    font-size: 15px;
+  }
 }

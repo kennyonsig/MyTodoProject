@@ -7,26 +7,26 @@ app-todo-list {
 }
 
 .input-task {
-  padding-right: 10px;
-  box-shadow: 0 0 0 1px rgba(34, 60, 80, 0.2);
+  padding: 0 10px 0 10px;
+  box-shadow: 0 2px 0 3px rgba(34, 60, 80, 0.2);
   margin-bottom: 20px;
   border-radius: 4px;
+  background-color: white;
+  z-index: 2;
+  position: sticky;
+  top: 80px;
 }
 
 .main-content {
   min-height: 100vh;
-}
-
-.right-block-filter {
-  margin-right: 9vw;
+  position: relative;
 }
 
 .left-btn-block {
-  margin-left: 9vw;
+  margin-left: 10vw;
 }
 
-.task-button,
-.list-filter {
+.task-button {
   position: fixed;
   top: 100px;
   bottom: 0;
@@ -38,23 +38,9 @@ app-todo-list {
   max-height: 213px;
 }
 
-.list-filter {
-  right: 0;
-  max-height: 213px;
-}
-
-
 @media (max-width: 1600px) {
   .left-btn-block {
     margin-left: 0;
-  }
-
-  .right-block-filter {
-    margin-right: 0;
-  }
-
-  .list-filter {
-    display: none;
   }
 
   .task-button {

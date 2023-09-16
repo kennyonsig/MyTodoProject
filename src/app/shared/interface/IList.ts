@@ -9,4 +9,5 @@ export interface IList {
   isListEdit: boolean;
   isListExpand: boolean;
   isListSelected: boolean;
+  isFavoriteList: boolean;
 }

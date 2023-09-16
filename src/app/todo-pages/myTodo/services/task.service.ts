@@ -13,6 +13,7 @@ export class TaskService {
   constructor(private listService: ListService) {
   }
 
+
   getAllTasks() {
     const allTasks: ITask[] = this.listService.getLists()
       .flatMap((list: IList) => list.tasksArr);
@@ -111,6 +112,17 @@ export class TaskService {
     );
     this.tasks$.next(updatedTaskArr);
     this.listService.updateLists(this.listService.getLists());
+  }
+
+  totalTasksCount(list: IList): number {
+    if (list.tasksArr.length === 0) {
+      return 0;
+    }
+    return list.tasksArr.length;
+  }
+
+  completedTasksCount(list: IList): number {
+    return list.tasksArr.filter(task => task.isTaskCompleted).length;
   }
 
   //Обнолвение задачи для  all-tasks.component

@@ -23,10 +23,6 @@ export class ListLeftBtnComponent {
   constructor(private listService: ListService) {
   }
 
-  addNewToDoList() {
-    this.listService.addNewList();
-  }
-
   duplicateListNumber(selectedDupListNumber: number) {
     if (!this.listService.isListSelected(selectedDupListNumber)) {
       this.dupListNotFound = true;

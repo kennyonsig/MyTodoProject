@@ -46,4 +46,8 @@ export class InputTaskComponent {
       this.taskTime = '';
     }
   }
+
+  addNewToDoList() {
+    this.listService.addNewList();
+  }
 }

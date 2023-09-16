@@ -1,6 +1,6 @@
 <div (click)="selectClickList(list.listNumber, list)"
      *ngFor="let list of lists$ | async"
-     [ngClass]="{'list-selected': list.isListSelected}"
+     [ngClass]="{'list-selected': list.isListSelected, 'hidden-not-favorite': listFilterValue && !list.isFavoriteList}"
      class="todo-list">
   <div class="list-info-wrapper">
     <!--    шапка листа-->
@@ -65,8 +65,11 @@
       <fa-icon [icon]="dragArrowsV" cdkDragHandle class="drag-icon"></fa-icon>
     </li>
   </ul>
+  <!-- Кнопки списка -->
   <div class="list-btn-block-bottom">
-    <app-list-btn [dateOfCreation]="list.listDate" [listNumber]="list.listNumber"
+    <app-list-btn [dateOfCreation]="list.listDate"
+                  [listNumber]="list.listNumber"
+                  [list]="list"
                   [numberOfTasks]="list.tasksArr.length"></app-list-btn>
   </div>
 </div>

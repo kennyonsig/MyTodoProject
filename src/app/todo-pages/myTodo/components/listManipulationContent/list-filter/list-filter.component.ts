@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-list-filter',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-filter.component.scss']
 })
 export class ListFilterComponent {
+  @Output() listFilterChange = new EventEmitter<boolean>();
 
+  onListFilterChange(event: Event) {
+    const checked = (event.target as HTMLInputElement).checked;
+    this.listFilterChange.emit(checked);
+  }
 }

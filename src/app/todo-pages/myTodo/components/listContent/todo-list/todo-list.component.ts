@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IList } from '../../../../../shared/interface/IList';
 import { TaskService } from '../../../services/task.service';
 import { ITask } from '../../../../../shared/interface/ITask';
@@ -22,7 +22,7 @@ export class TodoListComponent implements OnInit {
 
   lists$: Observable<IList[]>;
   dateListForm: FormGroup;
-
+  @Input() listFilterValue: boolean;
   @Output() readonly listSelected = new EventEmitter<number>();
 
   constructor(
@@ -39,11 +39,8 @@ export class TodoListComponent implements OnInit {
   }
 
   getCompletedTasksPercent(list: IList): number {
-    const totalTasksCount = list.tasksArr.length;
-    if (totalTasksCount === 0) {
-      return 0;
-    }
-    const completedTasksCount = list.tasksArr.filter(task => task.isTaskCompleted).length;
+    const totalTasksCount = this.taskService.totalTasksCount(list);
+    const completedTasksCount = this.taskService.completedTasksCount(list);
     return (completedTasksCount / totalTasksCount) * 100;
   }
 

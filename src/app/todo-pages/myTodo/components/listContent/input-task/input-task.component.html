@@ -1,4 +1,6 @@
 <div class="input-task-block">
+  <button (click)="addNewToDoList()" class="global-btn btn-add-list underlineHover">Add ToDo list
+  </button>
   <input #taskInput
          (input)="onInputChange(taskInput.value)"
          [class.invalid]="!taskInput.value.trim()"
@@ -6,7 +8,7 @@
          maxlength="31"
          placeholder="Enter a task"
          type="text">
-  <label class="label-time" for="time-input">Select a time:</label>
+  <label class="label-time" for="time-input">Time:</label>
   <input #timeInput
          [(ngModel)]="taskTime"
          [class.invalid]="!taskTime"
@@ -14,7 +16,7 @@
          id="time-input"
          name="time"
          type="time">
-  <label class="label-number" for="number-input">Select a list number</label>
+  <label class="label-number" for="number-input">List number</label>
   <input [(ngModel)]="selectedListNumber"
          [class.invalid]="!selectedListNumber"
          class="global-input input-number"
@@ -26,7 +28,7 @@
   </div>
   <button (click)="enterTask(taskInput, timeInput)"
           [disabled]="!taskTime || isDisabled || !selectedListNumber"
-          class="btn-add-task global-btn underlineHover">Add task
+          class="btn-add-task global-btn underlineHover">Add
   </button>
 </div>
 
