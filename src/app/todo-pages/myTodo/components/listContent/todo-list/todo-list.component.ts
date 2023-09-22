@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IList } from '../../../../../shared/interface/IList';
 import { TaskService } from '../../../services/task.service';
 import { ITask } from '../../../../../shared/interface/ITask';
@@ -20,6 +20,7 @@ export class TodoListComponent implements OnInit {
   readonly saveIcon = faCheck;
   readonly dragArrowsV = faArrowsV;
 
+  isListInfoClicked = false;
   lists$: Observable<IList[]>;
   dateListForm: FormGroup;
   @Input() listFilterValue: boolean;
@@ -28,6 +29,7 @@ export class TodoListComponent implements OnInit {
   constructor(
     private taskService: TaskService,
     private listService: ListService,
+    private elementRef: ElementRef
   ) {
   }
 
@@ -57,7 +59,9 @@ export class TodoListComponent implements OnInit {
   }
 
   saveTaskInfo(task: ITask) {
+
     this.taskService.onTaskSave(task.taskNumber, task.isTaskInListNumber);
+
   }
 
   editListInfo(list: IList) {

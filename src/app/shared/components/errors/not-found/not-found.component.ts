@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-not-found',
@@ -10,5 +11,10 @@ import { RouterLink } from '@angular/router';
   imports: [CommonModule, RouterLink],
 })
 export class NotFoundComponent {
+  constructor(private _location: Location) {
+  }
 
+  goBack() {
+    this._location.back();
+  }
 }

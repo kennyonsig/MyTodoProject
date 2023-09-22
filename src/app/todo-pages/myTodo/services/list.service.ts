@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, debounceTime, map, Observable } from 'rxjs';
+import { BehaviorSubject, debounceTime, map } from 'rxjs';
 import { IList } from '../../../shared/interface/IList';
 
 @Injectable({
@@ -21,7 +21,6 @@ export class ListService {
   getLists(): IList[] {
     return this.lists$.getValue();
   }
-
 
   updateLists(updatedLists: IList[]) {
     this.lists$.next(updatedLists);
@@ -46,7 +45,7 @@ export class ListService {
       listName: 'ToDo' + `#${currentListLength + 1}`,
       listNumber: currentListLength + 1,
       tasksArr: [],
-      isListEdit: true,
+      isListEdit: false,
       isListExpand: false,
       isListSelected: false,
       isFavoriteList: false
@@ -105,15 +104,16 @@ export class ListService {
     }
   }
 
-  findList(findListName: string): Observable<IList[]> {
-    return this.lists$.pipe(
+  findList(findListName: string) {
+    this.lists$.pipe(
       debounceTime(500),
       map((lists: IList[]) => {
         return lists.filter((list: IList) => list.listName
           .toLowerCase()
-          .includes(findListName.toLowerCase()));
+          .includes(findListName));
       })
-    );
+    ).subscribe((filteredLists: IList[]) => {
+      this.lists$.next(filteredLists);
+    });
   }
-
 }

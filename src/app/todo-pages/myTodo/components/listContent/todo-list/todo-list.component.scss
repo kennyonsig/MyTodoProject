@@ -16,9 +16,10 @@
   &-name {
     flex-basis: 36%;
     display: block;
+    min-width: 55%;
 
     &-input {
-      max-width: 100px;
+      min-width: 55%;
     }
   }
 }

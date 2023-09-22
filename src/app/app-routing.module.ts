@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { HomePageComponent } from './shared/components/home-page/home-page.component';
 import { SignInComponent } from './shared/components/auth/sign-in/sign-in.component';
 import { isLoginGuard } from './shared/guards/is-login.guard';
 import { authGuard } from './shared/guards/auth.guard';
 import { SignUpComponent } from './shared/components/auth/sign-up/sign-up.component';
+import { HomePageComponent } from './shared/components/home-page/home-page.component';
 
 
 const routes: Routes = [

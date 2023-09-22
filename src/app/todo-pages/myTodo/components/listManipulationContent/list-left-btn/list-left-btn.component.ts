@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { ListService } from '../../../services/list.service';
-import { Subscription } from 'rxjs';
-import { IList } from '../../../../../shared/interface/IList';
 
 @Component({
   selector: 'app-list-left-btn',
@@ -14,11 +12,10 @@ export class ListLeftBtnComponent {
   selectedDupListNumber: number;
   selectedDelListNumber: number;
   selectedClearListNumber: number;
-  findValue: string;
+  findList: string;
   dupListNotFound: boolean;
   delListNotFound: boolean;
   clearListNotFound: boolean;
-  private subFindList: Subscription;
 
   constructor(private listService: ListService) {
   }
@@ -51,14 +48,7 @@ export class ListLeftBtnComponent {
   }
 
   findListInput() {
-    if (this.subFindList) {
-      this.subFindList.unsubscribe();
-    }
-    this.subFindList = this.listService
-      .findList(this.findValue)
-      .subscribe((findListName: IList[]) => {
-        console.log(findListName);
-      });
+    this.listService.findList(this.findList.trim().toLowerCase());
   }
 
   deleteAllList() {

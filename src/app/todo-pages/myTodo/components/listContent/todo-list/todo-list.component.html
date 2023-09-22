@@ -2,7 +2,7 @@
      *ngFor="let list of lists$ | async"
      [ngClass]="{'list-selected': list.isListSelected, 'hidden-not-favorite': listFilterValue && !list.isFavoriteList}"
      class="todo-list">
-  <div class="list-info-wrapper">
+  <div #listInfoWrapper class="list-info-wrapper">
     <!--    шапка листа-->
     <ng-container *ngIf="!list.isListEdit">
       <p class="todo-number">{{ list.listNumber }}</p>
@@ -24,7 +24,6 @@
       </button>
       <input
         [(ngModel)]="list.listName"
-        [autofocus]="true"
         class="global-input todo-name-input"
         maxlength="10"
         name="todoName">

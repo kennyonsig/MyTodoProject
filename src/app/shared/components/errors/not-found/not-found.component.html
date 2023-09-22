@@ -1,4 +1,7 @@
 <div class="not-found">
   <h1>404 NOT FOUND</h1>
-  <a class="underlineHover" routerLink="/my-todo">Back home</a>
+  <div class="back-home-block">
+    <a class="underlineHover" routerLink="/">Go Home</a>
+    <button (click)="goBack()" class="underlineHover global-btn btn-back"> Go Back</button>
+  </div>
 </div>

@@ -51,3 +51,8 @@ app-todo-list {
   }
 }
 
+@media (max-width: 400px) {
+  .input-task {
+    top: 50px;
+  }
+}
